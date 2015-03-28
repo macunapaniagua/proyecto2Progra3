@@ -1,0 +1,3 @@
+Hostname 	9ce858d6-b9cb-4765-8934-a46901350226.sqlserver.sequelizer.com 	
+Username 	eqzhermyoimrgwsj 	
+Password 	XvDRTyTt7UWbxgEerhTdMQwczV8JPSS8B2gKR6VS2Ktw2BGBWyyihNQg8Ar7zjMo
