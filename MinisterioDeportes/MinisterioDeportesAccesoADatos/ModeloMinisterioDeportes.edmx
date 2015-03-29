@@ -4,20 +4,302 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db9ce858d6b9cb47658934a46901350226Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="db9ce858d6b9cb47658934a46901350226ModelStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="db9ce858d6b9cb47658934a46901350226Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="deporte">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="apellido2" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="plan_rutina">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_rutina" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="detalles" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="rutina">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_deporte" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="detalles" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="rutinas_planes">
+          <Key>
+            <PropertyRef Name="cod_rutina" />
+            <PropertyRef Name="cod_plan_rutina" />
+          </Key>
+          <Property Name="cod_rutina" Type="int" Nullable="false" />
+          <Property Name="cod_plan_rutina" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'db9ce858d6b9cb47658934a46901350226.dbo.usuario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="usuario" />
+            <PropertyRef Name="contrasenia" />
+            <PropertyRef Name="es_admi" />
+          </Key>
+          <Property Name="usuario" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="contrasenia" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="es_admi" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_plan_rutina_rutina">
+          <End Role="rutina" Type="Self.rutina" Multiplicity="1" />
+          <End Role="plan_rutina" Type="Self.plan_rutina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rutina">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="plan_rutina">
+              <PropertyRef Name="id_rutina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rutina_deporte">
+          <End Role="deporte" Type="Self.deporte" Multiplicity="1" />
+          <End Role="rutina" Type="Self.rutina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="deporte">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rutina">
+              <PropertyRef Name="id_deporte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rutinas_planes_plan_rutina">
+          <End Role="plan_rutina" Type="Self.plan_rutina" Multiplicity="1" />
+          <End Role="rutinas_planes" Type="Self.rutinas_planes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plan_rutina">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rutinas_planes">
+              <PropertyRef Name="cod_plan_rutina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rutinas_planes_rutina">
+          <End Role="rutina" Type="Self.rutina" Multiplicity="1" />
+          <End Role="rutinas_planes" Type="Self.rutinas_planes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rutina">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rutinas_planes">
+              <PropertyRef Name="cod_rutina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db9ce858d6b9cb47658934a46901350226ModelStoreContainer">
+          <EntitySet Name="deporte" EntityType="Self.deporte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="plan_rutina" EntityType="Self.plan_rutina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rutina" EntityType="Self.rutina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rutinas_planes" EntityType="Self.rutinas_planes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [usuario].[usuario] AS [usuario], 
+    [usuario].[contrasenia] AS [contrasenia], 
+    [usuario].[es_admi] AS [es_admi]
+    FROM [dbo].[usuario] AS [usuario]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_plan_rutina_rutina" Association="Self.FK_plan_rutina_rutina">
+            <End Role="rutina" EntitySet="rutina" />
+            <End Role="plan_rutina" EntitySet="plan_rutina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rutina_deporte" Association="Self.FK_rutina_deporte">
+            <End Role="deporte" EntitySet="deporte" />
+            <End Role="rutina" EntitySet="rutina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rutinas_planes_plan_rutina" Association="Self.FK_rutinas_planes_plan_rutina">
+            <End Role="plan_rutina" EntitySet="plan_rutina" />
+            <End Role="rutinas_planes" EntitySet="rutinas_planes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rutinas_planes_rutina" Association="Self.FK_rutinas_planes_rutina">
+            <End Role="rutina" EntitySet="rutina" />
+            <End Role="rutinas_planes" EntitySet="rutinas_planes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db9ce858d6b9cb47658934a46901350226Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="MinisterioDeportesEntityDataModel" annotation:LazyLoadingEnabled="true" />
+        <EntityContainer Name="MinisterioDeportesEntityDataModel" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="deporte" EntityType="db9ce858d6b9cb47658934a46901350226Model.deporte" />
+          <EntitySet Name="persona" EntityType="db9ce858d6b9cb47658934a46901350226Model.persona" />
+          <EntitySet Name="plan_rutina" EntityType="db9ce858d6b9cb47658934a46901350226Model.plan_rutina" />
+          <EntitySet Name="rutina" EntityType="db9ce858d6b9cb47658934a46901350226Model.rutina" />
+          <EntitySet Name="usuario" EntityType="db9ce858d6b9cb47658934a46901350226Model.usuario" />
+          <AssociationSet Name="FK_rutina_deporte" Association="db9ce858d6b9cb47658934a46901350226Model.FK_rutina_deporte">
+            <End Role="deporte" EntitySet="deporte" />
+            <End Role="rutina" EntitySet="rutina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_plan_rutina_rutina" Association="db9ce858d6b9cb47658934a46901350226Model.FK_plan_rutina_rutina">
+            <End Role="rutina" EntitySet="rutina" />
+            <End Role="plan_rutina" EntitySet="plan_rutina" />
+          </AssociationSet>
+          <AssociationSet Name="rutinas_planes" Association="db9ce858d6b9cb47658934a46901350226Model.rutinas_planes">
+            <End Role="plan_rutina" EntitySet="plan_rutina" />
+            <End Role="rutina" EntitySet="rutina" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="deporte">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="rutina" Relationship="db9ce858d6b9cb47658934a46901350226Model.FK_rutina_deporte" FromRole="deporte" ToRole="rutina" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="apellido2" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="plan_rutina">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_rutina" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="detalles" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="rutina" Relationship="db9ce858d6b9cb47658934a46901350226Model.FK_plan_rutina_rutina" FromRole="plan_rutina" ToRole="rutina" />
+          <NavigationProperty Name="rutina1" Relationship="db9ce858d6b9cb47658934a46901350226Model.rutinas_planes" FromRole="plan_rutina" ToRole="rutina" />
+        </EntityType>
+        <EntityType Name="rutina">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_deporte" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="detalles" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="deporte" Relationship="db9ce858d6b9cb47658934a46901350226Model.FK_rutina_deporte" FromRole="rutina" ToRole="deporte" />
+          <NavigationProperty Name="plan_rutina" Relationship="db9ce858d6b9cb47658934a46901350226Model.FK_plan_rutina_rutina" FromRole="rutina" ToRole="plan_rutina" />
+          <NavigationProperty Name="plan_rutina1" Relationship="db9ce858d6b9cb47658934a46901350226Model.rutinas_planes" FromRole="rutina" ToRole="plan_rutina" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="usuario1" />
+            <PropertyRef Name="contrasenia" />
+            <PropertyRef Name="es_admi" />
+          </Key>
+          <Property Name="usuario1" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="contrasenia" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="es_admi" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_rutina_deporte">
+          <End Type="db9ce858d6b9cb47658934a46901350226Model.deporte" Role="deporte" Multiplicity="1" />
+          <End Type="db9ce858d6b9cb47658934a46901350226Model.rutina" Role="rutina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="deporte">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="rutina">
+              <PropertyRef Name="id_deporte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_plan_rutina_rutina">
+          <End Type="db9ce858d6b9cb47658934a46901350226Model.rutina" Role="rutina" Multiplicity="1" />
+          <End Type="db9ce858d6b9cb47658934a46901350226Model.plan_rutina" Role="plan_rutina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rutina">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="plan_rutina">
+              <PropertyRef Name="id_rutina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rutinas_planes">
+          <End Type="db9ce858d6b9cb47658934a46901350226Model.plan_rutina" Role="plan_rutina" Multiplicity="*" />
+          <End Type="db9ce858d6b9cb47658934a46901350226Model.rutina" Role="rutina" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="db9ce858d6b9cb47658934a46901350226ModelStoreContainer" CdmEntityContainer="MinisterioDeportesEntityDataModel" />
+        <EntityContainerMapping StorageEntityContainer="db9ce858d6b9cb47658934a46901350226ModelStoreContainer" CdmEntityContainer="MinisterioDeportesEntityDataModel" >
+          <EntitySetMapping Name="deporte">
+            <EntityTypeMapping TypeName="db9ce858d6b9cb47658934a46901350226Model.deporte">
+              <MappingFragment StoreEntitySet="deporte">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="persona">
+            <EntityTypeMapping TypeName="db9ce858d6b9cb47658934a46901350226Model.persona">
+              <MappingFragment StoreEntitySet="persona">
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="plan_rutina">
+            <EntityTypeMapping TypeName="db9ce858d6b9cb47658934a46901350226Model.plan_rutina">
+              <MappingFragment StoreEntitySet="plan_rutina">
+                <ScalarProperty Name="detalles" ColumnName="detalles" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_rutina" ColumnName="id_rutina" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rutina">
+            <EntityTypeMapping TypeName="db9ce858d6b9cb47658934a46901350226Model.rutina">
+              <MappingFragment StoreEntitySet="rutina">
+                <ScalarProperty Name="detalles" ColumnName="detalles" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_deporte" ColumnName="id_deporte" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="db9ce858d6b9cb47658934a46901350226Model.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="es_admi" ColumnName="es_admi" />
+                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="rutinas_planes" TypeName="db9ce858d6b9cb47658934a46901350226Model.rutinas_planes" StoreEntitySet="rutinas_planes">
+            <EndProperty Name="rutina">
+              <ScalarProperty Name="ID" ColumnName="cod_rutina" />
+            </EndProperty>
+            <EndProperty Name="plan_rutina">
+              <ScalarProperty Name="ID" ColumnName="cod_plan_rutina" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
