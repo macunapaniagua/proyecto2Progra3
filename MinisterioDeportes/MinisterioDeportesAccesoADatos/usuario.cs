@@ -14,8 +14,10 @@ namespace MinisterioDeportesAccesoADatos
     
     public partial class usuario
     {
-        public string usuario1 { get; set; }
+        public int usuario1 { get; set; }
         public string contrasenia { get; set; }
         public bool es_admi { get; set; }
+    
+        public virtual persona persona { get; set; }
     }
 }

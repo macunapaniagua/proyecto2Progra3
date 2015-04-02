@@ -24,6 +24,7 @@ namespace MinisterioDeportesAccesoADatos
         public string apellido { get; set; }
         public string apellido2 { get; set; }
     
+        public virtual usuario usuario { get; set; }
         public virtual ICollection<deporte> deporte { get; set; }
     }
 }
