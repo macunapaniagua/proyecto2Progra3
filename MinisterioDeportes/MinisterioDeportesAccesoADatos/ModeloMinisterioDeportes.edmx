@@ -21,6 +21,14 @@
           <Property Name="apellido" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="apellido2" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
+        <EntityType Name="persona_deporte">
+          <Key>
+            <PropertyRef Name="persona" />
+            <PropertyRef Name="deporte" />
+          </Key>
+          <Property Name="persona" Type="int" Nullable="false" />
+          <Property Name="deporte" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="plan_rutina">
           <Key>
             <PropertyRef Name="ID" />
@@ -59,6 +67,30 @@ warning 6002: The table/view 'db9ce858d6b9cb47658934a46901350226.dbo.usuario' do
           <Property Name="contrasenia" Type="nchar" MaxLength="255" Nullable="false" />
           <Property Name="es_admi" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_persona_deporte_deporte">
+          <End Role="deporte" Type="Self.deporte" Multiplicity="1" />
+          <End Role="persona_deporte" Type="Self.persona_deporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="deporte">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="persona_deporte">
+              <PropertyRef Name="deporte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_persona_deporte_persona">
+          <End Role="persona" Type="Self.persona" Multiplicity="1" />
+          <End Role="persona_deporte" Type="Self.persona_deporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="persona_deporte">
+              <PropertyRef Name="persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_plan_rutina_rutina">
           <End Role="rutina" Type="Self.rutina" Multiplicity="1" />
           <End Role="plan_rutina" Type="Self.plan_rutina" Multiplicity="*" />
@@ -110,6 +142,7 @@ warning 6002: The table/view 'db9ce858d6b9cb47658934a46901350226.dbo.usuario' do
         <EntityContainer Name="db9ce858d6b9cb47658934a46901350226ModelStoreContainer">
           <EntitySet Name="deporte" EntityType="Self.deporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="persona_deporte" EntityType="Self.persona_deporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="plan_rutina" EntityType="Self.plan_rutina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rutina" EntityType="Self.rutina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rutinas_planes" EntityType="Self.rutinas_planes" Schema="dbo" store:Type="Tables" />
@@ -120,6 +153,14 @@ warning 6002: The table/view 'db9ce858d6b9cb47658934a46901350226.dbo.usuario' do
     [usuario].[es_admi] AS [es_admi]
     FROM [dbo].[usuario] AS [usuario]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_persona_deporte_deporte" Association="Self.FK_persona_deporte_deporte">
+            <End Role="deporte" EntitySet="deporte" />
+            <End Role="persona_deporte" EntitySet="persona_deporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_persona_deporte_persona" Association="Self.FK_persona_deporte_persona">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="persona_deporte" EntitySet="persona_deporte" />
+          </AssociationSet>
           <AssociationSet Name="FK_plan_rutina_rutina" Association="Self.FK_plan_rutina_rutina">
             <End Role="rutina" EntitySet="rutina" />
             <End Role="plan_rutina" EntitySet="plan_rutina" />
@@ -159,6 +200,10 @@ warning 6002: The table/view 'db9ce858d6b9cb47658934a46901350226.dbo.usuario' do
             <End Role="plan_rutina" EntitySet="plan_rutina" />
             <End Role="rutina" EntitySet="rutina" />
           </AssociationSet>
+          <AssociationSet Name="persona_deporte" Association="db9ce858d6b9cb47658934a46901350226Model.persona_deporte">
+            <End Role="deporte" EntitySet="deporte" />
+            <End Role="persona" EntitySet="persona" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="deporte">
           <Key>
@@ -167,6 +212,7 @@ warning 6002: The table/view 'db9ce858d6b9cb47658934a46901350226.dbo.usuario' do
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="rutina" Relationship="db9ce858d6b9cb47658934a46901350226Model.FK_rutina_deporte" FromRole="deporte" ToRole="rutina" />
+          <NavigationProperty Name="persona" Relationship="db9ce858d6b9cb47658934a46901350226Model.persona_deporte" FromRole="deporte" ToRole="persona" />
         </EntityType>
         <EntityType Name="persona">
           <Key>
@@ -176,6 +222,7 @@ warning 6002: The table/view 'db9ce858d6b9cb47658934a46901350226.dbo.usuario' do
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="apellido" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="apellido2" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="deporte" Relationship="db9ce858d6b9cb47658934a46901350226Model.persona_deporte" FromRole="persona" ToRole="deporte" />
         </EntityType>
         <EntityType Name="plan_rutina">
           <Key>
@@ -238,6 +285,10 @@ warning 6002: The table/view 'db9ce858d6b9cb47658934a46901350226.dbo.usuario' do
           <End Type="db9ce858d6b9cb47658934a46901350226Model.plan_rutina" Role="plan_rutina" Multiplicity="*" />
           <End Type="db9ce858d6b9cb47658934a46901350226Model.rutina" Role="rutina" Multiplicity="*" />
         </Association>
+        <Association Name="persona_deporte">
+          <End Type="db9ce858d6b9cb47658934a46901350226Model.deporte" Role="deporte" Multiplicity="*" />
+          <End Type="db9ce858d6b9cb47658934a46901350226Model.persona" Role="persona" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -297,6 +348,14 @@ warning 6002: The table/view 'db9ce858d6b9cb47658934a46901350226.dbo.usuario' do
             </EndProperty>
             <EndProperty Name="plan_rutina">
               <ScalarProperty Name="ID" ColumnName="cod_plan_rutina" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="persona_deporte" TypeName="db9ce858d6b9cb47658934a46901350226Model.persona_deporte" StoreEntitySet="persona_deporte">
+            <EndProperty Name="persona">
+              <ScalarProperty Name="cedula" ColumnName="persona" />
+            </EndProperty>
+            <EndProperty Name="deporte">
+              <ScalarProperty Name="ID" ColumnName="deporte" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

@@ -13,6 +13,7 @@
         <AssociationConnector Association="db9ce858d6b9cb47658934a46901350226Model.FK_rutina_deporte" />
         <AssociationConnector Association="db9ce858d6b9cb47658934a46901350226Model.FK_plan_rutina_rutina" />
         <AssociationConnector Association="db9ce858d6b9cb47658934a46901350226Model.rutinas_planes" />
+        <AssociationConnector Association="db9ce858d6b9cb47658934a46901350226Model.persona_deporte" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

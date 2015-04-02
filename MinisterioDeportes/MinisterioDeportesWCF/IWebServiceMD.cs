@@ -5,43 +5,63 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+//using MinisterioDeportesAccesoADatos;
 
 namespace MinisterioDeportesWCF
 {
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IService1" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
     public interface IWebServiceMD
     {
+        [OperationContract]
+        bool AgregarDeporte(/*deporte deporte*/);
+        [OperationContract]
+        void EliminarDeporte(/*deporte deporte*/);
+        [OperationContract]
+        void EditarDeporte(/*deporte deporte*/);
+        [OperationContract]
+        //creo que deberia ser list y no void
+        void ObtenerDeporte();
 
         [OperationContract]
-        string GetData(int value);
+        bool AgregarPersona(/*persona persona*/);
+        [OperationContract]
+        void EliminarPersona(/*persona persona*/);
+        [OperationContract]
+        void EditarPersona(/*persona persona*/);
+        [OperationContract]
+        //creo que deberia ser list y no void
+        void ObtenerPersona();
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        void AgregarRutina(/*rutina rutina*/);
+        [OperationContract]
+        void EliminarRutina(/*rutina rutina*/);
+        [OperationContract]
+        void EditarRutina(/*rutina rutina*/);
+        [OperationContract]
+        //creo que deberia ser list y no void
+        void ObtenerRutina();
 
-        // TODO: agregue aquí sus operaciones de servicio
+        [OperationContract]
+        void AgregarPlanRutina(/*plan_rutina planRutina*/);
+        [OperationContract]
+        void EliminarPlanRutina(/*plan_rutina planRutina*/);
+        [OperationContract]
+        void EditarPlanRutina(/*plan_rutina planRutina*/);
+        [OperationContract]
+        //creo que deberia ser list y no void
+        void ObtenerPlanRutina();
+
+        [OperationContract]
+        void AgregarUsuario(/*usuario usuario*/);
+        [OperationContract]
+        void EliminarUsuario(/*usuario usuario*/);
+        [OperationContract]
+        void EditarUsuario(/*usuario usuario*/);
+        [OperationContract]
+        //creo que deberia ser list y no void
+        void ValidarUsuario();
     }
 
 
-    // Utilice un contrato de datos, como se ilustra en el ejemplo siguiente, para agregar tipos compuestos a las operaciones de servicio.
-    [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
-        [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
-    }
 }

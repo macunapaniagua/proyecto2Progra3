@@ -59,6 +59,48 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmDeporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmDeporte.Designer.cs">
+      <DependentUpon>frmDeporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmEstadistica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmEstadistica.Designer.cs">
+      <DependentUpon>frmEstadistica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmPersona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmPersona.Designer.cs">
+      <DependentUpon>frmPersona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmPlanRutina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmPlanRutina.Designer.cs">
+      <DependentUpon>frmPlanRutina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmRutina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmRutina.Designer.cs">
+      <DependentUpon>frmRutina.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -71,6 +113,24 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vistas\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmDeporte.resx">
+      <DependentUpon>frmDeporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmPersona.resx">
+      <DependentUpon>frmPersona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmPlanRutina.resx">
+      <DependentUpon>frmPlanRutina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmRutina.resx">
+      <DependentUpon>frmRutina.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -118,6 +178,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -8,26 +8,119 @@ using System.Text;
 
 namespace MinisterioDeportesWCF
 {
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Service1" en el código, en svc y en el archivo de configuración.
-    // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service1.svc o Service1.svc.cs en el Explorador de soluciones e inicie la depuración.
+
     public class WebServiceMD : IWebServiceMD
     {
-        public string GetData(int value)
+
+        #region deporte
+
+        public bool AgregarDeporte()
         {
-            return string.Format("You entered: {0}", value);
+            throw new NotImplementedException();
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public void EliminarDeporte()
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            throw new NotImplementedException();
         }
+
+        public void EditarDeporte()
+        {
+            throw new NotImplementedException();
+        }
+        public void ObtenerDeporte()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        #endregion
+
+        #region persona
+        public bool AgregarPersona()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EliminarPersona()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditarPersona()
+        {
+            throw new NotImplementedException();
+        }
+        public void ObtenerPersona()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region rutina 
+        public void AgregarRutina()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EliminarRutina()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditarRutina()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ObtenerRutina()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region planRutina
+        public void AgregarPlanRutina()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EliminarPlanRutina()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditarPlanRutina()
+        {
+            throw new NotImplementedException();
+        }
+        public void ObtenerPlanRutina()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region usuario
+        public void AgregarUsuario()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EliminarUsuario()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditarUsuario()
+        {
+            throw new NotImplementedException();
+        }
+        public void ValidarUsuario()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
     }
 }
