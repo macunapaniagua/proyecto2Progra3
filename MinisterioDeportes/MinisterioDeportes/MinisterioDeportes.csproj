@@ -32,9 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -54,7 +62,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\ServiceReferenceMinisterioDep\Reference.cs">
+    <Compile Include="Service References\ReferenceMinisterioDeportesWCF\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -131,6 +139,7 @@
     <EmbeddedResource Include="Vistas\frmRutina.resx">
       <DependentUpon>frmRutina.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -140,17 +149,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\ServiceReferenceMinisterioDep\MinisterioDeportes.ServiceReferenceMinisterioDep.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReferenceMinisterioDep\WebServiceMD.wsdl" />
-    <None Include="Service References\ServiceReferenceMinisterioDep\WebServiceMD.xsd">
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\WebServiceMD.wsdl" />
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\WebServiceMD.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReferenceMinisterioDep\WebServiceMD1.xsd">
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\WebServiceMD1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReferenceMinisterioDep\WebServiceMD2.xsd">
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\WebServiceMD2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -161,24 +167,26 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ServiceReferenceMinisterioDep\" />
+    <WCFMetadataStorage Include="Service References\ReferenceMinisterioDeportesWCF\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReferenceMinisterioDep\WebServiceMD.disco" />
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\WebServiceMD.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReferenceMinisterioDep\configuration91.svcinfo" />
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReferenceMinisterioDep\configuration.svcinfo" />
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReferenceMinisterioDep\Reference.svcmap">
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

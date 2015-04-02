@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-//using MinisterioDeportesAccesoADatos;
+using MinisterioDeportesAccesoADatos;
 
 namespace MinisterioDeportesWCF
 {
@@ -13,21 +13,21 @@ namespace MinisterioDeportesWCF
     public interface IWebServiceMD
     {
         [OperationContract]
-        bool AgregarDeporte(/*deporte deporte*/);
+        bool AgregarDeporte(deporte deporte);
         [OperationContract]
-        void EliminarDeporte(/*deporte deporte*/);
+        void EliminarDeporte(deporte deporte);
         [OperationContract]
-        void EditarDeporte(/*deporte deporte*/);
+        void EditarDeporte(deporte deporte);
         [OperationContract]
         //creo que deberia ser list y no void
         void ObtenerDeporte();
 
         [OperationContract]
-        bool AgregarPersona(/*persona persona*/);
+        bool AgregarPersona(persona persona);
         [OperationContract]
-        void EliminarPersona(/*persona persona*/);
+        void EliminarPersona(persona persona);
         [OperationContract]
-        void EditarPersona(/*persona persona*/);
+        void EditarPersona(persona persona);
         [OperationContract]
         //creo que deberia ser list y no void
         void ObtenerPersona();

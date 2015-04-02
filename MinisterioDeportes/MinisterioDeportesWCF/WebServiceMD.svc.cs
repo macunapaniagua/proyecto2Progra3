@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MinisterioDeportesAccesoADatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -14,19 +15,19 @@ namespace MinisterioDeportesWCF
 
         #region deporte
 
-        public bool AgregarDeporte()
+        public bool AgregarDeporte(deporte deporte)
         {
             throw new NotImplementedException();
         }
 
-        public void EliminarDeporte()
+        public void EliminarDeporte(deporte deporte)
         {
             throw new NotImplementedException();
         }
 
-        public void EditarDeporte()
+        public void EditarDeporte(deporte deporte)
         {
-            throw new NotImplementedException();
+            throw new Exception("hola mario!!! ");
         }
         public void ObtenerDeporte()
         {
@@ -37,17 +38,17 @@ namespace MinisterioDeportesWCF
         #endregion
 
         #region persona
-        public bool AgregarPersona()
+        public bool AgregarPersona(persona persona)
         {
             throw new NotImplementedException();
         }
 
-        public void EliminarPersona()
+        public void EliminarPersona(persona persona)
         {
             throw new NotImplementedException();
         }
 
-        public void EditarPersona()
+        public void EditarPersona(persona persona)
         {
             throw new NotImplementedException();
         }

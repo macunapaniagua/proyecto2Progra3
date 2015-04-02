@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using MinisterioDeportes.ReferenceMinisterioDeportesWCF;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,26 @@ namespace MinisterioDeportes
         public Form1()
         {
             InitializeComponent();
+
+           
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ReferenceMinisterioDeportesWCF.WebServiceMDClient objMinisterioDeportesWCF = new ReferenceMinisterioDeportesWCF.WebServiceMDClient();
+                deporte deporte = new deporte();
+                deporte.descripcion = "NADAR";
+                deporte.ID = 1;
+                objMinisterioDeportesWCF.EditarDeporte(deporte);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                
+            }
         }
     }
 }
