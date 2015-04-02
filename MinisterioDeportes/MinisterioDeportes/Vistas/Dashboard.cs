@@ -45,7 +45,7 @@ namespace MinisterioDeportes.Vistas
                     this.splPrincipal.Panel1.Controls.Add(ofrmRepuesto);
                     this.splPrincipal.Panel1.Tag = ofrmRepuesto;
                     ofrmRepuesto.Show();
-
+                    /*dtgInformacion.DataSource= */
 
                     break;
 
@@ -58,7 +58,7 @@ namespace MinisterioDeportes.Vistas
                     this.splPrincipal.Panel1.Controls.Add(ofrmDeporte);
                     this.splPrincipal.Panel1.Tag = ofrmDeporte;
                     ofrmDeporte.Show();
-
+                    /*dtgInformacion.DataSource= */
 
                     break;
 
@@ -71,7 +71,7 @@ namespace MinisterioDeportes.Vistas
                     this.splPrincipal.Panel1.Controls.Add(ofrmPlanRutina);
                     this.splPrincipal.Panel1.Tag = ofrmPlanRutina;
                     ofrmPlanRutina.Show();
-
+                    /*dtgInformacion.DataSource= */
 
                     break;
 
@@ -84,7 +84,7 @@ namespace MinisterioDeportes.Vistas
                     this.splPrincipal.Panel1.Controls.Add(ofrmRutina);
                     this.splPrincipal.Panel1.Tag = ofrmRutina;
                     ofrmRutina.Show();
-
+                    /*dtgInformacion.DataSource= */
 
                     break;
 
@@ -96,13 +96,15 @@ namespace MinisterioDeportes.Vistas
                     this.splPrincipal.Panel1.Controls.Add(ofrmEstadistica);
                     this.splPrincipal.Panel1.Tag = ofrmEstadistica;
                     ofrmEstadistica.Show();
+                    /*dtgInformacion.DataSource= */
                     break;
-
 
                 default:
                     break;
             }
         }
+
+ 
 
 
     }

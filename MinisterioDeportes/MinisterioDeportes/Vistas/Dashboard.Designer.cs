@@ -35,12 +35,12 @@
             this.deportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splPrincipal = new System.Windows.Forms.SplitContainer();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgInformacion = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splPrincipal)).BeginInit();
             this.splPrincipal.Panel2.SuspendLayout();
             this.splPrincipal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgInformacion)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -95,18 +95,18 @@
             // 
             // splPrincipal.Panel2
             // 
-            this.splPrincipal.Panel2.Controls.Add(this.dataGridView1);
+            this.splPrincipal.Panel2.Controls.Add(this.dtgInformacion);
             this.splPrincipal.Size = new System.Drawing.Size(765, 493);
             this.splPrincipal.SplitterDistance = 255;
             this.splPrincipal.TabIndex = 1;
             // 
-            // dataGridView1
+            // dtgInformacion
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(1, 51);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(503, 269);
-            this.dataGridView1.TabIndex = 0;
+            this.dtgInformacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgInformacion.Location = new System.Drawing.Point(1, 51);
+            this.dtgInformacion.Name = "dtgInformacion";
+            this.dtgInformacion.Size = new System.Drawing.Size(503, 269);
+            this.dtgInformacion.TabIndex = 0;
             // 
             // Dashboard
             // 
@@ -123,7 +123,7 @@
             this.splPrincipal.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splPrincipal)).EndInit();
             this.splPrincipal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgInformacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,6 +138,6 @@
         private System.Windows.Forms.ToolStripMenuItem deportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estadisticasToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splPrincipal;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgInformacion;
     }
 }
