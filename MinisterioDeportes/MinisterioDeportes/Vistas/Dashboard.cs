@@ -103,9 +103,5 @@ namespace MinisterioDeportes.Vistas
                     break;
             }
         }
-
- 
-
-
     }
 }
