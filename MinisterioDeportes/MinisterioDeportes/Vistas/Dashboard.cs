@@ -34,74 +34,74 @@ namespace MinisterioDeportes.Vistas
             }
 
 
-            switch (formulario)
-            {
-                case formulario.persona:
+            //switch (formulario)
+            //{
+            //    case formulario.persona:
 
-                    frmPersona ofrmRepuesto = new frmPersona();
-                    ofrmRepuesto.TopLevel = false;
-                    ofrmRepuesto.FormBorderStyle = FormBorderStyle.None;
-                    ofrmRepuesto.Dock = DockStyle.Fill;
-                    this.splPrincipal.Panel1.Controls.Add(ofrmRepuesto);
-                    this.splPrincipal.Panel1.Tag = ofrmRepuesto;
-                    ofrmRepuesto.Show();
-                    /*dtgInformacion.DataSource= */
+            //        frmPersona ofrmRepuesto = new frmPersona();
+            //        ofrmRepuesto.TopLevel = false;
+            //        ofrmRepuesto.FormBorderStyle = FormBorderStyle.None;
+            //        ofrmRepuesto.Dock = DockStyle.Fill;
+            //        this.splPrincipal.Panel1.Controls.Add(ofrmRepuesto);
+            //        this.splPrincipal.Panel1.Tag = ofrmRepuesto;
+            //        ofrmRepuesto.Show();
+            //        /*dtgInformacion.DataSource= */
 
-                    break;
+            //        break;
 
-                case formulario.deporte:
+            //    case formulario.deporte:
 
-                    frmDeporte ofrmDeporte = new frmDeporte();
-                    ofrmDeporte.TopLevel = false;
-                    ofrmDeporte.FormBorderStyle = FormBorderStyle.None;
-                    ofrmDeporte.Dock = DockStyle.Fill;
-                    this.splPrincipal.Panel1.Controls.Add(ofrmDeporte);
-                    this.splPrincipal.Panel1.Tag = ofrmDeporte;
-                    ofrmDeporte.Show();
-                    /*dtgInformacion.DataSource= */
+            //        frmDeporte ofrmDeporte = new frmDeporte();
+            //        ofrmDeporte.TopLevel = false;
+            //        ofrmDeporte.FormBorderStyle = FormBorderStyle.None;
+            //        ofrmDeporte.Dock = DockStyle.Fill;
+            //        this.splPrincipal.Panel1.Controls.Add(ofrmDeporte);
+            //        this.splPrincipal.Panel1.Tag = ofrmDeporte;
+            //        ofrmDeporte.Show();
+            //        /*dtgInformacion.DataSource= */
 
-                    break;
+            //        break;
 
-                case formulario.planRutina:
+            //    case formulario.planRutina:
 
-                    frmPlanRutina ofrmPlanRutina = new frmPlanRutina();
-                    ofrmPlanRutina.TopLevel = false;
-                    ofrmPlanRutina.FormBorderStyle = FormBorderStyle.None;
-                    ofrmPlanRutina.Dock = DockStyle.Fill;
-                    this.splPrincipal.Panel1.Controls.Add(ofrmPlanRutina);
-                    this.splPrincipal.Panel1.Tag = ofrmPlanRutina;
-                    ofrmPlanRutina.Show();
-                    /*dtgInformacion.DataSource= */
+            //        frmPlanRutina ofrmPlanRutina = new frmPlanRutina();
+            //        ofrmPlanRutina.TopLevel = false;
+            //        ofrmPlanRutina.FormBorderStyle = FormBorderStyle.None;
+            //        ofrmPlanRutina.Dock = DockStyle.Fill;
+            //        this.splPrincipal.Panel1.Controls.Add(ofrmPlanRutina);
+            //        this.splPrincipal.Panel1.Tag = ofrmPlanRutina;
+            //        ofrmPlanRutina.Show();
+            //        /*dtgInformacion.DataSource= */
 
-                    break;
+            //        break;
 
-                case formulario.rutina:
+            //    case formulario.rutina:
 
-                    frmRutina ofrmRutina = new frmRutina();
-                    ofrmRutina.TopLevel = false;
-                    ofrmRutina.FormBorderStyle = FormBorderStyle.None;
-                    ofrmRutina.Dock = DockStyle.Fill;
-                    this.splPrincipal.Panel1.Controls.Add(ofrmRutina);
-                    this.splPrincipal.Panel1.Tag = ofrmRutina;
-                    ofrmRutina.Show();
-                    /*dtgInformacion.DataSource= */
+            //        frmRutina ofrmRutina = new frmRutina();
+            //        ofrmRutina.TopLevel = false;
+            //        ofrmRutina.FormBorderStyle = FormBorderStyle.None;
+            //        ofrmRutina.Dock = DockStyle.Fill;
+            //        this.splPrincipal.Panel1.Controls.Add(ofrmRutina);
+            //        this.splPrincipal.Panel1.Tag = ofrmRutina;
+            //        ofrmRutina.Show();
+            //        /*dtgInformacion.DataSource= */
 
-                    break;
+            //        break;
 
-                case formulario.estadistica:
-                    frmEstadistica ofrmEstadistica = new frmEstadistica();
-                    ofrmEstadistica.TopLevel = false;
-                    ofrmEstadistica.FormBorderStyle = FormBorderStyle.None;
-                    ofrmEstadistica.Dock = DockStyle.Fill;
-                    this.splPrincipal.Panel1.Controls.Add(ofrmEstadistica);
-                    this.splPrincipal.Panel1.Tag = ofrmEstadistica;
-                    ofrmEstadistica.Show();
-                    /*dtgInformacion.DataSource= */
-                    break;
+            //    case formulario.estadistica:
+            //        frmEstadistica ofrmEstadistica = new frmEstadistica();
+            //        ofrmEstadistica.TopLevel = false;
+            //        ofrmEstadistica.FormBorderStyle = FormBorderStyle.None;
+            //        ofrmEstadistica.Dock = DockStyle.Fill;
+            //        this.splPrincipal.Panel1.Controls.Add(ofrmEstadistica);
+            //        this.splPrincipal.Panel1.Tag = ofrmEstadistica;
+            //        ofrmEstadistica.Show();
+            //        /*dtgInformacion.DataSource= */
+            //        break;
 
-                default:
-                    break;
-            }
+            //    default:
+            //        break;
+            //}
         }
     }
 }
