@@ -92,23 +92,11 @@
     <Compile Include="usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Dashboard.cs">
+    <Compile Include="Vistas\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\Dashboard.Designer.cs">
-      <DependentUpon>Dashboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\frmPersona.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\frmPersona.Designer.cs">
-      <DependentUpon>frmPersona.cs</DependentUpon>
+    <Compile Include="Vistas\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\MainWindow.cs">
       <SubType>Form</SubType>
@@ -126,14 +114,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Vistas\Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\frmPersona.resx">
-      <DependentUpon>frmPersona.cs</DependentUpon>
+    <EmbeddedResource Include="Vistas\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>

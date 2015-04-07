@@ -43,6 +43,18 @@ namespace MinisterioDeportes.Vistas
             Owner.Show();
         }
 
+        private void tabDeportes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarDeporte_Click(object sender, EventArgs e)
+        {
+
+        }
+
+     
+
     }
 
 

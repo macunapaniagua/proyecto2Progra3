@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MinisterioDeportes.Vistas
 {
-    public partial class frmPersona : Form
+    public partial class frmLogin : Form
     {
-        public frmPersona()
+        public frmLogin()
         {
             InitializeComponent();
         }

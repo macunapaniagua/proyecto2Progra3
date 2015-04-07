@@ -13,7 +13,7 @@ namespace MinisterioDeportesWCF
     public interface IWebServiceMD
     {
         [OperationContract]
-        bool AgregarDeporte(deporte deporte);
+        void AgregarDeporte(deporte deporte);
         [OperationContract]
         void EliminarDeporte(deporte deporte);
         [OperationContract]
@@ -23,7 +23,7 @@ namespace MinisterioDeportesWCF
         void ObtenerDeporte();
 
         [OperationContract]
-        bool AgregarPersona(persona persona);
+        void AgregarPersona(persona persona);
         [OperationContract]
         void EliminarPersona(persona persona);
         [OperationContract]
@@ -33,31 +33,31 @@ namespace MinisterioDeportesWCF
         void ObtenerPersona();
 
         [OperationContract]
-        void AgregarRutina(/*rutina rutina*/);
+        void AgregarRutina(rutina rutina);
         [OperationContract]
-        void EliminarRutina(/*rutina rutina*/);
+        void EliminarRutina(rutina rutina);
         [OperationContract]
-        void EditarRutina(/*rutina rutina*/);
+        void EditarRutina(rutina rutina);
         [OperationContract]
         //creo que deberia ser list y no void
         void ObtenerRutina();
 
         [OperationContract]
-        void AgregarPlanRutina(/*plan_rutina planRutina*/);
+        void AgregarPlanRutina(plan_rutina planRutina);
         [OperationContract]
-        void EliminarPlanRutina(/*plan_rutina planRutina*/);
+        void EliminarPlanRutina(plan_rutina planRutina);
         [OperationContract]
-        void EditarPlanRutina(/*plan_rutina planRutina*/);
+        void EditarPlanRutina(plan_rutina planRutina);
         [OperationContract]
         //creo que deberia ser list y no void
         void ObtenerPlanRutina();
 
         [OperationContract]
-        void AgregarUsuario(/*usuario usuario*/);
+        void AgregarUsuario(usuario usuario);
         [OperationContract]
-        void EliminarUsuario(/*usuario usuario*/);
+        void EliminarUsuario(usuario usuario);
         [OperationContract]
-        void EditarUsuario(/*usuario usuario*/);
+        void EditarUsuario(usuario usuario);
         [OperationContract]
         //creo que deberia ser list y no void
         void ValidarUsuario();

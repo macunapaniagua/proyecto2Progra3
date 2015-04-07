@@ -12,116 +12,135 @@ namespace MinisterioDeportesWCF
 
     public class WebServiceMD : IWebServiceMD
     {
-
+       
         #region deporte
-
-        public bool AgregarDeporte(deporte deporte)
+        public void AgregarDeporte(deporte deporte)
         {
-            throw new NotImplementedException();
+            MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio  = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+            modeloMinisterio.deporte.Add(deporte);
+            modeloMinisterio.SaveChanges();        
         }
 
         public void EliminarDeporte(deporte deporte)
         {
-            throw new NotImplementedException();
+            MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+            modeloMinisterio.deporte.Remove(deporte);
+            modeloMinisterio.SaveChanges();
         }
 
         public void EditarDeporte(deporte deporte)
         {
-            throw new Exception("hola mario!!! ");
+            
         }
+
         public void ObtenerDeporte()
         {
-            throw new NotImplementedException();
+            
         }
-
-
         #endregion
 
         #region persona
-        public bool AgregarPersona(persona persona)
+        public void AgregarPersona(persona persona)
         {
-            throw new NotImplementedException();
+            MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+            modeloMinisterio.persona.Add(persona);
+            modeloMinisterio.SaveChanges();
+
         }
 
         public void EliminarPersona(persona persona)
         {
-            throw new NotImplementedException();
+            MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+            modeloMinisterio.persona.Remove(persona);
+            modeloMinisterio.SaveChanges();
         }
 
         public void EditarPersona(persona persona)
         {
-            throw new NotImplementedException();
+            
         }
         public void ObtenerPersona()
         {
-            throw new NotImplementedException();
+            
         }
 
         #endregion
 
         #region rutina 
-        public void AgregarRutina()
+        public void AgregarRutina(rutina rutina)
         {
-            throw new NotImplementedException();
+            MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+            modeloMinisterio.rutina.Add(rutina);
+            modeloMinisterio.SaveChanges();
         }
 
-        public void EliminarRutina()
+        public void EliminarRutina(rutina rutina)
         {
-            throw new NotImplementedException();
+            MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+            modeloMinisterio.rutina.Remove(rutina);
+            modeloMinisterio.SaveChanges();
         }
 
-        public void EditarRutina()
+        public void EditarRutina(rutina rutina)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void ObtenerRutina()
         {
-            throw new NotImplementedException();
+           
         }
         #endregion
 
         #region planRutina
-        public void AgregarPlanRutina()
+        public void AgregarPlanRutina(plan_rutina planRutina)
         {
-            throw new NotImplementedException();
+            MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+            modeloMinisterio.plan_rutina.Add(planRutina);
+            modeloMinisterio.SaveChanges();
         }
 
-        public void EliminarPlanRutina()
+        public void EliminarPlanRutina(plan_rutina planRutina)
         {
-            throw new NotImplementedException();
+            MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+            modeloMinisterio.plan_rutina.Remove(planRutina);
+            modeloMinisterio.SaveChanges();
         }
 
-        public void EditarPlanRutina()
+        public void EditarPlanRutina(plan_rutina planRutina)
         {
-            throw new NotImplementedException();
+           
         }
         public void ObtenerPlanRutina()
         {
-            throw new NotImplementedException();
+            
         }
         #endregion
 
         #region usuario
-        public void AgregarUsuario()
+        public void AgregarUsuario(usuario usuario)
         {
-            throw new NotImplementedException();
+            MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+            modeloMinisterio.usuario.Add(usuario);
+            modeloMinisterio.SaveChanges();
         }
 
-        public void EliminarUsuario()
+        public void EliminarUsuario(usuario usuario)
         {
-            throw new NotImplementedException();
+            MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+            modeloMinisterio.usuario.Remove(usuario);
+            modeloMinisterio.SaveChanges();
         }
 
-        public void EditarUsuario()
+        public void EditarUsuario(usuario usuario)
         {
-            throw new NotImplementedException();
+           
         }
         public void ValidarUsuario()
         {
-            throw new NotImplementedException();
+            
         }
         #endregion
-
+      
     }
 }
