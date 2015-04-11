@@ -56,6 +56,31 @@ namespace MinisterioDeportes.Vistas
 
         }
 
+        /// <summary>
+        /// Evento para el boton asociar participante con deporte
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAsociarUserDeporte_Click(object sender, EventArgs e)
+        {
+            List<String> asd = new List<String>() { "1", "2", "3", "4", "5", "1", "2", "3", "4", "5", "1", "2", "3", "4", "5" };
+
+
+
+            Label seleccion = new Label();
+            CustomComboDialog comboSeleccion = new CustomComboDialog(asd, seleccion);
+
+            
+
+            if (comboSeleccion.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Selecciona = " + seleccion.Text);
+            }
+
+
+
+        }
+
      
 
     }

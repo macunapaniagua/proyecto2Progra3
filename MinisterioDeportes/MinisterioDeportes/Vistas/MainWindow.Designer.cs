@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tbcDashboard = new System.Windows.Forms.TabControl();
             this.tabDeportes = new System.Windows.Forms.TabPage();
             this.txtNombreDeporte = new System.Windows.Forms.TextBox();
@@ -53,14 +53,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.gridParticipantes = new System.Windows.Forms.DataGridView();
-            this.tabRutina = new System.Windows.Forms.TabPage();
-            this.txtNombreRutina = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtIdRutina = new System.Windows.Forms.TextBox();
-            this.txtDetalleRutina = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.gridRutina = new System.Windows.Forms.DataGridView();
             this.tabPlanDeRutina = new System.Windows.Forms.TabPage();
             this.txtNombrePlan = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -69,8 +61,24 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.gridPlanRutina = new System.Windows.Forms.DataGridView();
+            this.tabRutina = new System.Windows.Forms.TabPage();
+            this.txtNombreRutina = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtIdRutina = new System.Windows.Forms.TextBox();
+            this.txtDetalleRutina = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.gridRutina = new System.Windows.Forms.DataGridView();
+            this.tabAsociarUserDep = new System.Windows.Forms.TabPage();
+            this.tabAsociarRutinaPlan = new System.Windows.Forms.TabPage();
+            this.tabAsociarPlanDep = new System.Windows.Forms.TabPage();
             this.tabEstadísticas = new System.Windows.Forms.TabPage();
             this.chtEstadisticas = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lbxParticipantes = new System.Windows.Forms.ListBox();
+            this.lbxDeportes = new System.Windows.Forms.ListBox();
+            this.txtParticipanteFilter = new System.Windows.Forms.TextBox();
+            this.btnAsociarUserDeporte = new System.Windows.Forms.Button();
+            this.btnDesasociarUserDeporte = new System.Windows.Forms.Button();
             this.btnBuscarDeporte = new System.Windows.Forms.Button();
             this.btnEliminarDeporte = new System.Windows.Forms.Button();
             this.btnActualizarDeporte = new System.Windows.Forms.Button();
@@ -79,31 +87,47 @@
             this.btnEliminarParticipante = new System.Windows.Forms.Button();
             this.btnActualizarParticipante = new System.Windows.Forms.Button();
             this.btnAgregarParticipante = new System.Windows.Forms.Button();
-            this.btnBuscarRutina = new System.Windows.Forms.Button();
-            this.btnEliminarRutina = new System.Windows.Forms.Button();
-            this.btnActualizarRutina = new System.Windows.Forms.Button();
-            this.btnAgregarRutina = new System.Windows.Forms.Button();
             this.btnBuscarPlan = new System.Windows.Forms.Button();
             this.btnEliminarPlan = new System.Windows.Forms.Button();
             this.btnActualizarPlan = new System.Windows.Forms.Button();
             this.btnAgregarPlan = new System.Windows.Forms.Button();
-            this.tabAsociarUserDep = new System.Windows.Forms.TabPage();
-            this.tabAsociarRutinaPlan = new System.Windows.Forms.TabPage();
-            this.cmbPlanes = new System.Windows.Forms.ComboBox();
+            this.btnBuscarRutina = new System.Windows.Forms.Button();
+            this.btnEliminarRutina = new System.Windows.Forms.Button();
+            this.btnActualizarRutina = new System.Windows.Forms.Button();
+            this.btnAgregarRutina = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.tabAsociarPlanDep = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnDesasociarPlanRutina = new System.Windows.Forms.Button();
+            this.btnAsociarPlanRutina = new System.Windows.Forms.Button();
+            this.txtPlanFilter = new System.Windows.Forms.TextBox();
+            this.lbxRutinas = new System.Windows.Forms.ListBox();
+            this.lbxPlanes = new System.Windows.Forms.ListBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnDesasociarPlanDeporte = new System.Windows.Forms.Button();
+            this.btnAsociarPlanDeporte = new System.Windows.Forms.Button();
+            this.txtDeportesFilter = new System.Windows.Forms.TextBox();
+            this.lbxPlanDp = new System.Windows.Forms.ListBox();
+            this.lbxDeportesPl = new System.Windows.Forms.ListBox();
             this.tbcDashboard.SuspendLayout();
             this.tabDeportes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTablaDeportes)).BeginInit();
             this.tabParticipantes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridParticipantes)).BeginInit();
-            this.tabRutina.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridRutina)).BeginInit();
             this.tabPlanDeRutina.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPlanRutina)).BeginInit();
+            this.tabRutina.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRutina)).BeginInit();
+            this.tabAsociarUserDep.SuspendLayout();
+            this.tabAsociarRutinaPlan.SuspendLayout();
+            this.tabAsociarPlanDep.SuspendLayout();
             this.tabEstadísticas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chtEstadisticas)).BeginInit();
-            this.tabAsociarRutinaPlan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // tbcDashboard
@@ -145,14 +169,14 @@
             // 
             // txtNombreDeporte
             // 
-            this.txtNombreDeporte.Location = new System.Drawing.Point(141, 71);
+            this.txtNombreDeporte.Location = new System.Drawing.Point(152, 76);
             this.txtNombreDeporte.Name = "txtNombreDeporte";
             this.txtNombreDeporte.Size = new System.Drawing.Size(164, 20);
             this.txtNombreDeporte.TabIndex = 47;
             // 
             // txtIdDeporte
             // 
-            this.txtIdDeporte.Location = new System.Drawing.Point(141, 36);
+            this.txtIdDeporte.Location = new System.Drawing.Point(152, 47);
             this.txtIdDeporte.Name = "txtIdDeporte";
             this.txtIdDeporte.ReadOnly = true;
             this.txtIdDeporte.Size = new System.Drawing.Size(164, 20);
@@ -162,7 +186,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(51, 74);
+            this.label11.Location = new System.Drawing.Point(40, 79);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(54, 13);
             this.label11.TabIndex = 45;
@@ -172,7 +196,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(51, 39);
+            this.label12.Location = new System.Drawing.Point(40, 50);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(71, 13);
             this.label12.TabIndex = 44;
@@ -181,9 +205,9 @@
             // gridTablaDeportes
             // 
             this.gridTablaDeportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridTablaDeportes.Location = new System.Drawing.Point(6, 121);
+            this.gridTablaDeportes.Location = new System.Drawing.Point(6, 139);
             this.gridTablaDeportes.Name = "gridTablaDeportes";
-            this.gridTablaDeportes.Size = new System.Drawing.Size(864, 338);
+            this.gridTablaDeportes.Size = new System.Drawing.Size(864, 311);
             this.gridTablaDeportes.TabIndex = 0;
             // 
             // tabParticipantes
@@ -337,6 +361,88 @@
             this.gridParticipantes.Size = new System.Drawing.Size(864, 298);
             this.gridParticipantes.TabIndex = 5;
             // 
+            // tabPlanDeRutina
+            // 
+            this.tabPlanDeRutina.Controls.Add(this.txtNombrePlan);
+            this.tabPlanDeRutina.Controls.Add(this.label5);
+            this.tabPlanDeRutina.Controls.Add(this.txtIdPlan);
+            this.tabPlanDeRutina.Controls.Add(this.txtDetallesPlan);
+            this.tabPlanDeRutina.Controls.Add(this.label15);
+            this.tabPlanDeRutina.Controls.Add(this.label16);
+            this.tabPlanDeRutina.Controls.Add(this.gridPlanRutina);
+            this.tabPlanDeRutina.Controls.Add(this.btnBuscarPlan);
+            this.tabPlanDeRutina.Controls.Add(this.btnEliminarPlan);
+            this.tabPlanDeRutina.Controls.Add(this.btnActualizarPlan);
+            this.tabPlanDeRutina.Controls.Add(this.btnAgregarPlan);
+            this.tabPlanDeRutina.Location = new System.Drawing.Point(4, 22);
+            this.tabPlanDeRutina.Name = "tabPlanDeRutina";
+            this.tabPlanDeRutina.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPlanDeRutina.Size = new System.Drawing.Size(878, 467);
+            this.tabPlanDeRutina.TabIndex = 4;
+            this.tabPlanDeRutina.Text = "Plan de Rutina";
+            this.tabPlanDeRutina.UseVisualStyleBackColor = true;
+            // 
+            // txtNombrePlan
+            // 
+            this.txtNombrePlan.Location = new System.Drawing.Point(153, 77);
+            this.txtNombrePlan.Name = "txtNombrePlan";
+            this.txtNombrePlan.Size = new System.Drawing.Size(164, 20);
+            this.txtNombrePlan.TabIndex = 46;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(41, 80);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 13);
+            this.label5.TabIndex = 45;
+            this.label5.Text = "Nombre Plan:";
+            // 
+            // txtIdPlan
+            // 
+            this.txtIdPlan.Location = new System.Drawing.Point(153, 48);
+            this.txtIdPlan.Name = "txtIdPlan";
+            this.txtIdPlan.ReadOnly = true;
+            this.txtIdPlan.Size = new System.Drawing.Size(164, 20);
+            this.txtIdPlan.TabIndex = 40;
+            // 
+            // txtDetallesPlan
+            // 
+            this.txtDetallesPlan.Location = new System.Drawing.Point(412, 48);
+            this.txtDetallesPlan.Multiline = true;
+            this.txtDetallesPlan.Name = "txtDetallesPlan";
+            this.txtDetallesPlan.Size = new System.Drawing.Size(179, 50);
+            this.txtDetallesPlan.TabIndex = 39;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(41, 51);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(51, 13);
+            this.label15.TabIndex = 38;
+            this.label15.Text = "Id Plan:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(349, 51);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(57, 13);
+            this.label16.TabIndex = 37;
+            this.label16.Text = "Detalles:";
+            // 
+            // gridPlanRutina
+            // 
+            this.gridPlanRutina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridPlanRutina.Location = new System.Drawing.Point(7, 140);
+            this.gridPlanRutina.Name = "gridPlanRutina";
+            this.gridPlanRutina.Size = new System.Drawing.Size(864, 311);
+            this.gridPlanRutina.TabIndex = 5;
+            // 
             // tabRutina
             // 
             this.tabRutina.Controls.Add(this.btnBuscarRutina);
@@ -388,7 +494,7 @@
             this.txtDetalleRutina.Location = new System.Drawing.Point(412, 48);
             this.txtDetalleRutina.Multiline = true;
             this.txtDetalleRutina.Name = "txtDetalleRutina";
-            this.txtDetalleRutina.Size = new System.Drawing.Size(179, 49);
+            this.txtDetalleRutina.Size = new System.Drawing.Size(179, 50);
             this.txtDetalleRutina.TabIndex = 23;
             // 
             // label1
@@ -419,87 +525,55 @@
             this.gridRutina.Size = new System.Drawing.Size(864, 311);
             this.gridRutina.TabIndex = 5;
             // 
-            // tabPlanDeRutina
+            // tabAsociarUserDep
             // 
-            this.tabPlanDeRutina.Controls.Add(this.txtNombrePlan);
-            this.tabPlanDeRutina.Controls.Add(this.label5);
-            this.tabPlanDeRutina.Controls.Add(this.txtIdPlan);
-            this.tabPlanDeRutina.Controls.Add(this.txtDetallesPlan);
-            this.tabPlanDeRutina.Controls.Add(this.label15);
-            this.tabPlanDeRutina.Controls.Add(this.label16);
-            this.tabPlanDeRutina.Controls.Add(this.gridPlanRutina);
-            this.tabPlanDeRutina.Controls.Add(this.btnBuscarPlan);
-            this.tabPlanDeRutina.Controls.Add(this.btnEliminarPlan);
-            this.tabPlanDeRutina.Controls.Add(this.btnActualizarPlan);
-            this.tabPlanDeRutina.Controls.Add(this.btnAgregarPlan);
-            this.tabPlanDeRutina.Location = new System.Drawing.Point(4, 22);
-            this.tabPlanDeRutina.Name = "tabPlanDeRutina";
-            this.tabPlanDeRutina.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlanDeRutina.Size = new System.Drawing.Size(878, 467);
-            this.tabPlanDeRutina.TabIndex = 4;
-            this.tabPlanDeRutina.Text = "Plan de Rutina";
-            this.tabPlanDeRutina.UseVisualStyleBackColor = true;
+            this.tabAsociarUserDep.Controls.Add(this.label14);
+            this.tabAsociarUserDep.Controls.Add(this.pictureBox1);
+            this.tabAsociarUserDep.Controls.Add(this.btnDesasociarUserDeporte);
+            this.tabAsociarUserDep.Controls.Add(this.btnAsociarUserDeporte);
+            this.tabAsociarUserDep.Controls.Add(this.txtParticipanteFilter);
+            this.tabAsociarUserDep.Controls.Add(this.lbxDeportes);
+            this.tabAsociarUserDep.Controls.Add(this.lbxParticipantes);
+            this.tabAsociarUserDep.Location = new System.Drawing.Point(4, 22);
+            this.tabAsociarUserDep.Name = "tabAsociarUserDep";
+            this.tabAsociarUserDep.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAsociarUserDep.Size = new System.Drawing.Size(878, 467);
+            this.tabAsociarUserDep.TabIndex = 5;
+            this.tabAsociarUserDep.Text = "Asociar Participante-Deporte";
+            this.tabAsociarUserDep.UseVisualStyleBackColor = true;
             // 
-            // txtNombrePlan
+            // tabAsociarRutinaPlan
             // 
-            this.txtNombrePlan.Location = new System.Drawing.Point(147, 70);
-            this.txtNombrePlan.Name = "txtNombrePlan";
-            this.txtNombrePlan.Size = new System.Drawing.Size(164, 20);
-            this.txtNombrePlan.TabIndex = 46;
+            this.tabAsociarRutinaPlan.Controls.Add(this.label4);
+            this.tabAsociarRutinaPlan.Controls.Add(this.pictureBox2);
+            this.tabAsociarRutinaPlan.Controls.Add(this.btnDesasociarPlanRutina);
+            this.tabAsociarRutinaPlan.Controls.Add(this.btnAsociarPlanRutina);
+            this.tabAsociarRutinaPlan.Controls.Add(this.txtPlanFilter);
+            this.tabAsociarRutinaPlan.Controls.Add(this.lbxRutinas);
+            this.tabAsociarRutinaPlan.Controls.Add(this.lbxPlanes);
+            this.tabAsociarRutinaPlan.Location = new System.Drawing.Point(4, 22);
+            this.tabAsociarRutinaPlan.Name = "tabAsociarRutinaPlan";
+            this.tabAsociarRutinaPlan.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAsociarRutinaPlan.Size = new System.Drawing.Size(878, 467);
+            this.tabAsociarRutinaPlan.TabIndex = 6;
+            this.tabAsociarRutinaPlan.Text = "Asociar Rutina-Plan";
+            this.tabAsociarRutinaPlan.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // tabAsociarPlanDep
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(35, 73);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 13);
-            this.label5.TabIndex = 45;
-            this.label5.Text = "Nombre Plan:";
-            // 
-            // txtIdPlan
-            // 
-            this.txtIdPlan.Location = new System.Drawing.Point(147, 40);
-            this.txtIdPlan.Name = "txtIdPlan";
-            this.txtIdPlan.ReadOnly = true;
-            this.txtIdPlan.Size = new System.Drawing.Size(164, 20);
-            this.txtIdPlan.TabIndex = 40;
-            // 
-            // txtDetallesPlan
-            // 
-            this.txtDetallesPlan.Location = new System.Drawing.Point(409, 40);
-            this.txtDetallesPlan.Multiline = true;
-            this.txtDetallesPlan.Name = "txtDetallesPlan";
-            this.txtDetallesPlan.Size = new System.Drawing.Size(175, 50);
-            this.txtDetallesPlan.TabIndex = 39;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(35, 43);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(51, 13);
-            this.label15.TabIndex = 38;
-            this.label15.Text = "Id Plan:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(346, 43);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(57, 13);
-            this.label16.TabIndex = 37;
-            this.label16.Text = "Detalles:";
-            // 
-            // gridPlanRutina
-            // 
-            this.gridPlanRutina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridPlanRutina.Location = new System.Drawing.Point(7, 124);
-            this.gridPlanRutina.Name = "gridPlanRutina";
-            this.gridPlanRutina.Size = new System.Drawing.Size(864, 327);
-            this.gridPlanRutina.TabIndex = 5;
+            this.tabAsociarPlanDep.Controls.Add(this.label17);
+            this.tabAsociarPlanDep.Controls.Add(this.pictureBox3);
+            this.tabAsociarPlanDep.Controls.Add(this.btnDesasociarPlanDeporte);
+            this.tabAsociarPlanDep.Controls.Add(this.btnAsociarPlanDeporte);
+            this.tabAsociarPlanDep.Controls.Add(this.txtDeportesFilter);
+            this.tabAsociarPlanDep.Controls.Add(this.lbxPlanDp);
+            this.tabAsociarPlanDep.Controls.Add(this.lbxDeportesPl);
+            this.tabAsociarPlanDep.Location = new System.Drawing.Point(4, 22);
+            this.tabAsociarPlanDep.Name = "tabAsociarPlanDep";
+            this.tabAsociarPlanDep.Size = new System.Drawing.Size(878, 467);
+            this.tabAsociarPlanDep.TabIndex = 7;
+            this.tabAsociarPlanDep.Text = "Asociar Plan-Deporte";
+            this.tabAsociarPlanDep.UseVisualStyleBackColor = true;
             // 
             // tabEstadísticas
             // 
@@ -514,19 +588,67 @@
             // 
             // chtEstadisticas
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chtEstadisticas.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chtEstadisticas.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chtEstadisticas.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chtEstadisticas.Legends.Add(legend3);
             this.chtEstadisticas.Location = new System.Drawing.Point(170, 44);
             this.chtEstadisticas.Name = "chtEstadisticas";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chtEstadisticas.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chtEstadisticas.Series.Add(series3);
             this.chtEstadisticas.Size = new System.Drawing.Size(614, 396);
             this.chtEstadisticas.TabIndex = 0;
             this.chtEstadisticas.Text = "chart1";
+            // 
+            // lbxParticipantes
+            // 
+            this.lbxParticipantes.FormattingEnabled = true;
+            this.lbxParticipantes.Location = new System.Drawing.Point(115, 97);
+            this.lbxParticipantes.Name = "lbxParticipantes";
+            this.lbxParticipantes.Size = new System.Drawing.Size(250, 303);
+            this.lbxParticipantes.TabIndex = 0;
+            // 
+            // lbxDeportes
+            // 
+            this.lbxDeportes.FormattingEnabled = true;
+            this.lbxDeportes.Location = new System.Drawing.Point(495, 97);
+            this.lbxDeportes.Name = "lbxDeportes";
+            this.lbxDeportes.Size = new System.Drawing.Size(250, 303);
+            this.lbxDeportes.TabIndex = 1;
+            // 
+            // txtParticipanteFilter
+            // 
+            this.txtParticipanteFilter.Location = new System.Drawing.Point(181, 56);
+            this.txtParticipanteFilter.Name = "txtParticipanteFilter";
+            this.txtParticipanteFilter.Size = new System.Drawing.Size(184, 20);
+            this.txtParticipanteFilter.TabIndex = 2;
+            // 
+            // btnAsociarUserDeporte
+            // 
+            this.btnAsociarUserDeporte.BackgroundImage = global::MinisterioDeportes.Properties.Resources.plus;
+            this.btnAsociarUserDeporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAsociarUserDeporte.FlatAppearance.BorderSize = 0;
+            this.btnAsociarUserDeporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAsociarUserDeporte.Location = new System.Drawing.Point(751, 97);
+            this.btnAsociarUserDeporte.Name = "btnAsociarUserDeporte";
+            this.btnAsociarUserDeporte.Size = new System.Drawing.Size(40, 30);
+            this.btnAsociarUserDeporte.TabIndex = 4;
+            this.btnAsociarUserDeporte.UseVisualStyleBackColor = true;
+            this.btnAsociarUserDeporte.Click += new System.EventHandler(this.btnAsociarUserDeporte_Click);
+            // 
+            // btnDesasociarUserDeporte
+            // 
+            this.btnDesasociarUserDeporte.BackgroundImage = global::MinisterioDeportes.Properties.Resources.minus;
+            this.btnDesasociarUserDeporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDesasociarUserDeporte.FlatAppearance.BorderSize = 0;
+            this.btnDesasociarUserDeporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDesasociarUserDeporte.Location = new System.Drawing.Point(751, 133);
+            this.btnDesasociarUserDeporte.Name = "btnDesasociarUserDeporte";
+            this.btnDesasociarUserDeporte.Size = new System.Drawing.Size(40, 40);
+            this.btnDesasociarUserDeporte.TabIndex = 5;
+            this.btnDesasociarUserDeporte.UseVisualStyleBackColor = true;
             // 
             // btnBuscarDeporte
             // 
@@ -534,7 +656,7 @@
             this.btnBuscarDeporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnBuscarDeporte.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnBuscarDeporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarDeporte.Location = new System.Drawing.Point(796, 45);
+            this.btnBuscarDeporte.Location = new System.Drawing.Point(803, 50);
             this.btnBuscarDeporte.Name = "btnBuscarDeporte";
             this.btnBuscarDeporte.Size = new System.Drawing.Size(51, 46);
             this.btnBuscarDeporte.TabIndex = 51;
@@ -547,7 +669,7 @@
             this.btnEliminarDeporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnEliminarDeporte.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnEliminarDeporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarDeporte.Location = new System.Drawing.Point(737, 45);
+            this.btnEliminarDeporte.Location = new System.Drawing.Point(744, 50);
             this.btnEliminarDeporte.Name = "btnEliminarDeporte";
             this.btnEliminarDeporte.Size = new System.Drawing.Size(53, 46);
             this.btnEliminarDeporte.TabIndex = 50;
@@ -559,7 +681,7 @@
             this.btnActualizarDeporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnActualizarDeporte.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnActualizarDeporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizarDeporte.Location = new System.Drawing.Point(680, 45);
+            this.btnActualizarDeporte.Location = new System.Drawing.Point(687, 50);
             this.btnActualizarDeporte.Name = "btnActualizarDeporte";
             this.btnActualizarDeporte.Size = new System.Drawing.Size(51, 46);
             this.btnActualizarDeporte.TabIndex = 49;
@@ -572,7 +694,7 @@
             this.btnAgregarDeporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAgregarDeporte.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnAgregarDeporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarDeporte.Location = new System.Drawing.Point(621, 45);
+            this.btnAgregarDeporte.Location = new System.Drawing.Point(628, 50);
             this.btnAgregarDeporte.Name = "btnAgregarDeporte";
             this.btnAgregarDeporte.Size = new System.Drawing.Size(53, 46);
             this.btnAgregarDeporte.TabIndex = 48;
@@ -585,7 +707,7 @@
             this.btnBuscarParticipante.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnBuscarParticipante.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnBuscarParticipante.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarParticipante.Location = new System.Drawing.Point(792, 58);
+            this.btnBuscarParticipante.Location = new System.Drawing.Point(804, 51);
             this.btnBuscarParticipante.Name = "btnBuscarParticipante";
             this.btnBuscarParticipante.Size = new System.Drawing.Size(51, 46);
             this.btnBuscarParticipante.TabIndex = 48;
@@ -598,7 +720,7 @@
             this.btnEliminarParticipante.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnEliminarParticipante.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnEliminarParticipante.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarParticipante.Location = new System.Drawing.Point(733, 58);
+            this.btnEliminarParticipante.Location = new System.Drawing.Point(745, 51);
             this.btnEliminarParticipante.Name = "btnEliminarParticipante";
             this.btnEliminarParticipante.Size = new System.Drawing.Size(53, 46);
             this.btnEliminarParticipante.TabIndex = 47;
@@ -610,7 +732,7 @@
             this.btnActualizarParticipante.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnActualizarParticipante.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnActualizarParticipante.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizarParticipante.Location = new System.Drawing.Point(676, 58);
+            this.btnActualizarParticipante.Location = new System.Drawing.Point(688, 51);
             this.btnActualizarParticipante.Name = "btnActualizarParticipante";
             this.btnActualizarParticipante.Size = new System.Drawing.Size(51, 46);
             this.btnActualizarParticipante.TabIndex = 46;
@@ -623,11 +745,61 @@
             this.btnAgregarParticipante.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAgregarParticipante.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnAgregarParticipante.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarParticipante.Location = new System.Drawing.Point(617, 58);
+            this.btnAgregarParticipante.Location = new System.Drawing.Point(629, 51);
             this.btnAgregarParticipante.Name = "btnAgregarParticipante";
             this.btnAgregarParticipante.Size = new System.Drawing.Size(53, 46);
             this.btnAgregarParticipante.TabIndex = 45;
             this.btnAgregarParticipante.UseVisualStyleBackColor = false;
+            // 
+            // btnBuscarPlan
+            // 
+            this.btnBuscarPlan.BackgroundImage = global::MinisterioDeportes.Properties.Resources.find;
+            this.btnBuscarPlan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnBuscarPlan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
+            this.btnBuscarPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarPlan.Location = new System.Drawing.Point(804, 51);
+            this.btnBuscarPlan.Name = "btnBuscarPlan";
+            this.btnBuscarPlan.Size = new System.Drawing.Size(51, 46);
+            this.btnBuscarPlan.TabIndex = 36;
+            this.btnBuscarPlan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBuscarPlan.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminarPlan
+            // 
+            this.btnEliminarPlan.BackgroundImage = global::MinisterioDeportes.Properties.Resources.delete;
+            this.btnEliminarPlan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEliminarPlan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
+            this.btnEliminarPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarPlan.Location = new System.Drawing.Point(745, 51);
+            this.btnEliminarPlan.Name = "btnEliminarPlan";
+            this.btnEliminarPlan.Size = new System.Drawing.Size(53, 46);
+            this.btnEliminarPlan.TabIndex = 35;
+            this.btnEliminarPlan.UseVisualStyleBackColor = true;
+            // 
+            // btnActualizarPlan
+            // 
+            this.btnActualizarPlan.BackgroundImage = global::MinisterioDeportes.Properties.Resources.update;
+            this.btnActualizarPlan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnActualizarPlan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
+            this.btnActualizarPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizarPlan.Location = new System.Drawing.Point(688, 51);
+            this.btnActualizarPlan.Name = "btnActualizarPlan";
+            this.btnActualizarPlan.Size = new System.Drawing.Size(51, 46);
+            this.btnActualizarPlan.TabIndex = 34;
+            this.btnActualizarPlan.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregarPlan
+            // 
+            this.btnAgregarPlan.BackColor = System.Drawing.Color.White;
+            this.btnAgregarPlan.BackgroundImage = global::MinisterioDeportes.Properties.Resources.add;
+            this.btnAgregarPlan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAgregarPlan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
+            this.btnAgregarPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarPlan.Location = new System.Drawing.Point(629, 51);
+            this.btnAgregarPlan.Name = "btnAgregarPlan";
+            this.btnAgregarPlan.Size = new System.Drawing.Size(53, 46);
+            this.btnAgregarPlan.TabIndex = 33;
+            this.btnAgregarPlan.UseVisualStyleBackColor = false;
             // 
             // btnBuscarRutina
             // 
@@ -680,105 +852,156 @@
             this.btnAgregarRutina.UseVisualStyleBackColor = false;
             this.btnAgregarRutina.Click += new System.EventHandler(this.btnAgregarRutina_Click);
             // 
-            // btnBuscarPlan
+            // pictureBox1
             // 
-            this.btnBuscarPlan.BackgroundImage = global::MinisterioDeportes.Properties.Resources.find;
-            this.btnBuscarPlan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnBuscarPlan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
-            this.btnBuscarPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarPlan.Location = new System.Drawing.Point(804, 44);
-            this.btnBuscarPlan.Name = "btnBuscarPlan";
-            this.btnBuscarPlan.Size = new System.Drawing.Size(51, 46);
-            this.btnBuscarPlan.TabIndex = 36;
-            this.btnBuscarPlan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBuscarPlan.UseVisualStyleBackColor = true;
+            this.pictureBox1.Image = global::MinisterioDeportes.Properties.Resources.transfer;
+            this.pictureBox1.Location = new System.Drawing.Point(380, 210);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
-            // btnEliminarPlan
+            // label14
             // 
-            this.btnEliminarPlan.BackgroundImage = global::MinisterioDeportes.Properties.Resources.delete;
-            this.btnEliminarPlan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnEliminarPlan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
-            this.btnEliminarPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarPlan.Location = new System.Drawing.Point(745, 44);
-            this.btnEliminarPlan.Name = "btnEliminarPlan";
-            this.btnEliminarPlan.Size = new System.Drawing.Size(53, 46);
-            this.btnEliminarPlan.TabIndex = 35;
-            this.btnEliminarPlan.UseVisualStyleBackColor = true;
-            // 
-            // btnActualizarPlan
-            // 
-            this.btnActualizarPlan.BackgroundImage = global::MinisterioDeportes.Properties.Resources.update;
-            this.btnActualizarPlan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnActualizarPlan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
-            this.btnActualizarPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizarPlan.Location = new System.Drawing.Point(688, 44);
-            this.btnActualizarPlan.Name = "btnActualizarPlan";
-            this.btnActualizarPlan.Size = new System.Drawing.Size(51, 46);
-            this.btnActualizarPlan.TabIndex = 34;
-            this.btnActualizarPlan.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregarPlan
-            // 
-            this.btnAgregarPlan.BackColor = System.Drawing.Color.White;
-            this.btnAgregarPlan.BackgroundImage = global::MinisterioDeportes.Properties.Resources.add;
-            this.btnAgregarPlan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAgregarPlan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
-            this.btnAgregarPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarPlan.Location = new System.Drawing.Point(629, 44);
-            this.btnAgregarPlan.Name = "btnAgregarPlan";
-            this.btnAgregarPlan.Size = new System.Drawing.Size(53, 46);
-            this.btnAgregarPlan.TabIndex = 33;
-            this.btnAgregarPlan.UseVisualStyleBackColor = false;
-            // 
-            // tabAsociarUserDep
-            // 
-            this.tabAsociarUserDep.Location = new System.Drawing.Point(4, 22);
-            this.tabAsociarUserDep.Name = "tabAsociarUserDep";
-            this.tabAsociarUserDep.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAsociarUserDep.Size = new System.Drawing.Size(878, 467);
-            this.tabAsociarUserDep.TabIndex = 5;
-            this.tabAsociarUserDep.Text = "Asociar Participante-Deporte";
-            this.tabAsociarUserDep.UseVisualStyleBackColor = true;
-            // 
-            // tabAsociarRutinaPlan
-            // 
-            this.tabAsociarRutinaPlan.Controls.Add(this.cmbPlanes);
-            this.tabAsociarRutinaPlan.Controls.Add(this.label4);
-            this.tabAsociarRutinaPlan.Location = new System.Drawing.Point(4, 22);
-            this.tabAsociarRutinaPlan.Name = "tabAsociarRutinaPlan";
-            this.tabAsociarRutinaPlan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAsociarRutinaPlan.Size = new System.Drawing.Size(878, 467);
-            this.tabAsociarRutinaPlan.TabIndex = 6;
-            this.tabAsociarRutinaPlan.Text = "Asociar Rutina-Plan";
-            this.tabAsociarRutinaPlan.UseVisualStyleBackColor = true;
-            // 
-            // cmbPlanes
-            // 
-            this.cmbPlanes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPlanes.FormattingEnabled = true;
-            this.cmbPlanes.Location = new System.Drawing.Point(227, 117);
-            this.cmbPlanes.Name = "cmbPlanes";
-            this.cmbPlanes.Size = new System.Drawing.Size(164, 21);
-            this.cmbPlanes.TabIndex = 34;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(112, 59);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(63, 13);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Participante";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(115, 121);
+            this.label4.Location = new System.Drawing.Point(112, 59);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "Plan:";
+            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Plan";
             // 
-            // tabAsociarPlanDep
+            // pictureBox2
             // 
-            this.tabAsociarPlanDep.Location = new System.Drawing.Point(4, 22);
-            this.tabAsociarPlanDep.Name = "tabAsociarPlanDep";
-            this.tabAsociarPlanDep.Size = new System.Drawing.Size(878, 467);
-            this.tabAsociarPlanDep.TabIndex = 7;
-            this.tabAsociarPlanDep.Text = "Asociar Plan-Deporte";
-            this.tabAsociarPlanDep.UseVisualStyleBackColor = true;
+            this.pictureBox2.Image = global::MinisterioDeportes.Properties.Resources.transfer;
+            this.pictureBox2.Location = new System.Drawing.Point(380, 210);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnDesasociarPlanRutina
+            // 
+            this.btnDesasociarPlanRutina.BackgroundImage = global::MinisterioDeportes.Properties.Resources.minus;
+            this.btnDesasociarPlanRutina.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDesasociarPlanRutina.FlatAppearance.BorderSize = 0;
+            this.btnDesasociarPlanRutina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDesasociarPlanRutina.Location = new System.Drawing.Point(751, 133);
+            this.btnDesasociarPlanRutina.Name = "btnDesasociarPlanRutina";
+            this.btnDesasociarPlanRutina.Size = new System.Drawing.Size(40, 40);
+            this.btnDesasociarPlanRutina.TabIndex = 12;
+            this.btnDesasociarPlanRutina.UseVisualStyleBackColor = true;
+            // 
+            // btnAsociarPlanRutina
+            // 
+            this.btnAsociarPlanRutina.BackgroundImage = global::MinisterioDeportes.Properties.Resources.plus;
+            this.btnAsociarPlanRutina.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAsociarPlanRutina.FlatAppearance.BorderSize = 0;
+            this.btnAsociarPlanRutina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAsociarPlanRutina.Location = new System.Drawing.Point(751, 97);
+            this.btnAsociarPlanRutina.Name = "btnAsociarPlanRutina";
+            this.btnAsociarPlanRutina.Size = new System.Drawing.Size(40, 30);
+            this.btnAsociarPlanRutina.TabIndex = 11;
+            this.btnAsociarPlanRutina.UseVisualStyleBackColor = true;
+            // 
+            // txtPlanFilter
+            // 
+            this.txtPlanFilter.Location = new System.Drawing.Point(146, 56);
+            this.txtPlanFilter.Name = "txtPlanFilter";
+            this.txtPlanFilter.Size = new System.Drawing.Size(219, 20);
+            this.txtPlanFilter.TabIndex = 10;
+            // 
+            // lbxRutinas
+            // 
+            this.lbxRutinas.FormattingEnabled = true;
+            this.lbxRutinas.Location = new System.Drawing.Point(495, 97);
+            this.lbxRutinas.Name = "lbxRutinas";
+            this.lbxRutinas.Size = new System.Drawing.Size(250, 303);
+            this.lbxRutinas.TabIndex = 9;
+            // 
+            // lbxPlanes
+            // 
+            this.lbxPlanes.FormattingEnabled = true;
+            this.lbxPlanes.Location = new System.Drawing.Point(115, 97);
+            this.lbxPlanes.Name = "lbxPlanes";
+            this.lbxPlanes.Size = new System.Drawing.Size(250, 303);
+            this.lbxPlanes.TabIndex = 8;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(112, 59);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(45, 13);
+            this.label17.TabIndex = 14;
+            this.label17.Text = "Deporte";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::MinisterioDeportes.Properties.Resources.transfer;
+            this.pictureBox3.Location = new System.Drawing.Point(380, 210);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox3.TabIndex = 13;
+            this.pictureBox3.TabStop = false;
+            // 
+            // btnDesasociarPlanDeporte
+            // 
+            this.btnDesasociarPlanDeporte.BackgroundImage = global::MinisterioDeportes.Properties.Resources.minus;
+            this.btnDesasociarPlanDeporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDesasociarPlanDeporte.FlatAppearance.BorderSize = 0;
+            this.btnDesasociarPlanDeporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDesasociarPlanDeporte.Location = new System.Drawing.Point(751, 133);
+            this.btnDesasociarPlanDeporte.Name = "btnDesasociarPlanDeporte";
+            this.btnDesasociarPlanDeporte.Size = new System.Drawing.Size(40, 40);
+            this.btnDesasociarPlanDeporte.TabIndex = 12;
+            this.btnDesasociarPlanDeporte.UseVisualStyleBackColor = true;
+            // 
+            // btnAsociarPlanDeporte
+            // 
+            this.btnAsociarPlanDeporte.BackgroundImage = global::MinisterioDeportes.Properties.Resources.plus;
+            this.btnAsociarPlanDeporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAsociarPlanDeporte.FlatAppearance.BorderSize = 0;
+            this.btnAsociarPlanDeporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAsociarPlanDeporte.Location = new System.Drawing.Point(751, 97);
+            this.btnAsociarPlanDeporte.Name = "btnAsociarPlanDeporte";
+            this.btnAsociarPlanDeporte.Size = new System.Drawing.Size(40, 30);
+            this.btnAsociarPlanDeporte.TabIndex = 11;
+            this.btnAsociarPlanDeporte.UseVisualStyleBackColor = true;
+            // 
+            // txtDeportesFilter
+            // 
+            this.txtDeportesFilter.Location = new System.Drawing.Point(163, 56);
+            this.txtDeportesFilter.Name = "txtDeportesFilter";
+            this.txtDeportesFilter.Size = new System.Drawing.Size(202, 20);
+            this.txtDeportesFilter.TabIndex = 10;
+            // 
+            // lbxPlanDp
+            // 
+            this.lbxPlanDp.FormattingEnabled = true;
+            this.lbxPlanDp.Location = new System.Drawing.Point(495, 97);
+            this.lbxPlanDp.Name = "lbxPlanDp";
+            this.lbxPlanDp.Size = new System.Drawing.Size(250, 303);
+            this.lbxPlanDp.TabIndex = 9;
+            // 
+            // lbxDeportesPl
+            // 
+            this.lbxDeportesPl.FormattingEnabled = true;
+            this.lbxDeportesPl.Location = new System.Drawing.Point(115, 97);
+            this.lbxDeportesPl.Name = "lbxDeportesPl";
+            this.lbxDeportesPl.Size = new System.Drawing.Size(250, 303);
+            this.lbxDeportesPl.TabIndex = 8;
             // 
             // MainWindow
             // 
@@ -787,6 +1010,7 @@
             this.ClientSize = new System.Drawing.Size(910, 517);
             this.Controls.Add(this.tbcDashboard);
             this.Name = "MainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.tbcDashboard.ResumeLayout(false);
@@ -796,16 +1020,23 @@
             this.tabParticipantes.ResumeLayout(false);
             this.tabParticipantes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridParticipantes)).EndInit();
-            this.tabRutina.ResumeLayout(false);
-            this.tabRutina.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridRutina)).EndInit();
             this.tabPlanDeRutina.ResumeLayout(false);
             this.tabPlanDeRutina.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPlanRutina)).EndInit();
-            this.tabEstadísticas.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chtEstadisticas)).EndInit();
+            this.tabRutina.ResumeLayout(false);
+            this.tabRutina.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRutina)).EndInit();
+            this.tabAsociarUserDep.ResumeLayout(false);
+            this.tabAsociarUserDep.PerformLayout();
             this.tabAsociarRutinaPlan.ResumeLayout(false);
             this.tabAsociarRutinaPlan.PerformLayout();
+            this.tabAsociarPlanDep.ResumeLayout(false);
+            this.tabAsociarPlanDep.PerformLayout();
+            this.tabEstadísticas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chtEstadisticas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -870,8 +1101,27 @@
         private System.Windows.Forms.Button btnAgregarRutina;
         private System.Windows.Forms.TabPage tabAsociarUserDep;
         private System.Windows.Forms.TabPage tabAsociarRutinaPlan;
-        private System.Windows.Forms.ComboBox cmbPlanes;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage tabAsociarPlanDep;
+        private System.Windows.Forms.Button btnDesasociarUserDeporte;
+        private System.Windows.Forms.Button btnAsociarUserDeporte;
+        private System.Windows.Forms.TextBox txtParticipanteFilter;
+        private System.Windows.Forms.ListBox lbxDeportes;
+        private System.Windows.Forms.ListBox lbxParticipantes;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnDesasociarPlanRutina;
+        private System.Windows.Forms.Button btnAsociarPlanRutina;
+        private System.Windows.Forms.TextBox txtPlanFilter;
+        private System.Windows.Forms.ListBox lbxRutinas;
+        private System.Windows.Forms.ListBox lbxPlanes;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btnDesasociarPlanDeporte;
+        private System.Windows.Forms.Button btnAsociarPlanDeporte;
+        private System.Windows.Forms.TextBox txtDeportesFilter;
+        private System.Windows.Forms.ListBox lbxPlanDp;
+        private System.Windows.Forms.ListBox lbxDeportesPl;
     }
 }
