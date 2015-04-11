@@ -60,7 +60,7 @@ namespace MinisterioDeportesWCF
         void EditarUsuario(usuario usuario);
         [OperationContract]
         //creo que deberia ser list y no void
-        void ValidarUsuario();
+        Boolean ValidarUsuario(usuario usuario);
     }
 
 

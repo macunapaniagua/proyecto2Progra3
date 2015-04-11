@@ -1,4 +1,5 @@
 ﻿using MinisterioDeportesAccesoADatos;
+using MinisterioDeportesWCF.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -120,9 +121,25 @@ namespace MinisterioDeportesWCF
         #region usuario
         public void AgregarUsuario(usuario usuario)
         {
-            MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
-            modeloMinisterio.usuario.Add(usuario);
-            modeloMinisterio.SaveChanges();
+            RespuestaError respuesta = new RespuestaError();
+            try
+            {
+                MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+                usuario usuarioExiste = modeloMinisterio.usuario.FirstOrDefault(x => x.usuario1 == usuario.usuario1);
+                if (usuarioExiste != null)
+                {
+                    respuesta.MensajeError = "El usuario ya existe";
+                    return;
+                }
+                modeloMinisterio.usuario.Add(usuario);
+                modeloMinisterio.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                respuesta.MensajeError = e.ToString();               
+            }
+            
+            
         }
 
         public void EliminarUsuario(usuario usuario)
@@ -136,9 +153,39 @@ namespace MinisterioDeportesWCF
         {
            
         }
-        public void ValidarUsuario()
+        public List<bool> ValidarUsuario(usuario usuario)
         {
-            
+            RespuestaError respuesta = new RespuestaError();
+            List<bool> listaRespuesta=new List<bool>();
+            try
+            {
+                MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+                var md5 = modeloMinisterio.Database.SqlQuery<string>("select convert(varchar(32),HashBytes('MD5','@password'),2)",
+                     new object[] { usuario.contrasenia }).First();
+                usuario usuarioExiste = modeloMinisterio.usuario.FirstOrDefault(x => x.usuario1 == usuario.usuario1 && x.contrasenia == md5);
+
+                if (usuarioExiste != null)
+                {
+                    //respuesta.MensajeError = "El usuario y la contrasenia no coinciden";
+                    listaRespuesta.Add(false);
+                    listaRespuesta.Add(false);
+
+                    respuesta.HayError = true;
+                }
+                else
+                {
+                    listaRespuesta.Add(true);
+                    listaRespuesta.Add(usuario.es_admi);
+                }              
+                
+
+            }
+            catch (Exception e)
+            {
+                respuesta.MensajeError = e.ToString();
+                respuesta.HayError = false;
+            }
+            return listaRespuesta ;
         }
         #endregion
       
