@@ -92,11 +92,11 @@
     <Compile Include="usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\frmLogin.cs">
+    <Compile Include="Vistas\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <Compile Include="Vistas\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\MainWindow.cs">
       <SubType>Form</SubType>
@@ -114,8 +114,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Vistas\frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <EmbeddedResource Include="Vistas\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>

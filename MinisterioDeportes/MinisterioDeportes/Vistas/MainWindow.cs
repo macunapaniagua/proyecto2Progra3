@@ -31,8 +31,6 @@ namespace MinisterioDeportes.Vistas
         }
 
 
-
-
         /// <summary>
         /// Abre la ventana de login cuando se presiona en la "X"
         /// </summary>
@@ -49,6 +47,11 @@ namespace MinisterioDeportes.Vistas
         }
 
         private void btnAgregarDeporte_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarRutina_Click(object sender, EventArgs e)
         {
 
         }

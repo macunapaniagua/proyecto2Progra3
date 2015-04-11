@@ -78,10 +78,6 @@
             this.txtDetalleRutina = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.l = new System.Windows.Forms.Button();
-            this.e = new System.Windows.Forms.Button();
-            this.c = new System.Windows.Forms.Button();
-            this.s = new System.Windows.Forms.Button();
             this.gridRutina = new System.Windows.Forms.DataGridView();
             this.tabPlanDeRutina = new System.Windows.Forms.TabPage();
             this.txtNombrePlan = new System.Windows.Forms.TextBox();
@@ -495,10 +491,6 @@
             this.tabRutina.Controls.Add(this.txtDetalleRutina);
             this.tabRutina.Controls.Add(this.label1);
             this.tabRutina.Controls.Add(this.label2);
-            this.tabRutina.Controls.Add(this.l);
-            this.tabRutina.Controls.Add(this.e);
-            this.tabRutina.Controls.Add(this.c);
-            this.tabRutina.Controls.Add(this.s);
             this.tabRutina.Controls.Add(this.gridRutina);
             this.tabRutina.Location = new System.Drawing.Point(4, 22);
             this.tabRutina.Name = "tabRutina";
@@ -514,7 +506,7 @@
             this.btnBuscarRutina.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnBuscarRutina.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnBuscarRutina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarRutina.Location = new System.Drawing.Point(501, 210);
+            this.btnBuscarRutina.Location = new System.Drawing.Point(804, 56);
             this.btnBuscarRutina.Name = "btnBuscarRutina";
             this.btnBuscarRutina.Size = new System.Drawing.Size(51, 46);
             this.btnBuscarRutina.TabIndex = 40;
@@ -527,7 +519,7 @@
             this.btnEliminarRutina.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnEliminarRutina.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnEliminarRutina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarRutina.Location = new System.Drawing.Point(442, 210);
+            this.btnEliminarRutina.Location = new System.Drawing.Point(745, 56);
             this.btnEliminarRutina.Name = "btnEliminarRutina";
             this.btnEliminarRutina.Size = new System.Drawing.Size(53, 46);
             this.btnEliminarRutina.TabIndex = 39;
@@ -539,7 +531,7 @@
             this.btnActualizarRutina.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnActualizarRutina.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnActualizarRutina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizarRutina.Location = new System.Drawing.Point(385, 210);
+            this.btnActualizarRutina.Location = new System.Drawing.Point(688, 56);
             this.btnActualizarRutina.Name = "btnActualizarRutina";
             this.btnActualizarRutina.Size = new System.Drawing.Size(51, 46);
             this.btnActualizarRutina.TabIndex = 38;
@@ -552,11 +544,12 @@
             this.btnAgregarRutina.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAgregarRutina.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnAgregarRutina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarRutina.Location = new System.Drawing.Point(326, 210);
+            this.btnAgregarRutina.Location = new System.Drawing.Point(629, 56);
             this.btnAgregarRutina.Name = "btnAgregarRutina";
             this.btnAgregarRutina.Size = new System.Drawing.Size(53, 46);
             this.btnAgregarRutina.TabIndex = 37;
             this.btnAgregarRutina.UseVisualStyleBackColor = false;
+            this.btnAgregarRutina.Click += new System.EventHandler(this.btnAgregarRutina_Click);
             // 
             // cmbDeporteRutina
             // 
@@ -629,42 +622,6 @@
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 21;
             this.label2.Text = "Detalles:";
-            // 
-            // l
-            // 
-            this.l.Location = new System.Drawing.Point(802, 43);
-            this.l.Name = "l";
-            this.l.Size = new System.Drawing.Size(53, 46);
-            this.l.TabIndex = 9;
-            this.l.Text = "Buscar";
-            this.l.UseVisualStyleBackColor = true;
-            // 
-            // e
-            // 
-            this.e.Location = new System.Drawing.Point(743, 43);
-            this.e.Name = "e";
-            this.e.Size = new System.Drawing.Size(53, 46);
-            this.e.TabIndex = 8;
-            this.e.Text = "Eliminar";
-            this.e.UseVisualStyleBackColor = true;
-            // 
-            // c
-            // 
-            this.c.Location = new System.Drawing.Point(686, 43);
-            this.c.Name = "c";
-            this.c.Size = new System.Drawing.Size(51, 46);
-            this.c.TabIndex = 7;
-            this.c.Text = "Actualizar";
-            this.c.UseVisualStyleBackColor = true;
-            // 
-            // s
-            // 
-            this.s.Location = new System.Drawing.Point(627, 43);
-            this.s.Name = "s";
-            this.s.Size = new System.Drawing.Size(53, 46);
-            this.s.TabIndex = 6;
-            this.s.Text = "Agregar";
-            this.s.UseVisualStyleBackColor = true;
             // 
             // gridRutina
             // 
@@ -896,10 +853,6 @@
         private System.Windows.Forms.Button btnActualizarParticipante;
         private System.Windows.Forms.Button btnAgregarParticipante;
         private System.Windows.Forms.DataGridView gridParticipantes;
-        private System.Windows.Forms.Button l;
-        private System.Windows.Forms.Button e;
-        private System.Windows.Forms.Button c;
-        private System.Windows.Forms.Button s;
         private System.Windows.Forms.DataGridView gridRutina;
         private System.Windows.Forms.DataGridView gridPlanRutina;
         private System.Windows.Forms.TextBox textBox2;
