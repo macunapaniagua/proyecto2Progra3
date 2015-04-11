@@ -13,17 +13,20 @@ namespace MinisterioDeportesWCF
     public interface IWebServiceMD
     {
         [OperationContract]
-        void AgregarDeporte(deporte deporte);
+        String AgregarDeporte(deporte deporte);
         [OperationContract]
-        void EliminarDeporte(deporte deporte);
+        String EliminarDeporte(deporte deporte);
         [OperationContract]
-        void EditarDeporte(deporte deporte);
+        String EditarDeporte(deporte deporte);
         [OperationContract]
         //creo que deberia ser list y no void
-        void ObtenerDeporte();
+        List<deporte> ObtenerDeporte(String filtro);
+        [OperationContract]
+        //creo que deberia ser list y no void
+        persona ValidarUsuario(persona usuario);
 
         [OperationContract]
-        void AgregarPersona(persona persona);
+        String AgregarPersona(persona persona);
         [OperationContract]
         void EliminarPersona(persona persona);
         [OperationContract]
@@ -33,7 +36,7 @@ namespace MinisterioDeportesWCF
         void ObtenerPersona();
 
         [OperationContract]
-        void AgregarRutina(rutina rutina);
+        Boolean AgregarRutina(rutina rutina);
         [OperationContract]
         void EliminarRutina(rutina rutina);
         [OperationContract]
@@ -43,7 +46,7 @@ namespace MinisterioDeportesWCF
         void ObtenerRutina();
 
         [OperationContract]
-        void AgregarPlanRutina(plan planRutina);
+        Boolean AgregarPlanRutina(plan planRutina);
         [OperationContract]
         void EliminarPlanRutina(plan planRutina);
         [OperationContract]
@@ -51,16 +54,8 @@ namespace MinisterioDeportesWCF
         [OperationContract]
         //creo que deberia ser list y no void
         void ObtenerPlanRutina();
-
-        [OperationContract]
-        void AgregarUsuario(persona usuario);
-        [OperationContract]
-        void EliminarUsuario(persona usuario);
-        [OperationContract]
-        void EditarUsuario(persona usuario);
-        [OperationContract]
-        //creo que deberia ser list y no void
-        persona ValidarUsuario(persona usuario);
+      
+        
     }
 
 

@@ -7,9 +7,9 @@
       <Diagram DiagramId="62a47e0a02554771aafc32534259ec19" Name="Diagram1" >
         <AssociationConnector Association="db9ce858d6b9cb47658934a46901350226Model.FK_rutina_deporte1" />
         <EntityTypeShape EntityType="db9ce858d6b9cb47658934a46901350226Model.deporte" Width="1.5" PointX="0.75" PointY="2.875" />
-        <EntityTypeShape EntityType="db9ce858d6b9cb47658934a46901350226Model.persona" Width="1.5" PointX="3" PointY="3.875" />
-        <EntityTypeShape EntityType="db9ce858d6b9cb47658934a46901350226Model.plan" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="db9ce858d6b9cb47658934a46901350226Model.rutina" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="db9ce858d6b9cb47658934a46901350226Model.persona" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="db9ce858d6b9cb47658934a46901350226Model.plan" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="db9ce858d6b9cb47658934a46901350226Model.rutina" Width="1.5" PointX="5.25" PointY="4.5" />
         <AssociationConnector Association="db9ce858d6b9cb47658934a46901350226Model.persona_deporte" />
         <AssociationConnector Association="db9ce858d6b9cb47658934a46901350226Model.plan_deporte" />
         <AssociationConnector Association="db9ce858d6b9cb47658934a46901350226Model.rutinas_planes" />
