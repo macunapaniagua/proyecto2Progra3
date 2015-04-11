@@ -18,7 +18,7 @@ namespace MinisterioDeportes.Vistas
         {
             InitializeComponent();
             // Remueve los tabs de administracion para el usuario
-            if (!isAdmin) { removerTabAdministracion(); } 
+            if (!isAdmin) { removerTabAdministracion(); }
         }
 
         /// <summary>
@@ -64,20 +64,37 @@ namespace MinisterioDeportes.Vistas
             persona persona = new persona();
             persona.cedula = Convert.ToInt16(txtID.Text);
             persona.password = txtPassword.Text;
-            persona.is_admin= chkEsAdmi.Checked;    
+            persona.is_admin = chkEsAdmi.Checked;
             persona.nombre = txtNombre.Text;
             persona.apellido = txtApellido1.Text;
             persona.apellido2 = txtApellido2.Text;
             persona.cedula = Convert.ToInt16(txtID.Text);
-            objMinisterioWCF.AgregarUsuario(persona);  
-            objMinisterioWCF.AgregarPersona(persona); 
-           
+            objMinisterioWCF.AgregarUsuario(persona);
+            objMinisterioWCF.AgregarPersona(persona);
+
         }
 
-     
+        private void btnAsociarUserDeporte_Click(object sender, EventArgs e)
+        {
+
+            List<String> asd = new List<String>() { "1", "2", "3", "4", "5", "1", "2", "3", "4", "5", "1", "2", "3", "4", "5" };
+
+            Label seleccion = new Label();
+            CustomComboDialog comboSeleccion = new CustomComboDialog(asd, seleccion);
+
+
+
+            if (comboSeleccion.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Selecciona = " + seleccion.Text);
+            }
+
+
+
+        }
+
+        
 
     }
-
-
 
 }

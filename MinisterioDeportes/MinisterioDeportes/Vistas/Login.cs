@@ -37,9 +37,9 @@ namespace MinisterioDeportes.Vistas
                 return;
             }            
             
-            usuario user = new usuario();
-            user.usuario1 = userCode;
-            user.contrasenia = password;
+            persona user = new persona();
+            user.cedula = userCode;
+            user.password = password;
 
             /**
              *
