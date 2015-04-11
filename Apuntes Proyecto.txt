@@ -1,0 +1,11 @@
+
+* Un plan tiene rutinas
+* Se crea un plan sin rutinas
+
+** Las rutinas se crean asociadas a un plan
+** Un usuario puede asociarse un plan en tiempo de ejecucion o desasociarselo
+
+*** Un plan cuando se crea debe ser asociado a un deporte
+
+
+**** Estadisticas es Usuarios vs Deportes

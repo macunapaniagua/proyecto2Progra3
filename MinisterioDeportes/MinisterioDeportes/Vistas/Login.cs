@@ -45,7 +45,6 @@ namespace MinisterioDeportes.Vistas
              * AQUI SE DEBE HACER LA LLAMADA AL WCF PARA OBTENER SI LOS CREDENCIALES COINCIDEN Y SI ES ADMINISTRADOR
              * 
              */
-
             Boolean isAdmin = false;
 
 
