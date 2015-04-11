@@ -20,6 +20,9 @@
           <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="apellido" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="apellido2" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="is_admin" Type="bit" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="persona_deporte">
           <Key>
@@ -29,23 +32,29 @@
           <Property Name="persona" Type="int" Nullable="false" />
           <Property Name="deporte" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="plan_rutina">
+        <EntityType Name="plan">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_rutina" Type="int" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="detalles" Type="varchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="plan_deporte">
+          <Key>
+            <PropertyRef Name="id_plan" />
+            <PropertyRef Name="id_deporte" />
+          </Key>
+          <Property Name="id_plan" Type="int" Nullable="false" />
+          <Property Name="id_deporte" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="rutina">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_deporte" Type="int" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="detalles" Type="varchar" MaxLength="255" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="rutinas_planes">
           <Key>
@@ -54,14 +63,6 @@
           </Key>
           <Property Name="cod_rutina" Type="int" Nullable="false" />
           <Property Name="cod_plan_rutina" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="usuario">
-          <Key>
-            <PropertyRef Name="usuario" />
-          </Key>
-          <Property Name="usuario" Type="int" Nullable="false" />
-          <Property Name="contrasenia" Type="nchar" MaxLength="255" Nullable="false" />
-          <Property Name="es_admi" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_persona_deporte_deporte">
           <End Role="deporte" Type="Self.deporte" Multiplicity="1" />
@@ -87,35 +88,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_plan_rutina_rutina">
-          <End Role="rutina" Type="Self.rutina" Multiplicity="1" />
-          <End Role="plan_rutina" Type="Self.plan_rutina" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="rutina">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="plan_rutina">
-              <PropertyRef Name="id_rutina" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_rutina_deporte">
+        <Association Name="FK_plan_deporte_deporte">
           <End Role="deporte" Type="Self.deporte" Multiplicity="1" />
-          <End Role="rutina" Type="Self.rutina" Multiplicity="*" />
+          <End Role="plan_deporte" Type="Self.plan_deporte" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="deporte">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="rutina">
+            <Dependent Role="plan_deporte">
               <PropertyRef Name="id_deporte" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_rutinas_planes_plan_rutina">
-          <End Role="plan_rutina" Type="Self.plan_rutina" Multiplicity="1" />
+        <Association Name="FK_plan_deporte_plan">
+          <End Role="plan" Type="Self.plan" Multiplicity="1" />
+          <End Role="plan_deporte" Type="Self.plan_deporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plan">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="plan_deporte">
+              <PropertyRef Name="id_plan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rutinas_planes_plan1">
+          <End Role="plan" Type="Self.plan" Multiplicity="1" />
           <End Role="rutinas_planes" Type="Self.rutinas_planes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="plan_rutina">
+            <Principal Role="plan">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="rutinas_planes">
@@ -128,22 +129,10 @@
           <End Role="rutinas_planes" Type="Self.rutinas_planes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="rutina">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="rutinas_planes">
               <PropertyRef Name="cod_rutina" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_usuario_persona">
-          <End Role="persona" Type="Self.persona" Multiplicity="1" />
-          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="persona">
-              <PropertyRef Name="cedula" />
-            </Principal>
-            <Dependent Role="usuario">
-              <PropertyRef Name="usuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -151,10 +140,10 @@
           <EntitySet Name="deporte" EntityType="Self.deporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="persona_deporte" EntityType="Self.persona_deporte" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="plan_rutina" EntityType="Self.plan_rutina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="plan" EntityType="Self.plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="plan_deporte" EntityType="Self.plan_deporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rutina" EntityType="Self.rutina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rutinas_planes" EntityType="Self.rutinas_planes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_persona_deporte_deporte" Association="Self.FK_persona_deporte_deporte">
             <End Role="deporte" EntitySet="deporte" />
             <End Role="persona_deporte" EntitySet="persona_deporte" />
@@ -163,25 +152,21 @@
             <End Role="persona" EntitySet="persona" />
             <End Role="persona_deporte" EntitySet="persona_deporte" />
           </AssociationSet>
-          <AssociationSet Name="FK_plan_rutina_rutina" Association="Self.FK_plan_rutina_rutina">
-            <End Role="rutina" EntitySet="rutina" />
-            <End Role="plan_rutina" EntitySet="plan_rutina" />
-          </AssociationSet>
-          <AssociationSet Name="FK_rutina_deporte" Association="Self.FK_rutina_deporte">
+          <AssociationSet Name="FK_plan_deporte_deporte" Association="Self.FK_plan_deporte_deporte">
             <End Role="deporte" EntitySet="deporte" />
-            <End Role="rutina" EntitySet="rutina" />
+            <End Role="plan_deporte" EntitySet="plan_deporte" />
           </AssociationSet>
-          <AssociationSet Name="FK_rutinas_planes_plan_rutina" Association="Self.FK_rutinas_planes_plan_rutina">
-            <End Role="plan_rutina" EntitySet="plan_rutina" />
+          <AssociationSet Name="FK_plan_deporte_plan" Association="Self.FK_plan_deporte_plan">
+            <End Role="plan" EntitySet="plan" />
+            <End Role="plan_deporte" EntitySet="plan_deporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rutinas_planes_plan1" Association="Self.FK_rutinas_planes_plan1">
+            <End Role="plan" EntitySet="plan" />
             <End Role="rutinas_planes" EntitySet="rutinas_planes" />
           </AssociationSet>
           <AssociationSet Name="FK_rutinas_planes_rutina" Association="Self.FK_rutinas_planes_rutina">
             <End Role="rutina" EntitySet="rutina" />
             <End Role="rutinas_planes" EntitySet="rutinas_planes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usuario_persona" Association="Self.FK_usuario_persona">
-            <End Role="persona" EntitySet="persona" />
-            <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -191,27 +176,18 @@
         <EntityContainer Name="MinisterioDeportesEntityDataModel" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="deporte" EntityType="db9ce858d6b9cb47658934a46901350226Model.deporte" />
           <EntitySet Name="persona" EntityType="db9ce858d6b9cb47658934a46901350226Model.persona" />
-          <EntitySet Name="plan_rutina" EntityType="db9ce858d6b9cb47658934a46901350226Model.plan_rutina" />
+          <EntitySet Name="plan" EntityType="db9ce858d6b9cb47658934a46901350226Model.plan" />
           <EntitySet Name="rutina" EntityType="db9ce858d6b9cb47658934a46901350226Model.rutina" />
-          <EntitySet Name="usuario" EntityType="db9ce858d6b9cb47658934a46901350226Model.usuario" />
-          <AssociationSet Name="FK_rutina_deporte" Association="db9ce858d6b9cb47658934a46901350226Model.FK_rutina_deporte">
-            <End Role="deporte" EntitySet="deporte" />
-            <End Role="rutina" EntitySet="rutina" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usuario_persona" Association="db9ce858d6b9cb47658934a46901350226Model.FK_usuario_persona">
-            <End Role="persona" EntitySet="persona" />
-            <End Role="usuario" EntitySet="usuario" />
-          </AssociationSet>
-          <AssociationSet Name="FK_plan_rutina_rutina" Association="db9ce858d6b9cb47658934a46901350226Model.FK_plan_rutina_rutina">
-            <End Role="rutina" EntitySet="rutina" />
-            <End Role="plan_rutina" EntitySet="plan_rutina" />
-          </AssociationSet>
           <AssociationSet Name="persona_deporte" Association="db9ce858d6b9cb47658934a46901350226Model.persona_deporte">
             <End Role="deporte" EntitySet="deporte" />
             <End Role="persona" EntitySet="persona" />
           </AssociationSet>
+          <AssociationSet Name="plan_deporte" Association="db9ce858d6b9cb47658934a46901350226Model.plan_deporte">
+            <End Role="deporte" EntitySet="deporte" />
+            <End Role="plan" EntitySet="plan" />
+          </AssociationSet>
           <AssociationSet Name="rutinas_planes" Association="db9ce858d6b9cb47658934a46901350226Model.rutinas_planes">
-            <End Role="plan_rutina" EntitySet="plan_rutina" />
+            <End Role="plan" EntitySet="plan" />
             <End Role="rutina" EntitySet="rutina" />
           </AssociationSet>
         </EntityContainer>
@@ -221,8 +197,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="rutina" Relationship="db9ce858d6b9cb47658934a46901350226Model.FK_rutina_deporte" FromRole="deporte" ToRole="rutina" />
           <NavigationProperty Name="persona" Relationship="db9ce858d6b9cb47658934a46901350226Model.persona_deporte" FromRole="deporte" ToRole="persona" />
+          <NavigationProperty Name="plan" Relationship="db9ce858d6b9cb47658934a46901350226Model.plan_deporte" FromRole="deporte" ToRole="plan" />
         </EntityType>
         <EntityType Name="persona">
           <Key>
@@ -232,83 +208,40 @@
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="apellido" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="apellido2" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="usuario" Relationship="db9ce858d6b9cb47658934a46901350226Model.FK_usuario_persona" FromRole="persona" ToRole="usuario" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="is_admin" Type="Boolean" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="deporte" Relationship="db9ce858d6b9cb47658934a46901350226Model.persona_deporte" FromRole="persona" ToRole="deporte" />
         </EntityType>
-        <EntityType Name="plan_rutina">
+        <EntityType Name="plan">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_rutina" Type="Int32" Nullable="false" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="detalles" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="rutina" Relationship="db9ce858d6b9cb47658934a46901350226Model.FK_plan_rutina_rutina" FromRole="plan_rutina" ToRole="rutina" />
-          <NavigationProperty Name="rutina1" Relationship="db9ce858d6b9cb47658934a46901350226Model.rutinas_planes" FromRole="plan_rutina" ToRole="rutina" />
+          <NavigationProperty Name="deporte" Relationship="db9ce858d6b9cb47658934a46901350226Model.plan_deporte" FromRole="plan" ToRole="deporte" />
+          <NavigationProperty Name="rutina" Relationship="db9ce858d6b9cb47658934a46901350226Model.rutinas_planes" FromRole="plan" ToRole="rutina" />
         </EntityType>
         <EntityType Name="rutina">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_deporte" Type="Int32" Nullable="false" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="detalles" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="deporte" Relationship="db9ce858d6b9cb47658934a46901350226Model.FK_rutina_deporte" FromRole="rutina" ToRole="deporte" />
-          <NavigationProperty Name="plan_rutina" Relationship="db9ce858d6b9cb47658934a46901350226Model.FK_plan_rutina_rutina" FromRole="rutina" ToRole="plan_rutina" />
-          <NavigationProperty Name="plan_rutina1" Relationship="db9ce858d6b9cb47658934a46901350226Model.rutinas_planes" FromRole="rutina" ToRole="plan_rutina" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="plan" Relationship="db9ce858d6b9cb47658934a46901350226Model.rutinas_planes" FromRole="rutina" ToRole="plan" />
         </EntityType>
-        <EntityType Name="usuario">
-          <Key>
-            <PropertyRef Name="usuario1" />
-          </Key>
-          <Property Name="usuario1" Type="Int32" Nullable="false" />
-          <Property Name="contrasenia" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Name="es_admi" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="persona" Relationship="db9ce858d6b9cb47658934a46901350226Model.FK_usuario_persona" FromRole="usuario" ToRole="persona" />
-        </EntityType>
-        <Association Name="FK_rutina_deporte">
-          <End Type="db9ce858d6b9cb47658934a46901350226Model.deporte" Role="deporte" Multiplicity="1" />
-          <End Type="db9ce858d6b9cb47658934a46901350226Model.rutina" Role="rutina" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="deporte">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="rutina">
-              <PropertyRef Name="id_deporte" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_usuario_persona">
-          <End Type="db9ce858d6b9cb47658934a46901350226Model.persona" Role="persona" Multiplicity="1" />
-          <End Type="db9ce858d6b9cb47658934a46901350226Model.usuario" Role="usuario" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="persona">
-              <PropertyRef Name="cedula" />
-            </Principal>
-            <Dependent Role="usuario">
-              <PropertyRef Name="usuario1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_plan_rutina_rutina">
-          <End Type="db9ce858d6b9cb47658934a46901350226Model.rutina" Role="rutina" Multiplicity="1" />
-          <End Type="db9ce858d6b9cb47658934a46901350226Model.plan_rutina" Role="plan_rutina" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="rutina">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="plan_rutina">
-              <PropertyRef Name="id_rutina" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="persona_deporte">
           <End Type="db9ce858d6b9cb47658934a46901350226Model.deporte" Role="deporte" Multiplicity="*" />
           <End Type="db9ce858d6b9cb47658934a46901350226Model.persona" Role="persona" Multiplicity="*" />
         </Association>
+        <Association Name="plan_deporte">
+          <End Type="db9ce858d6b9cb47658934a46901350226Model.deporte" Role="deporte" Multiplicity="*" />
+          <End Type="db9ce858d6b9cb47658934a46901350226Model.plan" Role="plan" Multiplicity="*" />
+        </Association>
         <Association Name="rutinas_planes">
-          <End Type="db9ce858d6b9cb47658934a46901350226Model.plan_rutina" Role="plan_rutina" Multiplicity="*" />
+          <End Type="db9ce858d6b9cb47658934a46901350226Model.plan" Role="plan" Multiplicity="*" />
           <End Type="db9ce858d6b9cb47658934a46901350226Model.rutina" Role="rutina" Multiplicity="*" />
         </Association>
         </Schema>
@@ -328,6 +261,9 @@
           <EntitySetMapping Name="persona">
             <EntityTypeMapping TypeName="db9ce858d6b9cb47658934a46901350226Model.persona">
               <MappingFragment StoreEntitySet="persona">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="apellido2" ColumnName="apellido2" />
                 <ScalarProperty Name="apellido" ColumnName="apellido" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -335,12 +271,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="plan_rutina">
-            <EntityTypeMapping TypeName="db9ce858d6b9cb47658934a46901350226Model.plan_rutina">
-              <MappingFragment StoreEntitySet="plan_rutina">
+          <EntitySetMapping Name="plan">
+            <EntityTypeMapping TypeName="db9ce858d6b9cb47658934a46901350226Model.plan">
+              <MappingFragment StoreEntitySet="plan">
                 <ScalarProperty Name="detalles" ColumnName="detalles" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="id_rutina" ColumnName="id_rutina" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -348,19 +283,9 @@
           <EntitySetMapping Name="rutina">
             <EntityTypeMapping TypeName="db9ce858d6b9cb47658934a46901350226Model.rutina">
               <MappingFragment StoreEntitySet="rutina">
-                <ScalarProperty Name="detalles" ColumnName="detalles" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="id_deporte" ColumnName="id_deporte" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="usuario">
-            <EntityTypeMapping TypeName="db9ce858d6b9cb47658934a46901350226Model.usuario">
-              <MappingFragment StoreEntitySet="usuario">
-                <ScalarProperty Name="es_admi" ColumnName="es_admi" />
-                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
-                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -372,11 +297,19 @@
               <ScalarProperty Name="ID" ColumnName="deporte" />
             </EndProperty>
           </AssociationSetMapping>
+          <AssociationSetMapping Name="plan_deporte" TypeName="db9ce858d6b9cb47658934a46901350226Model.plan_deporte" StoreEntitySet="plan_deporte">
+            <EndProperty Name="plan">
+              <ScalarProperty Name="ID" ColumnName="id_plan" />
+            </EndProperty>
+            <EndProperty Name="deporte">
+              <ScalarProperty Name="ID" ColumnName="id_deporte" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="rutinas_planes" TypeName="db9ce858d6b9cb47658934a46901350226Model.rutinas_planes" StoreEntitySet="rutinas_planes">
             <EndProperty Name="rutina">
-              <ScalarProperty Name="ID" ColumnName="cod_rutina" />
+              <ScalarProperty Name="id" ColumnName="cod_rutina" />
             </EndProperty>
-            <EndProperty Name="plan_rutina">
+            <EndProperty Name="plan">
               <ScalarProperty Name="ID" ColumnName="cod_plan_rutina" />
             </EndProperty>
           </AssociationSetMapping>

@@ -5,7 +5,7 @@
       <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="persona" nillable="true" type="tns:ArrayOfpersona" />
-      <xs:element minOccurs="0" name="rutina" nillable="true" type="tns:ArrayOfrutina" />
+      <xs:element minOccurs="0" name="plan" nillable="true" type="tns:ArrayOfplan" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="deporte" nillable="true" type="tns:deporte" />
@@ -21,8 +21,10 @@
       <xs:element minOccurs="0" name="apellido2" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="cedula" type="xs:int" />
       <xs:element minOccurs="0" name="deporte" nillable="true" type="tns:ArrayOfdeporte" />
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="is_admin" type="xs:boolean" />
       <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="usuario" nillable="true" type="tns:usuario" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="persona" nillable="true" type="tns:persona" />
@@ -32,15 +34,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfdeporte" nillable="true" type="tns:ArrayOfdeporte" />
-  <xs:complexType name="usuario">
+  <xs:complexType name="ArrayOfplan">
     <xs:sequence>
-      <xs:element minOccurs="0" name="contrasenia" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="es_admi" type="xs:boolean" />
-      <xs:element minOccurs="0" name="persona" nillable="true" type="tns:persona" />
-      <xs:element minOccurs="0" name="usuario1" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="plan" nillable="true" type="tns:plan" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="usuario" nillable="true" type="tns:usuario" />
+  <xs:element name="ArrayOfplan" nillable="true" type="tns:ArrayOfplan" />
+  <xs:complexType name="plan">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="deporte" nillable="true" type="tns:ArrayOfdeporte" />
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="detalles" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rutina" nillable="true" type="tns:ArrayOfrutina" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="plan" nillable="true" type="tns:plan" />
   <xs:complexType name="ArrayOfrutina">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="rutina" nillable="true" type="tns:rutina" />
@@ -49,31 +58,11 @@
   <xs:element name="ArrayOfrutina" nillable="true" type="tns:ArrayOfrutina" />
   <xs:complexType name="rutina">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ID" type="xs:int" />
-      <xs:element minOccurs="0" name="deporte" nillable="true" type="tns:deporte" />
       <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="detalles" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="id_deporte" type="xs:int" />
-      <xs:element minOccurs="0" name="plan_rutina" nillable="true" type="tns:ArrayOfplan_rutina" />
-      <xs:element minOccurs="0" name="plan_rutina1" nillable="true" type="tns:ArrayOfplan_rutina" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="plan" nillable="true" type="tns:ArrayOfplan" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="rutina" nillable="true" type="tns:rutina" />
-  <xs:complexType name="ArrayOfplan_rutina">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="plan_rutina" nillable="true" type="tns:plan_rutina" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfplan_rutina" nillable="true" type="tns:ArrayOfplan_rutina" />
-  <xs:complexType name="plan_rutina">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ID" type="xs:int" />
-      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="detalles" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="id_rutina" type="xs:int" />
-      <xs:element minOccurs="0" name="rutina" nillable="true" type="tns:rutina" />
-      <xs:element minOccurs="0" name="rutina1" nillable="true" type="tns:ArrayOfrutina" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="plan_rutina" nillable="true" type="tns:plan_rutina" />
 </xs:schema>

@@ -43,24 +43,24 @@ namespace MinisterioDeportesWCF
         void ObtenerRutina();
 
         [OperationContract]
-        void AgregarPlanRutina(plan_rutina planRutina);
+        void AgregarPlanRutina(plan planRutina);
         [OperationContract]
-        void EliminarPlanRutina(plan_rutina planRutina);
+        void EliminarPlanRutina(plan planRutina);
         [OperationContract]
-        void EditarPlanRutina(plan_rutina planRutina);
+        void EditarPlanRutina(plan planRutina);
         [OperationContract]
         //creo que deberia ser list y no void
         void ObtenerPlanRutina();
 
         [OperationContract]
-        void AgregarUsuario(usuario usuario);
+        void AgregarUsuario(persona usuario);
         [OperationContract]
-        void EliminarUsuario(usuario usuario);
+        void EliminarUsuario(persona usuario);
         [OperationContract]
-        void EditarUsuario(usuario usuario);
+        void EditarUsuario(persona usuario);
         [OperationContract]
         //creo que deberia ser list y no void
-        Boolean ValidarUsuario(usuario usuario);
+        persona ValidarUsuario(persona usuario);
     }
 
 

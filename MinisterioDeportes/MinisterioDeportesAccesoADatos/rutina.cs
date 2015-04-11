@@ -16,17 +16,13 @@ namespace MinisterioDeportesAccesoADatos
     {
         public rutina()
         {
-            this.plan_rutina = new HashSet<plan_rutina>();
-            this.plan_rutina1 = new HashSet<plan_rutina>();
+            this.plan = new HashSet<plan>();
         }
     
-        public int ID { get; set; }
-        public int id_deporte { get; set; }
+        public int id { get; set; }
+        public string nombre { get; set; }
         public string descripcion { get; set; }
-        public string detalles { get; set; }
     
-        public virtual deporte deporte { get; set; }
-        public virtual ICollection<plan_rutina> plan_rutina { get; set; }
-        public virtual ICollection<plan_rutina> plan_rutina1 { get; set; }
+        public virtual ICollection<plan> plan { get; set; }
     }
 }

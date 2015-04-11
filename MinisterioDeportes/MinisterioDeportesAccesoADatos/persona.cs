@@ -23,8 +23,10 @@ namespace MinisterioDeportesAccesoADatos
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string apellido2 { get; set; }
+        public string password { get; set; }
+        public bool is_admin { get; set; }
+        public string email { get; set; }
     
-        public virtual usuario usuario { get; set; }
         public virtual ICollection<deporte> deporte { get; set; }
     }
 }

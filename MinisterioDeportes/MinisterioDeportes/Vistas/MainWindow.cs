@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MinisterioDeportes.ReferenceMinisterioDeportesWCF;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace MinisterioDeportes.Vistas
 {
@@ -54,6 +56,22 @@ namespace MinisterioDeportes.Vistas
         private void btnAgregarRutina_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAgregarParticipante_Click(object sender, EventArgs e)
+        {
+            ReferenceMinisterioDeportesWCF.WebServiceMDClient objMinisterioWCF = new ReferenceMinisterioDeportesWCF.WebServiceMDClient();
+            persona persona = new persona();
+            persona.cedula = Convert.ToInt16(txtID.Text);
+            persona.password = txtPassword.Text;
+            persona.is_admin= chkEsAdmi.Checked;    
+            persona.nombre = txtNombre.Text;
+            persona.apellido = txtApellido1.Text;
+            persona.apellido2 = txtApellido2.Text;
+            persona.cedula = Convert.ToInt16(txtID.Text);
+            objMinisterioWCF.AgregarUsuario(persona);  
+            objMinisterioWCF.AgregarPersona(persona); 
+           
         }
 
      

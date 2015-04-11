@@ -94,21 +94,21 @@ namespace MinisterioDeportesWCF
         #endregion
 
         #region planRutina
-        public void AgregarPlanRutina(plan_rutina planRutina)
+        public void AgregarPlanRutina(plan planRutina)
         {
             MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
-            modeloMinisterio.plan_rutina.Add(planRutina);
+            modeloMinisterio.plan.Add(planRutina);
             modeloMinisterio.SaveChanges();
         }
 
-        public void EliminarPlanRutina(plan_rutina planRutina)
+        public void EliminarPlanRutina(plan planRutina)
         {
             MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
-            modeloMinisterio.plan_rutina.Remove(planRutina);
+            modeloMinisterio.plan.Remove(planRutina);
             modeloMinisterio.SaveChanges();
         }
 
-        public void EditarPlanRutina(plan_rutina planRutina)
+        public void EditarPlanRutina(plan planRutina)
         {
            
         }
@@ -119,19 +119,19 @@ namespace MinisterioDeportesWCF
         #endregion
 
         #region usuario
-        public void AgregarUsuario(usuario usuario)
+        public void AgregarUsuario(persona usuario)
         {
             RespuestaError respuesta = new RespuestaError();
             try
             {
                 MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
-                usuario usuarioExiste = modeloMinisterio.usuario.FirstOrDefault(x => x.usuario1 == usuario.usuario1);
+                persona usuarioExiste = modeloMinisterio.persona.FirstOrDefault(x => x.cedula == usuario.cedula);
                 if (usuarioExiste != null)
                 {
                     respuesta.MensajeError = "El usuario ya existe";
                     return;
                 }
-                modeloMinisterio.usuario.Add(usuario);
+                modeloMinisterio.persona.Add(usuario);
                 modeloMinisterio.SaveChanges();
             }
             catch (Exception e)
@@ -142,41 +142,42 @@ namespace MinisterioDeportesWCF
             
         }
 
-        public void EliminarUsuario(usuario usuario)
+        public void EliminarUsuario(persona usuario)
         {
             MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
-            modeloMinisterio.usuario.Remove(usuario);
+            modeloMinisterio.persona.Remove(usuario);
             modeloMinisterio.SaveChanges();
         }
 
-        public void EditarUsuario(usuario usuario)
+        public void EditarUsuario(persona usuario)
         {
            
         }
-        public List<bool> ValidarUsuario(usuario usuario)
+        public persona ValidarUsuario(persona usuario)
         {
             RespuestaError respuesta = new RespuestaError();
-            List<bool> listaRespuesta=new List<bool>();
+            persona personaExiste=null;
             try
             {
                 MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
                 var md5 = modeloMinisterio.Database.SqlQuery<string>("select convert(varchar(32),HashBytes('MD5','@password'),2)",
-                     new object[] { usuario.contrasenia }).First();
-                usuario usuarioExiste = modeloMinisterio.usuario.FirstOrDefault(x => x.usuario1 == usuario.usuario1 && x.contrasenia == md5);
+                     new object[] { usuario.password }).First();
+                personaExiste = modeloMinisterio.persona.FirstOrDefault(x => x.cedula == usuario.cedula && x.password == md5);
+                
 
-                if (usuarioExiste != null)
-                {
-                    //respuesta.MensajeError = "El usuario y la contrasenia no coinciden";
-                    listaRespuesta.Add(false);
-                    listaRespuesta.Add(false);
+                //if (usuarioExiste != null)
+                //{
+                //    //respuesta.MensajeError = "El usuario y la contrasenia no coinciden";
+                //    listaRespuesta.Add(false);
+                //    listaRespuesta.Add(false);
 
-                    respuesta.HayError = true;
-                }
-                else
-                {
-                    listaRespuesta.Add(true);
-                    listaRespuesta.Add(usuario.es_admi);
-                }              
+                //    respuesta.HayError = true;
+                //}
+                //else
+                //{
+                //    listaRespuesta.Add(true);
+                //    listaRespuesta.Add(usuario.es_admi);
+                //}              
                 
 
             }
@@ -185,9 +186,9 @@ namespace MinisterioDeportesWCF
                 respuesta.MensajeError = e.ToString();
                 respuesta.HayError = false;
             }
-            return listaRespuesta ;
+            return personaExiste;
         }
         #endregion
-      
+
     }
 }

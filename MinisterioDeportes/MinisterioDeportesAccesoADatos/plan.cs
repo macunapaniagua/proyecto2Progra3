@@ -12,12 +12,19 @@ namespace MinisterioDeportesAccesoADatos
     using System;
     using System.Collections.Generic;
     
-    public partial class usuario
+    public partial class plan
     {
-        public int usuario1 { get; set; }
-        public string contrasenia { get; set; }
-        public bool es_admi { get; set; }
+        public plan()
+        {
+            this.deporte = new HashSet<deporte>();
+            this.rutina = new HashSet<rutina>();
+        }
     
-        public virtual persona persona { get; set; }
+        public int ID { get; set; }
+        public string descripcion { get; set; }
+        public string detalles { get; set; }
+    
+        public virtual ICollection<deporte> deporte { get; set; }
+        public virtual ICollection<rutina> rutina { get; set; }
     }
 }

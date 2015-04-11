@@ -72,14 +72,11 @@
     <Compile Include="persona.cs">
       <DependentUpon>ModeloMinisterioDeportes.tt</DependentUpon>
     </Compile>
-    <Compile Include="plan_rutina.cs">
+    <Compile Include="plan.cs">
       <DependentUpon>ModeloMinisterioDeportes.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rutina.cs">
-      <DependentUpon>ModeloMinisterioDeportes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="usuario.cs">
       <DependentUpon>ModeloMinisterioDeportes.tt</DependentUpon>
     </Compile>
   </ItemGroup>
