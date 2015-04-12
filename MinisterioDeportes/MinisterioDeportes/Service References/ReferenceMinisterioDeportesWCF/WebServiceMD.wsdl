@@ -31,6 +31,12 @@
   <wsdl:message name="IWebServiceMD_ObtenerDeporte_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerDeporteResponse" />
   </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ValidarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ValidarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioResponse" />
+  </wsdl:message>
   <wsdl:message name="IWebServiceMD_AgregarPersona_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarPersona" />
   </wsdl:message>
@@ -103,30 +109,6 @@
   <wsdl:message name="IWebServiceMD_ObtenerPlanRutina_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerPlanRutinaResponse" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_AgregarUsuario_InputMessage">
-    <wsdl:part name="parameters" element="tns:AgregarUsuario" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_AgregarUsuario_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AgregarUsuarioResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EliminarUsuario_InputMessage">
-    <wsdl:part name="parameters" element="tns:EliminarUsuario" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EliminarUsuario_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EliminarUsuarioResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EditarUsuario_InputMessage">
-    <wsdl:part name="parameters" element="tns:EditarUsuario" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EditarUsuario_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EditarUsuarioResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ValidarUsuario_InputMessage">
-    <wsdl:part name="parameters" element="tns:ValidarUsuario" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ValidarUsuario_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ValidarUsuarioResponse" />
-  </wsdl:message>
   <wsdl:portType name="IWebServiceMD">
     <wsdl:operation name="AgregarDeporte">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarDeporte" message="tns:IWebServiceMD_AgregarDeporte_InputMessage" />
@@ -143,6 +125,10 @@
     <wsdl:operation name="ObtenerDeporte">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerDeporte" message="tns:IWebServiceMD_ObtenerDeporte_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerDeporteResponse" message="tns:IWebServiceMD_ObtenerDeporte_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ValidarUsuario" message="tns:IWebServiceMD_ValidarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ValidarUsuarioResponse" message="tns:IWebServiceMD_ValidarUsuario_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AgregarPersona">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarPersona" message="tns:IWebServiceMD_AgregarPersona_InputMessage" />
@@ -192,22 +178,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerPlanRutina" message="tns:IWebServiceMD_ObtenerPlanRutina_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerPlanRutinaResponse" message="tns:IWebServiceMD_ObtenerPlanRutina_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AgregarUsuario">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarUsuario" message="tns:IWebServiceMD_AgregarUsuario_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarUsuarioResponse" message="tns:IWebServiceMD_AgregarUsuario_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="EliminarUsuario">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EliminarUsuario" message="tns:IWebServiceMD_EliminarUsuario_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EliminarUsuarioResponse" message="tns:IWebServiceMD_EliminarUsuario_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="EditarUsuario">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EditarUsuario" message="tns:IWebServiceMD_EditarUsuario_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EditarUsuarioResponse" message="tns:IWebServiceMD_EditarUsuario_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ValidarUsuario">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ValidarUsuario" message="tns:IWebServiceMD_ValidarUsuario_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ValidarUsuarioResponse" message="tns:IWebServiceMD_ValidarUsuario_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWebServiceMD" type="tns:IWebServiceMD">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -240,6 +210,15 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerDeporte">
       <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerDeporte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuario">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ValidarUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -348,42 +327,6 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerPlanRutina">
       <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerPlanRutina" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AgregarUsuario">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/AgregarUsuario" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EliminarUsuario">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/EliminarUsuario" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EditarUsuario">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/EditarUsuario" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ValidarUsuario">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ValidarUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

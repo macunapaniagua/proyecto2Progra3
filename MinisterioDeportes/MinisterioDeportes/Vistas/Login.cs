@@ -37,22 +37,35 @@ namespace MinisterioDeportes.Vistas
                 return;
             }            
             
+            // Genera un usuario con los datos brindados en el login
             persona user = new persona();
             user.cedula = userCode;
             user.password = password;
 
-            /**
-             *
-             * AQUI SE DEBE HACER LA LLAMADA AL WCF PARA OBTENER SI LOS CREDENCIALES COINCIDEN Y SI ES ADMINISTRADOR
-             * 
-             */
-            Boolean isAdmin = false;
+            // Obtiene todos los datos del usuario ingresado (null si no existe)
+            WebServiceMDClient cliente = new WebServiceMDClient();
+            user = cliente.ValidarUsuario(user);
+            if (user != null)
+            {
+                // Limpia los campos de text y carga el dashboard
+                cleanFields();
+                MainWindow dashboard = new MainWindow(user);
+                dashboard.Show(this);
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("El nombre de usuario y contraseña no coinciden o el usuario no existe en el sistema");
+            }
+        }
 
-
-
-            MainWindow dashboard = new MainWindow(isAdmin);
-            dashboard.Show(this);
-            this.Hide();
+        /// <summary>
+        /// Limpia los campos de texto
+        /// </summary> 
+        private void cleanFields()
+        {
+            txtContrasena.Clear();
+            txtUsuario.Clear();
         }
     }
 }

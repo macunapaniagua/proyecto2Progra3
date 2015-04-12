@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tbcDashboard = new System.Windows.Forms.TabControl();
             this.tabDeportes = new System.Windows.Forms.TabPage();
             this.btnBuscarDeporte = new System.Windows.Forms.Button();
@@ -165,7 +165,6 @@
             this.tabDeportes.TabIndex = 0;
             this.tabDeportes.Text = "Deportes";
             this.tabDeportes.UseVisualStyleBackColor = true;
-            this.tabDeportes.Click += new System.EventHandler(this.tabDeportes_Click);
             // 
             // btnBuscarDeporte
             // 
@@ -179,6 +178,7 @@
             this.btnBuscarDeporte.TabIndex = 51;
             this.btnBuscarDeporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscarDeporte.UseVisualStyleBackColor = true;
+            this.btnBuscarDeporte.Click += new System.EventHandler(this.btnBuscarDeporte_Click);
             // 
             // btnEliminarDeporte
             // 
@@ -191,6 +191,7 @@
             this.btnEliminarDeporte.Size = new System.Drawing.Size(53, 46);
             this.btnEliminarDeporte.TabIndex = 50;
             this.btnEliminarDeporte.UseVisualStyleBackColor = true;
+            this.btnEliminarDeporte.Click += new System.EventHandler(this.btnEliminarDeporte_Click);
             // 
             // btnActualizarDeporte
             // 
@@ -203,6 +204,7 @@
             this.btnActualizarDeporte.Size = new System.Drawing.Size(51, 46);
             this.btnActualizarDeporte.TabIndex = 49;
             this.btnActualizarDeporte.UseVisualStyleBackColor = true;
+            this.btnActualizarDeporte.Click += new System.EventHandler(this.btnActualizarDeporte_Click);
             // 
             // btnAgregarDeporte
             // 
@@ -216,7 +218,7 @@
             this.btnAgregarDeporte.Size = new System.Drawing.Size(53, 46);
             this.btnAgregarDeporte.TabIndex = 48;
             this.btnAgregarDeporte.UseVisualStyleBackColor = false;
-            this.btnAgregarDeporte.Click += new System.EventHandler(this.tabDeportes_Click);
+            this.btnAgregarDeporte.Click += new System.EventHandler(this.btnAgregarDeporte_Click);
             // 
             // txtNombreDeporte
             // 
@@ -257,9 +259,13 @@
             // 
             this.gridTablaDeportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridTablaDeportes.Location = new System.Drawing.Point(6, 139);
+            this.gridTablaDeportes.MultiSelect = false;
             this.gridTablaDeportes.Name = "gridTablaDeportes";
+            this.gridTablaDeportes.ReadOnly = true;
+            this.gridTablaDeportes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridTablaDeportes.Size = new System.Drawing.Size(864, 311);
             this.gridTablaDeportes.TabIndex = 0;
+            this.gridTablaDeportes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridTablaDeportes_CellContentClick);
             // 
             // tabParticipantes
             // 
@@ -990,16 +996,16 @@
             // 
             // chtEstadisticas
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chtEstadisticas.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chtEstadisticas.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.chtEstadisticas.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chtEstadisticas.Legends.Add(legend6);
             this.chtEstadisticas.Location = new System.Drawing.Point(170, 44);
             this.chtEstadisticas.Name = "chtEstadisticas";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chtEstadisticas.Series.Add(series2);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chtEstadisticas.Series.Add(series6);
             this.chtEstadisticas.Size = new System.Drawing.Size(614, 396);
             this.chtEstadisticas.TabIndex = 0;
             this.chtEstadisticas.Text = "chart1";

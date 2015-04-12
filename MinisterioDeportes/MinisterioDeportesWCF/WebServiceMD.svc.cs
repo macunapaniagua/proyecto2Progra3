@@ -57,8 +57,7 @@ namespace MinisterioDeportesWCF
         {          
             return this.AgregarDeporte(deporte);
         }
-
-
+        
         public List<deporte> ObtenerDeporte(String filtro=null)
         {
             MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
@@ -119,21 +118,15 @@ namespace MinisterioDeportesWCF
 
         public persona ValidarUsuario(persona usuario)
         {
-            RespuestaError respuesta = new RespuestaError();
             persona personaExiste = null;
             try
             {
-                MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+                MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
                 var md5 = modeloMinisterio.Database.SqlQuery<string>("select convert(varchar(32),HashBytes('MD5','@password'),2)",
                      new object[] { usuario.password }).First();
                 personaExiste = modeloMinisterio.persona.FirstOrDefault(x => x.cedula == usuario.cedula && x.password == md5);
-
             }
-            catch (Exception e)
-            {
-                respuesta.MensajeError = e.ToString();
-                respuesta.HayError = false;
-            }
+            catch (Exception e) { }
             return personaExiste;
         }
 
