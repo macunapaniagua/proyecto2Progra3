@@ -38,7 +38,7 @@ namespace MinisterioDeportes.Vistas
             }            
             
             // Genera un usuario con los datos brindados en el login
-            persona user = new persona();
+            PersonaDTO user = new PersonaDTO();
             user.cedula = userCode;
             user.password = password;
 
@@ -51,7 +51,7 @@ namespace MinisterioDeportes.Vistas
                 cleanFields();
                 MainWindow dashboard = new MainWindow(user);
                 dashboard.Show(this);
-               // this.Hide();
+                this.Hide();
             }
             else
             {

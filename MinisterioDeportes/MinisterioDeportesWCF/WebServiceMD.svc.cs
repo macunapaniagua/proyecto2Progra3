@@ -116,15 +116,20 @@ namespace MinisterioDeportesWCF
             
         }
 
-        public persona ValidarUsuario(persona usuario)
+        public PersonaDTO ValidarUsuario(PersonaDTO usuario)
         {
-            persona personaExiste = null;
+            PersonaDTO personaExiste = null;
             try
             {
                 MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
                 var md5 = modeloMinisterio.Database.SqlQuery<string>("select convert(varchar(32),HashBytes('MD5','@password'),2)",
                      new object[] { usuario.password }).First();
-                personaExiste = modeloMinisterio.persona.FirstOrDefault(x => x.cedula == usuario.cedula && x.password == md5);
+                persona persona= modeloMinisterio.persona.FirstOrDefault(x => x.cedula == usuario.cedula && x.password == md5);
+                if (persona!=null)
+                {
+                    personaExiste = new PersonaDTO(persona);
+                }
+
             }
             catch (Exception e) { }
             return personaExiste;
