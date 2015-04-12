@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using MinisterioDeportesAccesoADatos;
+using MinisterioDeportesWCF.Entidades;
 
 namespace MinisterioDeportesWCF
 {
@@ -23,7 +24,7 @@ namespace MinisterioDeportesWCF
         List<deporte> ObtenerDeporte(String filtro);
         [OperationContract]
         //creo que deberia ser list y no void
-        persona ValidarUsuario(persona usuario);
+        PersonaDTO ValidarUsuario(PersonaDTO usuario);
 
         [OperationContract]
         String AgregarPersona(persona persona);

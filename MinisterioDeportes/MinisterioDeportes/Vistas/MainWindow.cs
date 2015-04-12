@@ -14,17 +14,17 @@ namespace MinisterioDeportes.Vistas
 {
     public partial class MainWindow : Form
     {
-        private persona usuario;                            // Usuario Logueado
+        private PersonaDTO usuario;                            // Usuario Logueado
         private WebServiceMDClient clienteWebService;
          
         // Metodo constructor
-        public MainWindow(persona pUsuario)
+        public MainWindow(PersonaDTO pUsuario)
         {
             InitializeComponent();
             usuario = pUsuario;
             clienteWebService = new WebServiceMDClient();            
             // Remueve los tabs de administracion para el usuario
-            if (!usuario.is_admin) { removerTabAdministracion(); }
+            if (!usuario.esAdmi) { removerTabAdministracion(); }
         }
 
         /// <summary>
