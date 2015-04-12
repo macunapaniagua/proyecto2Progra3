@@ -51,7 +51,7 @@ namespace MinisterioDeportes.Vistas
                 cleanFields();
                 MainWindow dashboard = new MainWindow(user);
                 dashboard.Show(this);
-                this.Hide();
+               // this.Hide();
             }
             else
             {
