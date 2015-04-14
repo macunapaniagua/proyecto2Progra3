@@ -128,7 +128,16 @@
     <None Include="Service References\ReferenceMinisterioDeportesWCF\MinisterioDeportes.ReferenceMinisterioDeportesWCF.deporte.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ReferenceMinisterioDeportesWCF\MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ReferenceMinisterioDeportesWCF\WebServiceMD.wsdl" />

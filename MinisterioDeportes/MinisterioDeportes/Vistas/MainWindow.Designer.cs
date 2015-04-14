@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tbcDashboard = new System.Windows.Forms.TabControl();
             this.tabDeportes = new System.Windows.Forms.TabPage();
             this.btnBuscarDeporte = new System.Windows.Forms.Button();
@@ -78,7 +78,7 @@
             this.btnEliminarRutina = new System.Windows.Forms.Button();
             this.btnActualizarRutina = new System.Windows.Forms.Button();
             this.btnAgregarRutina = new System.Windows.Forms.Button();
-            this.txtNombreRutina = new System.Windows.Forms.TextBox();
+            this.txtRutina = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtIdRutina = new System.Windows.Forms.TextBox();
             this.txtDetalleRutina = new System.Windows.Forms.TextBox();
@@ -307,6 +307,7 @@
             this.btnBuscarParticipante.TabIndex = 48;
             this.btnBuscarParticipante.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscarParticipante.UseVisualStyleBackColor = true;
+            this.btnBuscarParticipante.Click += new System.EventHandler(this.btnBuscarParticipante_Click);
             // 
             // btnEliminarParticipante
             // 
@@ -331,6 +332,7 @@
             this.btnActualizarParticipante.Size = new System.Drawing.Size(51, 46);
             this.btnActualizarParticipante.TabIndex = 46;
             this.btnActualizarParticipante.UseVisualStyleBackColor = true;
+            this.btnActualizarParticipante.Click += new System.EventHandler(this.btnActualizarParticipante_Click);
             // 
             // btnAgregarParticipante
             // 
@@ -468,6 +470,7 @@
             this.gridParticipantes.Name = "gridParticipantes";
             this.gridParticipantes.Size = new System.Drawing.Size(864, 298);
             this.gridParticipantes.TabIndex = 5;
+            this.gridParticipantes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridParticipantes_CellContentClick);
             // 
             // tabPlanDeRutina
             // 
@@ -550,6 +553,7 @@
             this.gridPlanRutina.Name = "gridPlanRutina";
             this.gridPlanRutina.Size = new System.Drawing.Size(864, 311);
             this.gridPlanRutina.TabIndex = 5;
+            this.gridPlanRutina.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPlanRutina_CellContentClick);
             // 
             // btnBuscarPlan
             // 
@@ -563,6 +567,7 @@
             this.btnBuscarPlan.TabIndex = 36;
             this.btnBuscarPlan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscarPlan.UseVisualStyleBackColor = true;
+            this.btnBuscarPlan.Click += new System.EventHandler(this.btnBuscarPlan_Click);
             // 
             // btnEliminarPlan
             // 
@@ -575,6 +580,7 @@
             this.btnEliminarPlan.Size = new System.Drawing.Size(53, 46);
             this.btnEliminarPlan.TabIndex = 35;
             this.btnEliminarPlan.UseVisualStyleBackColor = true;
+            this.btnEliminarPlan.Click += new System.EventHandler(this.btnEliminarPlan_Click);
             // 
             // btnActualizarPlan
             // 
@@ -587,6 +593,7 @@
             this.btnActualizarPlan.Size = new System.Drawing.Size(51, 46);
             this.btnActualizarPlan.TabIndex = 34;
             this.btnActualizarPlan.UseVisualStyleBackColor = true;
+            this.btnActualizarPlan.Click += new System.EventHandler(this.btnActualizarPlan_Click);
             // 
             // btnAgregarPlan
             // 
@@ -600,6 +607,7 @@
             this.btnAgregarPlan.Size = new System.Drawing.Size(53, 46);
             this.btnAgregarPlan.TabIndex = 33;
             this.btnAgregarPlan.UseVisualStyleBackColor = false;
+            this.btnAgregarPlan.Click += new System.EventHandler(this.btnAgregarPlan_Click);
             // 
             // tabRutina
             // 
@@ -607,7 +615,7 @@
             this.tabRutina.Controls.Add(this.btnEliminarRutina);
             this.tabRutina.Controls.Add(this.btnActualizarRutina);
             this.tabRutina.Controls.Add(this.btnAgregarRutina);
-            this.tabRutina.Controls.Add(this.txtNombreRutina);
+            this.tabRutina.Controls.Add(this.txtRutina);
             this.tabRutina.Controls.Add(this.label3);
             this.tabRutina.Controls.Add(this.txtIdRutina);
             this.tabRutina.Controls.Add(this.txtDetalleRutina);
@@ -634,6 +642,7 @@
             this.btnBuscarRutina.TabIndex = 40;
             this.btnBuscarRutina.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscarRutina.UseVisualStyleBackColor = true;
+            this.btnBuscarRutina.Click += new System.EventHandler(this.btnBuscarRutina_Click);
             // 
             // btnEliminarRutina
             // 
@@ -646,6 +655,7 @@
             this.btnEliminarRutina.Size = new System.Drawing.Size(53, 46);
             this.btnEliminarRutina.TabIndex = 39;
             this.btnEliminarRutina.UseVisualStyleBackColor = true;
+            this.btnEliminarRutina.Click += new System.EventHandler(this.btnEliminarRutina_Click);
             // 
             // btnActualizarRutina
             // 
@@ -658,6 +668,7 @@
             this.btnActualizarRutina.Size = new System.Drawing.Size(51, 46);
             this.btnActualizarRutina.TabIndex = 38;
             this.btnActualizarRutina.UseVisualStyleBackColor = true;
+            this.btnActualizarRutina.Click += new System.EventHandler(this.btnActualizarRutina_Click);
             // 
             // btnAgregarRutina
             // 
@@ -673,12 +684,12 @@
             this.btnAgregarRutina.UseVisualStyleBackColor = false;
             this.btnAgregarRutina.Click += new System.EventHandler(this.btnAgregarRutina_Click);
             // 
-            // txtNombreRutina
+            // txtRutina
             // 
-            this.txtNombreRutina.Location = new System.Drawing.Point(153, 77);
-            this.txtNombreRutina.Name = "txtNombreRutina";
-            this.txtNombreRutina.Size = new System.Drawing.Size(164, 20);
-            this.txtNombreRutina.TabIndex = 28;
+            this.txtRutina.Location = new System.Drawing.Point(153, 77);
+            this.txtRutina.Name = "txtRutina";
+            this.txtRutina.Size = new System.Drawing.Size(164, 20);
+            this.txtRutina.TabIndex = 28;
             // 
             // label3
             // 
@@ -733,6 +744,7 @@
             this.gridRutina.Name = "gridRutina";
             this.gridRutina.Size = new System.Drawing.Size(864, 311);
             this.gridRutina.TabIndex = 5;
+            this.gridRutina.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRutina_CellContentClick);
             // 
             // tabAsociarUserDep
             // 
@@ -996,16 +1008,16 @@
             // 
             // chtEstadisticas
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chtEstadisticas.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chtEstadisticas.Legends.Add(legend6);
+            chartArea10.Name = "ChartArea1";
+            this.chtEstadisticas.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            this.chtEstadisticas.Legends.Add(legend10);
             this.chtEstadisticas.Location = new System.Drawing.Point(170, 44);
             this.chtEstadisticas.Name = "chtEstadisticas";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chtEstadisticas.Series.Add(series6);
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            this.chtEstadisticas.Series.Add(series10);
             this.chtEstadisticas.Size = new System.Drawing.Size(614, 396);
             this.chtEstadisticas.TabIndex = 0;
             this.chtEstadisticas.Text = "chart1";
@@ -1071,7 +1083,7 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtNombreRutina;
+        private System.Windows.Forms.TextBox txtRutina;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtIdRutina;
         private System.Windows.Forms.TextBox txtDetalleRutina;

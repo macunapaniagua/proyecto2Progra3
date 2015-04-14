@@ -1,4 +1,4 @@
-﻿using MinisterioDeportesAccesoADatos;
+﻿ using MinisterioDeportesAccesoADatos;
 using MinisterioDeportesWCF.Entidades;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace MinisterioDeportesWCF
                 MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
                 modeloMinisterio.deporte.Add(deporte);
                 modeloMinisterio.SaveChanges();
-                respuesta.HayError = true;
+                respuesta.MensajeError = null;
             }
             catch (Exception e)
             {
@@ -61,16 +61,17 @@ namespace MinisterioDeportesWCF
         public List<deporte> ObtenerDeporte(String filtro=null)
         {
             MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
-            
+            List<deporte> lista;
+
             if (filtro==null)
             {
-                return modeloMinisterio.deporte.Select(p => p).ToList();
+                lista= modeloMinisterio.deporte.Select(p => p).ToList();
             }else
 	        {
 
-                return modeloMinisterio.deporte.Where(p=>p.descripcion.ToLower().Contains(filtro)).ToList();
+                lista = modeloMinisterio.deporte.Where(p=>p.descripcion.ToLower().Contains(filtro)).ToList();
 	        }
-            
+            return lista;
         }
         #endregion
 
@@ -99,21 +100,43 @@ namespace MinisterioDeportesWCF
             return respuesta.MensajeError;
         }
 
-        public void EliminarPersona(persona persona)
+        public String EliminarPersona(persona persona)
+        {
+            RespuestaError respuesta = new RespuestaError();
+            try
+            {
+                MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+                modeloMinisterio.persona.Remove(persona);
+                modeloMinisterio.SaveChanges();
+                respuesta.MensajeError = null;
+            }
+            catch (Exception e)
+            {
+
+                respuesta.MensajeError = e.Message;
+            }
+            return respuesta.MensajeError;
+        }
+
+        public String EditarPersona(persona persona)
+        {
+            return this.AgregarPersona(persona);
+        }
+
+        public List<persona> ObtenerPersona(String filtro =null)
         {
             MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
-            modeloMinisterio.persona.Remove(persona);
-            modeloMinisterio.SaveChanges();
-        }
+            List<persona> lista;
 
-        public void EditarPersona(persona persona)
-        {
-            
-        }
-
-        public void ObtenerPersona()
-        {
-            
+            if (filtro == null)
+            {
+                lista = modeloMinisterio.persona.Select(p => p).ToList();
+            }
+            else
+            {
+                lista = modeloMinisterio.persona.Where(p => p.cedula.Equals(Convert.ToInt16(filtro))).ToList();
+            }
+            return lista;
         }
 
         public PersonaDTO ValidarUsuario(PersonaDTO usuario)
@@ -138,7 +161,7 @@ namespace MinisterioDeportesWCF
         #endregion
 
         #region rutina 
-        public Boolean AgregarRutina(rutina rutina)
+        public String AgregarRutina(rutina rutina)
         {
             RespuestaError respuesta = new RespuestaError();
             try
@@ -154,29 +177,53 @@ namespace MinisterioDeportesWCF
                 respuesta.HayError = false;
                 
             }
-            return respuesta.HayError;
+            return respuesta.MensajeError;
         }
 
-        public void EliminarRutina(rutina rutina)
+        public String EliminarRutina(rutina rutina)
+        { 
+            RespuestaError respuesta = new RespuestaError();
+            try
+            {
+                MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+                modeloMinisterio.rutina.Remove(rutina);
+                modeloMinisterio.SaveChanges();
+                respuesta.MensajeError = null;
+            }
+            catch (Exception e)
+            {
+
+                respuesta.MensajeError = e.Message;
+            }
+            return respuesta.MensajeError;
+
+        }
+
+        public String EditarRutina(rutina rutina)
+        {
+           return this.AgregarRutina(rutina);
+        }
+
+        public List<rutina> ObtenerRutina(string filtro =null)
         {
             MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
-            modeloMinisterio.rutina.Remove(rutina);
-            modeloMinisterio.SaveChanges();
-        }
+            List<rutina> lista;
 
-        public void EditarRutina(rutina rutina)
-        {
-            
-        }
+            if (filtro == null)
+            {
+                lista = modeloMinisterio.rutina.Select(p => p).ToList();
+            }
+            else
+            {
 
-        public void ObtenerRutina()
-        {
-           
+                lista = modeloMinisterio.rutina.Where(p => p.nombre.ToLower().Contains(filtro)).ToList();
+            }
+            return lista;
         }
         #endregion
 
         #region planRutina
-        public Boolean AgregarPlanRutina(plan planRutina)
+        public String AgregarPlanRutina(plan planRutina)
         {
             RespuestaError respuesta = new RespuestaError();
             try
@@ -184,32 +231,52 @@ namespace MinisterioDeportesWCF
                 MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
                 modeloMinisterio.plan.Add(planRutina);
                 modeloMinisterio.SaveChanges();
-                respuesta.HayError = true;
+                respuesta.MensajeError = null;
             }
             catch (Exception e)
             {
                 respuesta.MensajeError = e.ToString();
                 respuesta.HayError = false;
             }
-            return respuesta.HayError;
+            return respuesta.MensajeError;
         }
+        public String EliminarPlanRutina(plan planRutina)
+        {
+            RespuestaError respuesta = new RespuestaError();
+            try
+            {
+                MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
+                modeloMinisterio.plan.Remove(planRutina);
+                modeloMinisterio.SaveChanges();
+                respuesta.MensajeError = null;
+            }
+            catch (Exception e)
+            {
 
-        public void EliminarPlanRutina(plan planRutina)
+                respuesta.MensajeError = e.Message;
+            }
+            return respuesta.MensajeError;
+        }
+        public String EditarPlanRutina(plan planRutina)
+        {
+            return  this.AgregarPlanRutina(planRutina);
+        }
+        public List<plan> ObtenerPlanRutina(string filtro=null)
         {
             MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
-            modeloMinisterio.plan.Remove(planRutina);
-            modeloMinisterio.SaveChanges();
-        }
+            List<plan> lista;
 
-        public void EditarPlanRutina(plan planRutina)
-        {
-           
-        }
-        public void ObtenerPlanRutina()
-        {
-            
+            if (filtro == null)
+            {
+                lista = modeloMinisterio.plan.Select(p => p).ToList();
+            }
+            else
+            {
+
+                lista = modeloMinisterio.plan.Where(p => p.descripcion.ToLower().Contains(filtro)).ToList();
+            }
+            return lista;
         }
         #endregion
-
     }
 }

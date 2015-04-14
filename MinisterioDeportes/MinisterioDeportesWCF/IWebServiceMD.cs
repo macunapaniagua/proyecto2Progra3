@@ -29,32 +29,32 @@ namespace MinisterioDeportesWCF
         [OperationContract]
         String AgregarPersona(persona persona);
         [OperationContract]
-        void EliminarPersona(persona persona);
+        String EliminarPersona(persona persona);
         [OperationContract]
-        void EditarPersona(persona persona);
+        String EditarPersona(persona persona);
         [OperationContract]
         //creo que deberia ser list y no void
-        void ObtenerPersona();
+        List<persona> ObtenerPersona(String filtro);
 
         [OperationContract]
-        Boolean AgregarRutina(rutina rutina);
+        String AgregarRutina(rutina rutina);
         [OperationContract]
-        void EliminarRutina(rutina rutina);
+        String EliminarRutina(rutina rutina);
         [OperationContract]
-        void EditarRutina(rutina rutina);
+        String EditarRutina(rutina rutina);
         [OperationContract]
         //creo que deberia ser list y no void
-        void ObtenerRutina();
+        List<rutina> ObtenerRutina(String filtro);
 
         [OperationContract]
-        Boolean AgregarPlanRutina(plan planRutina);
+        String AgregarPlanRutina(plan planRutina);
         [OperationContract]
-        void EliminarPlanRutina(plan planRutina);
+        String EliminarPlanRutina(plan planRutina);
         [OperationContract]
-        void EditarPlanRutina(plan planRutina);
+        String EditarPlanRutina(plan planRutina);
         [OperationContract]
         //creo que deberia ser list y no void
-        void ObtenerPlanRutina();
+        List<plan> ObtenerPlanRutina(String filtro);
       
         
     }

@@ -15,7 +15,6 @@ namespace MinisterioDeportesWCF.Entidades
                 this.descripcion = plan.descripcion;
                 this.detalles = plan.detalles;
                 this.id = Convert.ToInt16(plan.ID);
-
             }
 
             [DataMember]
