@@ -1,243 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" />
-  <xs:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" />
-  <xs:element name="AgregarDeporte">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="deporte" nillable="true" type="q1:deporte" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AgregarDeporteResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="AgregarDeporteResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarDeporte">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="deporte" nillable="true" type="q2:deporte" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarDeporteResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="EliminarDeporteResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EditarDeporte">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="deporte" nillable="true" type="q3:deporte" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EditarDeporteResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="EditarDeporteResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerDeporte">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="filtro" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerDeporteResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="ObtenerDeporteResult" nillable="true" type="q4:ArrayOfdeporte" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ValidarUsuario">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" minOccurs="0" name="usuario" nillable="true" type="q5:PersonaDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ValidarUsuarioResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" minOccurs="0" name="ValidarUsuarioResult" nillable="true" type="q6:PersonaDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AgregarPersona">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="persona" nillable="true" type="q7:persona" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AgregarPersonaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="AgregarPersonaResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarPersona">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="persona" nillable="true" type="q8:persona" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarPersonaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="EliminarPersonaResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EditarPersona">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="persona" nillable="true" type="q9:persona" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EditarPersonaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="EditarPersonaResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerPersona">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="filtro" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerPersonaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="ObtenerPersonaResult" nillable="true" type="q10:ArrayOfpersona" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AgregarRutina">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="rutina" nillable="true" type="q11:rutina" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AgregarRutinaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="AgregarRutinaResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarRutina">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="rutina" nillable="true" type="q12:rutina" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarRutinaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="EliminarRutinaResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EditarRutina">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="rutina" nillable="true" type="q13:rutina" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EditarRutinaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="EditarRutinaResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerRutina">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="filtro" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerRutinaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="ObtenerRutinaResult" nillable="true" type="q14:ArrayOfrutina" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AgregarPlanRutina">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="planRutina" nillable="true" type="q15:plan" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AgregarPlanRutinaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="AgregarPlanRutinaResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarPlanRutina">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="planRutina" nillable="true" type="q16:plan" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarPlanRutinaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="EliminarPlanRutinaResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EditarPlanRutina">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="planRutina" nillable="true" type="q17:plan" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EditarPlanRutinaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="EditarPlanRutinaResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerPlanRutina">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="filtro" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerPlanRutinaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" minOccurs="0" name="ObtenerPlanRutinaResult" nillable="true" type="q18:ArrayOfplan" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="anyType" nillable="true" type="xs:anyType" />
+  <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+  <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+  <xs:element name="boolean" nillable="true" type="xs:boolean" />
+  <xs:element name="byte" nillable="true" type="xs:byte" />
+  <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+  <xs:element name="decimal" nillable="true" type="xs:decimal" />
+  <xs:element name="double" nillable="true" type="xs:double" />
+  <xs:element name="float" nillable="true" type="xs:float" />
+  <xs:element name="int" nillable="true" type="xs:int" />
+  <xs:element name="long" nillable="true" type="xs:long" />
+  <xs:element name="QName" nillable="true" type="xs:QName" />
+  <xs:element name="short" nillable="true" type="xs:short" />
+  <xs:element name="string" nillable="true" type="xs:string" />
+  <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+  <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+  <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+  <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+  <xs:element name="char" nillable="true" type="tns:char" />
+  <xs:simpleType name="char">
+    <xs:restriction base="xs:int" />
+  </xs:simpleType>
+  <xs:element name="duration" nillable="true" type="tns:duration" />
+  <xs:simpleType name="duration">
+    <xs:restriction base="xs:duration">
+      <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+      <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+      <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="guid" nillable="true" type="tns:guid" />
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="FactoryType" type="xs:QName" />
+  <xs:attribute name="Id" type="xs:ID" />
+  <xs:attribute name="Ref" type="xs:IDREF" />
 </xs:schema>

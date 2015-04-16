@@ -43,20 +43,22 @@ namespace MinisterioDeportes.Vistas
             user.password = password;
 
             // Obtiene todos los datos del usuario ingresado (null si no existe)
-            WebServiceMDClient cliente = new WebServiceMDClient();
-            user = cliente.ValidarUsuario(user);
-            if (user != null)
+            using (WebServiceMDClient cliente = new WebServiceMDClient())
             {
-                // Limpia los campos de text y carga el dashboard
-                cleanFields();
-                MainWindow dashboard = new MainWindow(user);
-                dashboard.Show(this);
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("El nombre de usuario y contraseña no coinciden o el usuario no existe en el sistema");
-            }
+                user = cliente.ValidarLogin(user);
+                if (user != null)
+                {
+                    // Limpia los campos de text y carga el dashboard
+                    cleanFields();
+                    MainWindow dashboard = new MainWindow(user);
+                    dashboard.Show(this);
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("El nombre de usuario y contraseña no coinciden o el usuario no existe en el sistema");
+                }
+            }            
         }
 
         /// <summary>

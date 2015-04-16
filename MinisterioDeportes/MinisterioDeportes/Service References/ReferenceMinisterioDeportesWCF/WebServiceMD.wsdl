@@ -4,10 +4,16 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" />
-      <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" />
+      <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" />
+      <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IWebServiceMD_ValidarLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarLogin" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ValidarLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarLoginResponse" />
+  </wsdl:message>
   <wsdl:message name="IWebServiceMD_AgregarDeporte_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarDeporte" />
   </wsdl:message>
@@ -26,17 +32,11 @@
   <wsdl:message name="IWebServiceMD_EditarDeporte_OutputMessage">
     <wsdl:part name="parameters" element="tns:EditarDeporteResponse" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ObtenerDeporte_InputMessage">
-    <wsdl:part name="parameters" element="tns:ObtenerDeporte" />
+  <wsdl:message name="IWebServiceMD_ObtenerDeportes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerDeportes" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ObtenerDeporte_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ObtenerDeporteResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ValidarUsuario_InputMessage">
-    <wsdl:part name="parameters" element="tns:ValidarUsuario" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ValidarUsuario_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ValidarUsuarioResponse" />
+  <wsdl:message name="IWebServiceMD_ObtenerDeportes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerDeportesResponse" />
   </wsdl:message>
   <wsdl:message name="IWebServiceMD_AgregarPersona_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarPersona" />
@@ -111,6 +111,10 @@
     <wsdl:part name="parameters" element="tns:ObtenerPlanRutinaResponse" />
   </wsdl:message>
   <wsdl:portType name="IWebServiceMD">
+    <wsdl:operation name="ValidarLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ValidarLogin" message="tns:IWebServiceMD_ValidarLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ValidarLoginResponse" message="tns:IWebServiceMD_ValidarLogin_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AgregarDeporte">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarDeporte" message="tns:IWebServiceMD_AgregarDeporte_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarDeporteResponse" message="tns:IWebServiceMD_AgregarDeporte_OutputMessage" />
@@ -123,13 +127,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EditarDeporte" message="tns:IWebServiceMD_EditarDeporte_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EditarDeporteResponse" message="tns:IWebServiceMD_EditarDeporte_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ObtenerDeporte">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerDeporte" message="tns:IWebServiceMD_ObtenerDeporte_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerDeporteResponse" message="tns:IWebServiceMD_ObtenerDeporte_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ValidarUsuario">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ValidarUsuario" message="tns:IWebServiceMD_ValidarUsuario_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ValidarUsuarioResponse" message="tns:IWebServiceMD_ValidarUsuario_OutputMessage" />
+    <wsdl:operation name="ObtenerDeportes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerDeportes" message="tns:IWebServiceMD_ObtenerDeportes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerDeportesResponse" message="tns:IWebServiceMD_ObtenerDeportes_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AgregarPersona">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarPersona" message="tns:IWebServiceMD_AgregarPersona_InputMessage" />
@@ -182,6 +182,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWebServiceMD" type="tns:IWebServiceMD">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValidarLogin">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ValidarLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AgregarDeporte">
       <soap:operation soapAction="http://tempuri.org/IWebServiceMD/AgregarDeporte" style="document" />
       <wsdl:input>
@@ -209,17 +218,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ObtenerDeporte">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerDeporte" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ValidarUsuario">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ValidarUsuario" style="document" />
+    <wsdl:operation name="ObtenerDeportes">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerDeportes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

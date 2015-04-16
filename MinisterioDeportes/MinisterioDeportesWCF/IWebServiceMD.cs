@@ -14,17 +14,25 @@ namespace MinisterioDeportesWCF
     public interface IWebServiceMD
     {
         [OperationContract]
-        String AgregarDeporte(deporte deporte);
+        PersonaDTO ValidarLogin(PersonaDTO usuario);
+
         [OperationContract]
-        String EliminarDeporte(deporte deporte);
+        String AgregarDeporte(DeporteDTO deporte);
+        
         [OperationContract]
-        String EditarDeporte(deporte deporte);
+        String EliminarDeporte(DeporteDTO deporte);
+        
         [OperationContract]
-        //creo que deberia ser list y no void
-        List<deporte> ObtenerDeporte(String filtro);
+        String EditarDeporte(DeporteDTO deporte);
+
         [OperationContract]
-        //creo que deberia ser list y no void
-        PersonaDTO ValidarUsuario(PersonaDTO usuario);
+        List<DeporteDTO> ObtenerDeportes(String filtro = null);
+        
+
+
+
+
+        
 
         [OperationContract]
         String AgregarPersona(persona persona);

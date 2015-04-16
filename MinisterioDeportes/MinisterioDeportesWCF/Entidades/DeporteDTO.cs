@@ -10,16 +10,26 @@ namespace MinisterioDeportesWCF.Entidades
     [DataContract]
     public class DeporteDTO
     {
+        /// <summary>
+        /// Constructores
+        /// </summary>
+        /// <param name="pNombreDeporte"></param>
+        public DeporteDTO(String pNombreDeporte)
+        {
+            Descripcion = pNombreDeporte;
+        }
+
         public DeporteDTO(deporte deporte)
-    {
-        this.descripcion = deporte.descripcion;
-        this.id = Convert.ToInt16(deporte.ID);
-    }
-   
-    [DataMember]
-    public string descripcion { get; set; }
-    [DataMember]
-    public Int16 id { get; set; }
-    
+        {
+            this.Id = Convert.ToInt16(deporte.ID);
+            this.Descripcion = deporte.descripcion;            
+        }
+
+        [DataMember]
+        public Int16 Id { get; set; }
+
+        [DataMember]
+        public string Descripcion { get; set; }
+        
     }
 }
