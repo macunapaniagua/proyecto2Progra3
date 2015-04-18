@@ -5,7 +5,6 @@
       <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" />
-      <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IWebServiceMD_ValidarLogin_InputMessage">
@@ -38,6 +37,30 @@
   <wsdl:message name="IWebServiceMD_ObtenerDeportes_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerDeportesResponse" />
   </wsdl:message>
+  <wsdl:message name="IWebServiceMD_AgregarRutina_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarRutina" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_AgregarRutina_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarRutinaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ActualizarRutina_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarRutina" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ActualizarRutina_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarRutinaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ObtenerRutinas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRutinas" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ObtenerRutinas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRutinasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_EliminarRutina_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRutina" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_EliminarRutina_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRutinaResponse" />
+  </wsdl:message>
   <wsdl:message name="IWebServiceMD_AgregarPersona_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarPersona" />
   </wsdl:message>
@@ -50,41 +73,17 @@
   <wsdl:message name="IWebServiceMD_EliminarPersona_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarPersonaResponse" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EditarPersona_InputMessage">
-    <wsdl:part name="parameters" element="tns:EditarPersona" />
+  <wsdl:message name="IWebServiceMD_ActualizarPersona_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPersona" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EditarPersona_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EditarPersonaResponse" />
+  <wsdl:message name="IWebServiceMD_ActualizarPersona_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPersonaResponse" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ObtenerPersona_InputMessage">
-    <wsdl:part name="parameters" element="tns:ObtenerPersona" />
+  <wsdl:message name="IWebServiceMD_ObtenerParticipantes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerParticipantes" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ObtenerPersona_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ObtenerPersonaResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_AgregarRutina_InputMessage">
-    <wsdl:part name="parameters" element="tns:AgregarRutina" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_AgregarRutina_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AgregarRutinaResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EliminarRutina_InputMessage">
-    <wsdl:part name="parameters" element="tns:EliminarRutina" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EliminarRutina_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EliminarRutinaResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EditarRutina_InputMessage">
-    <wsdl:part name="parameters" element="tns:EditarRutina" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EditarRutina_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EditarRutinaResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ObtenerRutina_InputMessage">
-    <wsdl:part name="parameters" element="tns:ObtenerRutina" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ObtenerRutina_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ObtenerRutinaResponse" />
+  <wsdl:message name="IWebServiceMD_ObtenerParticipantes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerParticipantesResponse" />
   </wsdl:message>
   <wsdl:message name="IWebServiceMD_AgregarPlanRutina_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarPlanRutina" />
@@ -104,11 +103,11 @@
   <wsdl:message name="IWebServiceMD_EditarPlanRutina_OutputMessage">
     <wsdl:part name="parameters" element="tns:EditarPlanRutinaResponse" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ObtenerPlanRutina_InputMessage">
-    <wsdl:part name="parameters" element="tns:ObtenerPlanRutina" />
+  <wsdl:message name="IWebServiceMD_ObtenerPlanes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPlanes" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ObtenerPlanRutina_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ObtenerPlanRutinaResponse" />
+  <wsdl:message name="IWebServiceMD_ObtenerPlanes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPlanesResponse" />
   </wsdl:message>
   <wsdl:portType name="IWebServiceMD">
     <wsdl:operation name="ValidarLogin">
@@ -131,6 +130,22 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerDeportes" message="tns:IWebServiceMD_ObtenerDeportes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerDeportesResponse" message="tns:IWebServiceMD_ObtenerDeportes_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AgregarRutina">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarRutina" message="tns:IWebServiceMD_AgregarRutina_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarRutinaResponse" message="tns:IWebServiceMD_AgregarRutina_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRutina">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ActualizarRutina" message="tns:IWebServiceMD_ActualizarRutina_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ActualizarRutinaResponse" message="tns:IWebServiceMD_ActualizarRutina_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRutinas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerRutinas" message="tns:IWebServiceMD_ObtenerRutinas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerRutinasResponse" message="tns:IWebServiceMD_ObtenerRutinas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRutina">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EliminarRutina" message="tns:IWebServiceMD_EliminarRutina_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EliminarRutinaResponse" message="tns:IWebServiceMD_EliminarRutina_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AgregarPersona">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarPersona" message="tns:IWebServiceMD_AgregarPersona_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarPersonaResponse" message="tns:IWebServiceMD_AgregarPersona_OutputMessage" />
@@ -139,29 +154,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EliminarPersona" message="tns:IWebServiceMD_EliminarPersona_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EliminarPersonaResponse" message="tns:IWebServiceMD_EliminarPersona_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="EditarPersona">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EditarPersona" message="tns:IWebServiceMD_EditarPersona_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EditarPersonaResponse" message="tns:IWebServiceMD_EditarPersona_OutputMessage" />
+    <wsdl:operation name="ActualizarPersona">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ActualizarPersona" message="tns:IWebServiceMD_ActualizarPersona_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ActualizarPersonaResponse" message="tns:IWebServiceMD_ActualizarPersona_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ObtenerPersona">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerPersona" message="tns:IWebServiceMD_ObtenerPersona_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerPersonaResponse" message="tns:IWebServiceMD_ObtenerPersona_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AgregarRutina">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarRutina" message="tns:IWebServiceMD_AgregarRutina_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarRutinaResponse" message="tns:IWebServiceMD_AgregarRutina_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="EliminarRutina">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EliminarRutina" message="tns:IWebServiceMD_EliminarRutina_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EliminarRutinaResponse" message="tns:IWebServiceMD_EliminarRutina_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="EditarRutina">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EditarRutina" message="tns:IWebServiceMD_EditarRutina_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EditarRutinaResponse" message="tns:IWebServiceMD_EditarRutina_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ObtenerRutina">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerRutina" message="tns:IWebServiceMD_ObtenerRutina_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerRutinaResponse" message="tns:IWebServiceMD_ObtenerRutina_OutputMessage" />
+    <wsdl:operation name="ObtenerParticipantes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerParticipantes" message="tns:IWebServiceMD_ObtenerParticipantes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerParticipantesResponse" message="tns:IWebServiceMD_ObtenerParticipantes_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AgregarPlanRutina">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarPlanRutina" message="tns:IWebServiceMD_AgregarPlanRutina_InputMessage" />
@@ -175,9 +174,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EditarPlanRutina" message="tns:IWebServiceMD_EditarPlanRutina_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EditarPlanRutinaResponse" message="tns:IWebServiceMD_EditarPlanRutina_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ObtenerPlanRutina">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerPlanRutina" message="tns:IWebServiceMD_ObtenerPlanRutina_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerPlanRutinaResponse" message="tns:IWebServiceMD_ObtenerPlanRutina_OutputMessage" />
+    <wsdl:operation name="ObtenerPlanes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerPlanes" message="tns:IWebServiceMD_ObtenerPlanes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerPlanesResponse" message="tns:IWebServiceMD_ObtenerPlanes_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWebServiceMD" type="tns:IWebServiceMD">
@@ -227,6 +226,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AgregarRutina">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/AgregarRutina" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRutina">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ActualizarRutina" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRutinas">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerRutinas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRutina">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/EliminarRutina" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AgregarPersona">
       <soap:operation soapAction="http://tempuri.org/IWebServiceMD/AgregarPersona" style="document" />
       <wsdl:input>
@@ -245,8 +280,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="EditarPersona">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/EditarPersona" style="document" />
+    <wsdl:operation name="ActualizarPersona">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ActualizarPersona" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -254,44 +289,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ObtenerPersona">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerPersona" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AgregarRutina">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/AgregarRutina" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EliminarRutina">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/EliminarRutina" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EditarRutina">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/EditarRutina" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ObtenerRutina">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerRutina" style="document" />
+    <wsdl:operation name="ObtenerParticipantes">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerParticipantes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -326,8 +325,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ObtenerPlanRutina">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerPlanRutina" style="document" />
+    <wsdl:operation name="ObtenerPlanes">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerPlanes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

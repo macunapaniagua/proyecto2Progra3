@@ -128,22 +128,16 @@
     <None Include="Service References\ReferenceMinisterioDeportesWCF\MinisterioDeportes.ReferenceMinisterioDeportesWCF.DeporteDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ReferenceMinisterioDeportesWCF\MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\ReferenceMinisterioDeportesWCF\MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ReferenceMinisterioDeportesWCF\MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan.datasource">
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ReferenceMinisterioDeportesWCF\MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina.datasource">
+    <None Include="Service References\ReferenceMinisterioDeportesWCF\MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ReferenceMinisterioDeportesWCF\WebServiceMD.wsdl" />
-    <None Include="Service References\ReferenceMinisterioDeportesWCF\WebServiceMD.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ReferenceMinisterioDeportesWCF\WebServiceMD1.xsd">
       <SubType>Designer</SubType>
     </None>

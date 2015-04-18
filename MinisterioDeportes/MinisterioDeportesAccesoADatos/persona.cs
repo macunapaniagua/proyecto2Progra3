@@ -16,10 +16,10 @@ namespace MinisterioDeportesAccesoADatos
     {
         public persona()
         {
-            this.deporte = new HashSet<deporte>();
+            this.persona_deporte = new HashSet<persona_deporte>();
         }
     
-        public int cedula { get; set; }
+        public string cedula { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string apellido2 { get; set; }
@@ -27,6 +27,6 @@ namespace MinisterioDeportesAccesoADatos
         public bool is_admin { get; set; }
         public string email { get; set; }
     
-        public virtual ICollection<deporte> deporte { get; set; }
+        public virtual ICollection<persona_deporte> persona_deporte { get; set; }
     }
 }

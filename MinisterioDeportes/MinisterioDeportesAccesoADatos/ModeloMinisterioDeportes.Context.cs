@@ -27,6 +27,7 @@ namespace MinisterioDeportesAccesoADatos
     
         public virtual DbSet<deporte> deporte { get; set; }
         public virtual DbSet<persona> persona { get; set; }
+        public virtual DbSet<persona_deporte> persona_deporte { get; set; }
         public virtual DbSet<plan> plan { get; set; }
         public virtual DbSet<rutina> rutina { get; set; }
     }

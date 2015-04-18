@@ -11,17 +11,17 @@ namespace MinisterioDeportesWCF.Entidades
     public class PlanDTO
     {
         public PlanDTO(plan plan)
-            {
-                this.descripcion = plan.descripcion;
-                this.detalles = plan.detalles;
-                this.id = Convert.ToInt16(plan.ID);
-            }
+        {
+            this.id = Convert.ToInt16(plan.id);
+            this.nombre = plan.nombre;
+            this.detalles = plan.detalles;
+        }
 
-            [DataMember]
-            public string descripcion { get; set; }
-            [DataMember]
-            public string detalles { get; set; }
-            [DataMember]
-            public Int16 id { get; set; }
+        [DataMember(Order = 0)]
+        public Int16 id { get; set; }
+        [DataMember(Order = 1)]
+        public string nombre { get; set; }
+        [DataMember(Order = 2)]
+        public string detalles { get; set; }
     }
 }

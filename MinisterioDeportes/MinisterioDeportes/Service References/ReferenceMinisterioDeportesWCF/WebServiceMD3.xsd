@@ -2,20 +2,20 @@
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:complexType name="PersonaDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="apellido1" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="apellido2" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="cedula" type="xs:int" />
-      <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="esAdmi" type="xs:boolean" />
       <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isAdmin" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PersonaDTO" nillable="true" type="tns:PersonaDTO" />
   <xs:complexType name="DeporteDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:short" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DeporteDTO" nillable="true" type="tns:DeporteDTO" />
@@ -25,4 +25,38 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfDeporteDTO" nillable="true" type="tns:ArrayOfDeporteDTO" />
+  <xs:complexType name="RutinaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:short" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="detalles" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RutinaDTO" nillable="true" type="tns:RutinaDTO" />
+  <xs:complexType name="ArrayOfRutinaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RutinaDTO" nillable="true" type="tns:RutinaDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRutinaDTO" nillable="true" type="tns:ArrayOfRutinaDTO" />
+  <xs:complexType name="ArrayOfPersonaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PersonaDTO" nillable="true" type="tns:PersonaDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPersonaDTO" nillable="true" type="tns:ArrayOfPersonaDTO" />
+  <xs:complexType name="PlanDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:short" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="detalles" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlanDTO" nillable="true" type="tns:PlanDTO" />
+  <xs:complexType name="ArrayOfPlanDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlanDTO" nillable="true" type="tns:PlanDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlanDTO" nillable="true" type="tns:ArrayOfPlanDTO" />
 </xs:schema>

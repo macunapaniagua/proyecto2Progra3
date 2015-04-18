@@ -4,19 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EntityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EntityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="deporte">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="persona">
           <Key>
             <PropertyRef Name="cedula" />
           </Key>
-          <Property Name="cedula" Type="int" Nullable="false" />
+          <Property Name="cedula" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="apellido" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="apellido2" Type="varchar" MaxLength="255" Nullable="false" />
@@ -29,24 +29,17 @@
             <PropertyRef Name="persona" />
             <PropertyRef Name="deporte" />
           </Key>
-          <Property Name="persona" Type="int" Nullable="false" />
+          <Property Name="persona" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="deporte" Type="int" Nullable="false" />
+          <Property Name="id_plan" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="plan">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="detalles" Type="varchar" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="plan_deporte">
-          <Key>
-            <PropertyRef Name="id_plan" />
-            <PropertyRef Name="id_deporte" />
-          </Key>
-          <Property Name="id_plan" Type="int" Nullable="false" />
-          <Property Name="id_deporte" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="rutina">
           <Key>
@@ -54,7 +47,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="detalles" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="rutinas_planes">
           <Key>
@@ -69,7 +62,7 @@
           <End Role="persona_deporte" Type="Self.persona_deporte" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="deporte">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="persona_deporte">
               <PropertyRef Name="deporte" />
@@ -88,26 +81,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_plan_deporte_deporte">
-          <End Role="deporte" Type="Self.deporte" Multiplicity="1" />
-          <End Role="plan_deporte" Type="Self.plan_deporte" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="deporte">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="plan_deporte">
-              <PropertyRef Name="id_deporte" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_plan_deporte_plan">
+        <Association Name="FK_persona_deporte_plan">
           <End Role="plan" Type="Self.plan" Multiplicity="1" />
-          <End Role="plan_deporte" Type="Self.plan_deporte" Multiplicity="*" />
+          <End Role="persona_deporte" Type="Self.persona_deporte" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="plan">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="plan_deporte">
+            <Dependent Role="persona_deporte">
               <PropertyRef Name="id_plan" />
             </Dependent>
           </ReferentialConstraint>
@@ -117,7 +98,7 @@
           <End Role="rutinas_planes" Type="Self.rutinas_planes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="plan">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="rutinas_planes">
               <PropertyRef Name="cod_plan_rutina" />
@@ -141,7 +122,6 @@
           <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="persona_deporte" EntityType="Self.persona_deporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="plan" EntityType="Self.plan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="plan_deporte" EntityType="Self.plan_deporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rutina" EntityType="Self.rutina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rutinas_planes" EntityType="Self.rutinas_planes" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_persona_deporte_deporte" Association="Self.FK_persona_deporte_deporte">
@@ -152,13 +132,9 @@
             <End Role="persona" EntitySet="persona" />
             <End Role="persona_deporte" EntitySet="persona_deporte" />
           </AssociationSet>
-          <AssociationSet Name="FK_plan_deporte_deporte" Association="Self.FK_plan_deporte_deporte">
-            <End Role="deporte" EntitySet="deporte" />
-            <End Role="plan_deporte" EntitySet="plan_deporte" />
-          </AssociationSet>
-          <AssociationSet Name="FK_plan_deporte_plan" Association="Self.FK_plan_deporte_plan">
+          <AssociationSet Name="FK_persona_deporte_plan" Association="Self.FK_persona_deporte_plan">
             <End Role="plan" EntitySet="plan" />
-            <End Role="plan_deporte" EntitySet="plan_deporte" />
+            <End Role="persona_deporte" EntitySet="persona_deporte" />
           </AssociationSet>
           <AssociationSet Name="FK_rutinas_planes_plan1" Association="Self.FK_rutinas_planes_plan1">
             <End Role="plan" EntitySet="plan" />
@@ -169,83 +145,126 @@
             <End Role="rutinas_planes" EntitySet="rutinas_planes" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EntityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MinisterioDeportesEntityDataModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="deporte" EntityType="EntityModel.deporte" />
+          <EntitySet Name="persona" EntityType="EntityModel.persona" />
+          <EntitySet Name="persona_deporte" EntityType="EntityModel.persona_deporte" />
+          <EntitySet Name="plan" EntityType="EntityModel.plan" />
+          <EntitySet Name="rutina" EntityType="EntityModel.rutina" />
+          <AssociationSet Name="FK_persona_deporte_deporte" Association="EntityModel.FK_persona_deporte_deporte">
+            <End Role="deporte" EntitySet="deporte" />
+            <End Role="persona_deporte" EntitySet="persona_deporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_persona_deporte_persona" Association="EntityModel.FK_persona_deporte_persona">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="persona_deporte" EntitySet="persona_deporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_persona_deporte_plan" Association="EntityModel.FK_persona_deporte_plan">
+            <End Role="plan" EntitySet="plan" />
+            <End Role="persona_deporte" EntitySet="persona_deporte" />
+          </AssociationSet>
+          <AssociationSet Name="rutinas_planes" Association="EntityModel.rutinas_planes">
+            <End Role="plan" EntitySet="plan" />
+            <End Role="rutina" EntitySet="rutina" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="deporte">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="persona" Relationship="Self.persona_deporte" FromRole="deporte" ToRole="persona" />
-          <NavigationProperty Name="plan" Relationship="Self.plan_deporte" FromRole="deporte" ToRole="plan" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="persona_deporte" Relationship="EntityModel.FK_persona_deporte_deporte" FromRole="deporte" ToRole="persona_deporte" />
         </EntityType>
         <EntityType Name="persona">
           <Key>
             <PropertyRef Name="cedula" />
           </Key>
-          <Property Name="cedula" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="apellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="apellido2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedula" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="apellido2" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="is_admin" Type="Boolean" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="deporte" Relationship="Self.persona_deporte" FromRole="persona" ToRole="deporte" />
+          <NavigationProperty Name="persona_deporte" Relationship="EntityModel.FK_persona_deporte_persona" FromRole="persona" ToRole="persona_deporte" />
+        </EntityType>
+        <EntityType Name="persona_deporte">
+          <Key>
+            <PropertyRef Name="persona" />
+            <PropertyRef Name="deporte" />
+          </Key>
+          <Property Name="persona" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="deporte" Type="Int32" Nullable="false" />
+          <Property Name="id_plan" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="deporte1" Relationship="EntityModel.FK_persona_deporte_deporte" FromRole="persona_deporte" ToRole="deporte" />
+          <NavigationProperty Name="persona1" Relationship="EntityModel.FK_persona_deporte_persona" FromRole="persona_deporte" ToRole="persona" />
+          <NavigationProperty Name="plan" Relationship="EntityModel.FK_persona_deporte_plan" FromRole="persona_deporte" ToRole="plan" />
         </EntityType>
         <EntityType Name="plan">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="detalles" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="deporte" Relationship="Self.plan_deporte" FromRole="plan" ToRole="deporte" />
-          <NavigationProperty Name="rutina" Relationship="Self.rutinas_planes" FromRole="plan" ToRole="rutina" />
+          <NavigationProperty Name="persona_deporte" Relationship="EntityModel.FK_persona_deporte_plan" FromRole="plan" ToRole="persona_deporte" />
+          <NavigationProperty Name="rutina" Relationship="EntityModel.rutinas_planes" FromRole="plan" ToRole="rutina" />
         </EntityType>
         <EntityType Name="rutina">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="plan" Relationship="Self.rutinas_planes" FromRole="rutina" ToRole="plan" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="detalles" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="plan" Relationship="EntityModel.rutinas_planes" FromRole="rutina" ToRole="plan" />
         </EntityType>
-        <Association Name="persona_deporte">
-          <End Role="deporte" Type="Self.deporte" Multiplicity="*" />
-          <End Role="persona" Type="Self.persona" Multiplicity="*" />
+        <Association Name="FK_persona_deporte_deporte">
+          <End Type="EntityModel.deporte" Role="deporte" Multiplicity="1" />
+          <End Type="EntityModel.persona_deporte" Role="persona_deporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="deporte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="persona_deporte">
+              <PropertyRef Name="deporte" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="plan_deporte">
-          <End Role="deporte" Type="Self.deporte" Multiplicity="*" />
-          <End Role="plan" Type="Self.plan" Multiplicity="*" />
+        <Association Name="FK_persona_deporte_persona">
+          <End Type="EntityModel.persona" Role="persona" Multiplicity="1" />
+          <End Type="EntityModel.persona_deporte" Role="persona_deporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="persona_deporte">
+              <PropertyRef Name="persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_persona_deporte_plan">
+          <End Type="EntityModel.plan" Role="plan" Multiplicity="1" />
+          <End Type="EntityModel.persona_deporte" Role="persona_deporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plan">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="persona_deporte">
+              <PropertyRef Name="id_plan" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="rutinas_planes">
-          <End Role="plan" Type="Self.plan" Multiplicity="*" />
-          <End Role="rutina" Type="Self.rutina" Multiplicity="*" />
+          <End Type="EntityModel.plan" Role="plan" Multiplicity="*" />
+          <End Type="EntityModel.rutina" Role="rutina" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="MinisterioDeportesEntityDataModel" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="deporte" EntityType="Self.deporte" />
-          <EntitySet Name="persona" EntityType="Self.persona" />
-          <EntitySet Name="plan" EntityType="Self.plan" />
-          <EntitySet Name="rutina" EntityType="Self.rutina" />
-          <AssociationSet Name="persona_deporte" Association="Self.persona_deporte">
-            <End Role="deporte" EntitySet="deporte" />
-            <End Role="persona" EntitySet="persona" />
-          </AssociationSet>
-          <AssociationSet Name="plan_deporte" Association="Self.plan_deporte">
-            <End Role="deporte" EntitySet="deporte" />
-            <End Role="plan" EntitySet="plan" />
-          </AssociationSet>
-          <AssociationSet Name="rutinas_planes" Association="Self.rutinas_planes">
-            <End Role="plan" EntitySet="plan" />
-            <End Role="rutina" EntitySet="rutina" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -254,64 +273,57 @@
           <EntitySetMapping Name="deporte">
             <EntityTypeMapping TypeName="EntityModel.deporte">
               <MappingFragment StoreEntitySet="deporte">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="persona">
             <EntityTypeMapping TypeName="EntityModel.persona">
               <MappingFragment StoreEntitySet="persona">
-                <ScalarProperty Name="cedula" ColumnName="cedula" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="apellido" ColumnName="apellido" />
-                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="is_admin" ColumnName="is_admin" />
                 <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="persona_deporte">
+            <EntityTypeMapping TypeName="EntityModel.persona_deporte">
+              <MappingFragment StoreEntitySet="persona_deporte">
+                <ScalarProperty Name="id_plan" ColumnName="id_plan" />
+                <ScalarProperty Name="deporte" ColumnName="deporte" />
+                <ScalarProperty Name="persona" ColumnName="persona" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="plan">
             <EntityTypeMapping TypeName="EntityModel.plan">
               <MappingFragment StoreEntitySet="plan">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="detalles" ColumnName="detalles" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="rutina">
             <EntityTypeMapping TypeName="EntityModel.rutina">
               <MappingFragment StoreEntitySet="rutina">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="detalles" ColumnName="detalles" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="persona_deporte" TypeName="EntityModel.persona_deporte" StoreEntitySet="persona_deporte">
-            <EndProperty Name="deporte">
-              <ScalarProperty Name="ID" ColumnName="deporte" />
-            </EndProperty>
-            <EndProperty Name="persona">
-              <ScalarProperty Name="cedula" ColumnName="persona" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="plan_deporte" TypeName="EntityModel.plan_deporte" StoreEntitySet="plan_deporte">
-            <EndProperty Name="deporte">
-              <ScalarProperty Name="ID" ColumnName="id_deporte" />
-            </EndProperty>
-            <EndProperty Name="plan">
-              <ScalarProperty Name="ID" ColumnName="id_plan" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="rutinas_planes" TypeName="EntityModel.rutinas_planes" StoreEntitySet="rutinas_planes">
-            <EndProperty Name="plan">
-              <ScalarProperty Name="ID" ColumnName="cod_plan_rutina" />
-            </EndProperty>
             <EndProperty Name="rutina">
               <ScalarProperty Name="id" ColumnName="cod_rutina" />
+            </EndProperty>
+            <EndProperty Name="plan">
+              <ScalarProperty Name="id" ColumnName="cod_plan_rutina" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

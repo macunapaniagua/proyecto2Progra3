@@ -21,14 +21,14 @@ namespace MinisterioDeportesWCF.Entidades
 
         public DeporteDTO(deporte deporte)
         {
-            this.Id = Convert.ToInt16(deporte.ID);
+            this.Id = Convert.ToInt16(deporte.id);
             this.Descripcion = deporte.descripcion;            
         }
 
-        [DataMember]
+        [DataMember(Order = 0)]
         public Int16 Id { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 1)]
         public string Descripcion { get; set; }
         
     }

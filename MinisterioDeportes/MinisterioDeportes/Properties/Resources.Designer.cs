@@ -71,6 +71,24 @@ namespace MinisterioDeportes.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a mario.tico21@gmail.com.
+        /// </summary>
+        internal static string adminEmail {
+            get {
+                return ResourceManager.GetString("adminEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a cuentaC#.
+        /// </summary>
+        internal static string adminPassword {
+            get {
+                return ResourceManager.GetString("adminPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap background {

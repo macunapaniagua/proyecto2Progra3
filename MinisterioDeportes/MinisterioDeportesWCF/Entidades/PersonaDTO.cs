@@ -13,41 +13,47 @@ namespace MinisterioDeportesWCF.Entidades
         /// <summary>
         /// Metodo constructor
         /// </summary>
-        public PersonaDTO(String pNombre, Int16 pCedula, String pApellido1, String pApellido2, String pPassword, String pEmail, Boolean pIsAdmin)
+        public PersonaDTO(String pNombre, String pCedula, String pApellido1, String pApellido2, String pPassword, String pEmail, Boolean pIsAdmin)
         {
-            this.Nombre = pNombre;
-            this.cedula = pCedula;
-            this.apellido1 = pApellido1;
-            this.apellido2 = pApellido2;
-            this.password = pPassword;
-            this.esAdmi = pIsAdmin;            
-            this.correo = pEmail;
+            nombre = pNombre;
+            cedula = pCedula;
+            apellido1 = pApellido1;
+            apellido2 = pApellido2;
+            password = pPassword;
+            isAdmin = pIsAdmin;            
+            email = pEmail;
         }
 
         public PersonaDTO(persona persona)
         {
-            this.Nombre = persona.nombre;
-            this.cedula = persona.cedula;
-            this.apellido1 = persona.apellido;
-            this.password = persona.password;
-            this.esAdmi = persona.is_admin;
-            this.apellido2 = persona.apellido2;
-            this.correo = persona.email;
+            nombre = persona.nombre;
+            cedula = persona.cedula;
+            apellido1 = persona.apellido;
+            password = persona.password;
+            isAdmin = persona.is_admin;
+            apellido2 = persona.apellido2;
+            email = persona.email;
         }
 
-        [DataMember]
-        public string correo { get; set; }
-        [DataMember]
-        public string Nombre { get; set; }
-        [DataMember]
-        public int cedula { get; set; }
-        [DataMember]
-        public string apellido1 { get; set; }
-        [DataMember]
-        public string password { get; set; }
-        [DataMember]
-        public bool esAdmi { get; set; }
-        [DataMember]
-        public string apellido2 { get; set; }
+        [DataMember(Order = 0)]
+        public String cedula { get; set; }
+
+        [DataMember(Order = 1)]
+        public String nombre { get; set; }
+
+        [DataMember(Order = 2)]
+        public String apellido1 { get; set; }
+
+        [DataMember(Order = 3)]
+        public String apellido2 { get; set; }
+
+        [DataMember(Order = 4)]
+        public String password { get; set; }
+
+        [DataMember(Order = 5)]
+        public String email { get; set; }
+
+        [DataMember(Order = 6)]
+        public Boolean isAdmin { get; set; }        
     }
 }

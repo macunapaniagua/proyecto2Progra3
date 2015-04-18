@@ -56,8 +56,8 @@
             this.txtApellido1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtID = new System.Windows.Forms.TextBox();
+            this.txtNombreParticipante = new System.Windows.Forms.TextBox();
+            this.txtIdParticipante = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.gridParticipantes = new System.Windows.Forms.DataGridView();
@@ -267,7 +267,7 @@
             this.gridTablaDeportes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridTablaDeportes.Size = new System.Drawing.Size(864, 311);
             this.gridTablaDeportes.TabIndex = 0;
-            this.gridTablaDeportes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridTablaDeportes_CellContentClick);
+            this.gridTablaDeportes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridTablaDeportes_CellClick);
             // 
             // tabParticipantes
             // 
@@ -284,8 +284,8 @@
             this.tabParticipantes.Controls.Add(this.txtApellido1);
             this.tabParticipantes.Controls.Add(this.label7);
             this.tabParticipantes.Controls.Add(this.label8);
-            this.tabParticipantes.Controls.Add(this.txtNombre);
-            this.tabParticipantes.Controls.Add(this.txtID);
+            this.tabParticipantes.Controls.Add(this.txtNombreParticipante);
+            this.tabParticipantes.Controls.Add(this.txtIdParticipante);
             this.tabParticipantes.Controls.Add(this.label9);
             this.tabParticipantes.Controls.Add(this.label10);
             this.tabParticipantes.Controls.Add(this.gridParticipantes);
@@ -317,11 +317,12 @@
             this.btnEliminarParticipante.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnEliminarParticipante.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(126)))), ((int)(((byte)(251)))));
             this.btnEliminarParticipante.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarParticipante.Location = new System.Drawing.Point(745, 11);
+            this.btnEliminarParticipante.Location = new System.Drawing.Point(745, 51);
             this.btnEliminarParticipante.Name = "btnEliminarParticipante";
             this.btnEliminarParticipante.Size = new System.Drawing.Size(53, 46);
             this.btnEliminarParticipante.TabIndex = 47;
             this.btnEliminarParticipante.UseVisualStyleBackColor = true;
+            this.btnEliminarParticipante.Click += new System.EventHandler(this.btnEliminarParticipante_Click);
             // 
             // btnActualizarParticipante
             // 
@@ -431,19 +432,19 @@
             this.label8.TabIndex = 36;
             this.label8.Text = "Primer Apellido:";
             // 
-            // txtNombre
+            // txtNombreParticipante
             // 
-            this.txtNombre.Location = new System.Drawing.Point(156, 25);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(127, 20);
-            this.txtNombre.TabIndex = 35;
+            this.txtNombreParticipante.Location = new System.Drawing.Point(156, 25);
+            this.txtNombreParticipante.Name = "txtNombreParticipante";
+            this.txtNombreParticipante.Size = new System.Drawing.Size(127, 20);
+            this.txtNombreParticipante.TabIndex = 35;
             // 
-            // txtID
+            // txtIdParticipante
             // 
-            this.txtID.Location = new System.Drawing.Point(435, 25);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(145, 20);
-            this.txtID.TabIndex = 34;
+            this.txtIdParticipante.Location = new System.Drawing.Point(435, 25);
+            this.txtIdParticipante.Name = "txtIdParticipante";
+            this.txtIdParticipante.Size = new System.Drawing.Size(145, 20);
+            this.txtIdParticipante.TabIndex = 34;
             // 
             // label9
             // 
@@ -467,12 +468,17 @@
             // 
             // gridParticipantes
             // 
+            this.gridParticipantes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridParticipantes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.gridParticipantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridParticipantes.Location = new System.Drawing.Point(7, 153);
+            this.gridParticipantes.MultiSelect = false;
             this.gridParticipantes.Name = "gridParticipantes";
+            this.gridParticipantes.ReadOnly = true;
+            this.gridParticipantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridParticipantes.Size = new System.Drawing.Size(864, 298);
             this.gridParticipantes.TabIndex = 5;
-            this.gridParticipantes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridParticipantes_CellContentClick);
+            this.gridParticipantes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridParticipantes_CellClick);
             // 
             // tabPlanDeRutina
             // 
@@ -741,12 +747,17 @@
             // 
             // gridRutina
             // 
+            this.gridRutina.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridRutina.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.gridRutina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridRutina.Location = new System.Drawing.Point(7, 140);
+            this.gridRutina.MultiSelect = false;
             this.gridRutina.Name = "gridRutina";
+            this.gridRutina.ReadOnly = true;
+            this.gridRutina.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridRutina.Size = new System.Drawing.Size(864, 311);
             this.gridRutina.TabIndex = 5;
-            this.gridRutina.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRutina_CellContentClick);
+            this.gridRutina.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRutina_CellClick);
             // 
             // tabAsociarUserDep
             // 
@@ -1081,8 +1092,8 @@
         private System.Windows.Forms.TextBox txtApellido1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.TextBox txtNombreParticipante;
+        private System.Windows.Forms.TextBox txtIdParticipante;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtRutina;

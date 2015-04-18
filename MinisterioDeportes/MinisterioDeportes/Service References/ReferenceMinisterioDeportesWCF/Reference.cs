@@ -23,7 +23,10 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NombreField;
+        private string cedulaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string apellido1Field;
@@ -32,16 +35,13 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         private string apellido2Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int cedulaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string correoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool esAdmiField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string passwordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string emailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool isAdminField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -54,19 +54,32 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Nombre {
+        public string cedula {
             get {
-                return this.NombreField;
+                return this.cedulaField;
             }
             set {
-                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
-                    this.NombreField = value;
-                    this.RaisePropertyChanged("Nombre");
+                if ((object.ReferenceEquals(this.cedulaField, value) != true)) {
+                    this.cedulaField = value;
+                    this.RaisePropertyChanged("cedula");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
+                    this.nombreField = value;
+                    this.RaisePropertyChanged("nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
         public string apellido1 {
             get {
                 return this.apellido1Field;
@@ -79,7 +92,7 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public string apellido2 {
             get {
                 return this.apellido2Field;
@@ -92,46 +105,7 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int cedula {
-            get {
-                return this.cedulaField;
-            }
-            set {
-                if ((this.cedulaField.Equals(value) != true)) {
-                    this.cedulaField = value;
-                    this.RaisePropertyChanged("cedula");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string correo {
-            get {
-                return this.correoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.correoField, value) != true)) {
-                    this.correoField = value;
-                    this.RaisePropertyChanged("correo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool esAdmi {
-            get {
-                return this.esAdmiField;
-            }
-            set {
-                if ((this.esAdmiField.Equals(value) != true)) {
-                    this.esAdmiField = value;
-                    this.RaisePropertyChanged("esAdmi");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
         public string password {
             get {
                 return this.passwordField;
@@ -140,6 +114,32 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
                 if ((object.ReferenceEquals(this.passwordField, value) != true)) {
                     this.passwordField = value;
                     this.RaisePropertyChanged("password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+        public string email {
+            get {
+                return this.emailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.emailField, value) != true)) {
+                    this.emailField = value;
+                    this.RaisePropertyChanged("email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+        public bool isAdmin {
+            get {
+                return this.isAdminField;
+            }
+            set {
+                if ((this.isAdminField.Equals(value) != true)) {
+                    this.isAdminField = value;
+                    this.RaisePropertyChanged("isAdmin");
                 }
             }
         }
@@ -162,12 +162,12 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
+        
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private short IdField;
-
+        
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescripcionField;        
+        private string DescripcionField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -178,25 +178,21 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
                 this.extensionDataField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public short Id
-        {
-            get
-            {
+        public short Id {
+            get {
                 return this.IdField;
             }
-            set
-            {
-                if ((this.IdField.Equals(value) != true))
-                {
+            set {
+                if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
         public string Descripcion {
             get {
                 return this.DescripcionField;
@@ -207,7 +203,7 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
                     this.RaisePropertyChanged("Descripcion");
                 }
             }
-        }               
+        }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
@@ -221,278 +217,22 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="persona", Namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RutinaDTO", Namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades")]
     [System.SerializableAttribute()]
-    public partial class persona : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class RutinaDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string apellidoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string apellido2Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int cedulaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MinisterioDeportes.ReferenceMinisterioDeportesWCF.deporte[] deporteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string emailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool is_adminField;
+        private short idField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nombreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string passwordField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string apellido {
-            get {
-                return this.apellidoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.apellidoField, value) != true)) {
-                    this.apellidoField = value;
-                    this.RaisePropertyChanged("apellido");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string apellido2 {
-            get {
-                return this.apellido2Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.apellido2Field, value) != true)) {
-                    this.apellido2Field = value;
-                    this.RaisePropertyChanged("apellido2");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int cedula {
-            get {
-                return this.cedulaField;
-            }
-            set {
-                if ((this.cedulaField.Equals(value) != true)) {
-                    this.cedulaField = value;
-                    this.RaisePropertyChanged("cedula");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.deporte[] deporte {
-            get {
-                return this.deporteField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.deporteField, value) != true)) {
-                    this.deporteField = value;
-                    this.RaisePropertyChanged("deporte");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string email {
-            get {
-                return this.emailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.emailField, value) != true)) {
-                    this.emailField = value;
-                    this.RaisePropertyChanged("email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool is_admin {
-            get {
-                return this.is_adminField;
-            }
-            set {
-                if ((this.is_adminField.Equals(value) != true)) {
-                    this.is_adminField = value;
-                    this.RaisePropertyChanged("is_admin");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string nombre {
-            get {
-                return this.nombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
-                    this.nombreField = value;
-                    this.RaisePropertyChanged("nombre");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string password {
-            get {
-                return this.passwordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
-                    this.passwordField = value;
-                    this.RaisePropertyChanged("password");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="deporte", Namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos")]
-    [System.SerializableAttribute()]
-    public partial class deporte : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descripcionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona[] personaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan[] planField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string descripcion {
-            get {
-                return this.descripcionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descripcionField, value) != true)) {
-                    this.descripcionField = value;
-                    this.RaisePropertyChanged("descripcion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona[] persona {
-            get {
-                return this.personaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.personaField, value) != true)) {
-                    this.personaField = value;
-                    this.RaisePropertyChanged("persona");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan[] plan {
-            get {
-                return this.planField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.planField, value) != true)) {
-                    this.planField = value;
-                    this.RaisePropertyChanged("plan");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="plan", Namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos")]
-    [System.SerializableAttribute()]
-    public partial class plan : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MinisterioDeportes.ReferenceMinisterioDeportesWCF.deporte[] deporteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descripcionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string detallesField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina[] rutinaField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -504,126 +244,7 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.deporte[] deporte {
-            get {
-                return this.deporteField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.deporteField, value) != true)) {
-                    this.deporteField = value;
-                    this.RaisePropertyChanged("deporte");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string descripcion {
-            get {
-                return this.descripcionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descripcionField, value) != true)) {
-                    this.descripcionField = value;
-                    this.RaisePropertyChanged("descripcion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string detalles {
-            get {
-                return this.detallesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.detallesField, value) != true)) {
-                    this.detallesField = value;
-                    this.RaisePropertyChanged("detalles");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina[] rutina {
-            get {
-                return this.rutinaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.rutinaField, value) != true)) {
-                    this.rutinaField = value;
-                    this.RaisePropertyChanged("rutina");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="rutina", Namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesAccesoADatos")]
-    [System.SerializableAttribute()]
-    public partial class rutina : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descripcionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nombreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan[] planField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string descripcion {
-            get {
-                return this.descripcionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descripcionField, value) != true)) {
-                    this.descripcionField = value;
-                    this.RaisePropertyChanged("descripcion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
+        public short id {
             get {
                 return this.idField;
             }
@@ -648,15 +269,92 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan[] plan {
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public string detalles {
             get {
-                return this.planField;
+                return this.detallesField;
             }
             set {
-                if ((object.ReferenceEquals(this.planField, value) != true)) {
-                    this.planField = value;
-                    this.RaisePropertyChanged("plan");
+                if ((object.ReferenceEquals(this.detallesField, value) != true)) {
+                    this.detallesField = value;
+                    this.RaisePropertyChanged("detalles");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PlanDTO", Namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades")]
+    [System.SerializableAttribute()]
+    public partial class PlanDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string detallesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
+                    this.nombreField = value;
+                    this.RaisePropertyChanged("nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public string detalles {
+            get {
+                return this.detallesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.detallesField, value) != true)) {
+                    this.detallesField = value;
+                    this.RaisePropertyChanged("detalles");
                 }
             }
         }
@@ -705,77 +403,77 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerDeportes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerDeportesResponse")]
         System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.DeporteDTO[]> ObtenerDeportesAsync(string filtro);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarPersona", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarPersonaResponse")]
-        string AgregarPersona(MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona persona);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarPersona", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarPersonaResponse")]
-        System.Threading.Tasks.Task<string> AgregarPersonaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona persona);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EliminarPersona", ReplyAction="http://tempuri.org/IWebServiceMD/EliminarPersonaResponse")]
-        string EliminarPersona(MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona persona);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EliminarPersona", ReplyAction="http://tempuri.org/IWebServiceMD/EliminarPersonaResponse")]
-        System.Threading.Tasks.Task<string> EliminarPersonaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona persona);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EditarPersona", ReplyAction="http://tempuri.org/IWebServiceMD/EditarPersonaResponse")]
-        string EditarPersona(MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona persona);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EditarPersona", ReplyAction="http://tempuri.org/IWebServiceMD/EditarPersonaResponse")]
-        System.Threading.Tasks.Task<string> EditarPersonaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona persona);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerPersona", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerPersonaResponse")]
-        MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona[] ObtenerPersona(string filtro);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerPersona", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerPersonaResponse")]
-        System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona[]> ObtenerPersonaAsync(string filtro);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarRutina", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarRutinaResponse")]
+        string AgregarRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO pRutina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarRutina", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarRutinaResponse")]
-        string AgregarRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina rutina);
+        System.Threading.Tasks.Task<string> AgregarRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO pRutina);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarRutina", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarRutinaResponse")]
-        System.Threading.Tasks.Task<string> AgregarRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina rutina);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ActualizarRutina", ReplyAction="http://tempuri.org/IWebServiceMD/ActualizarRutinaResponse")]
+        string ActualizarRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO pRutina);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ActualizarRutina", ReplyAction="http://tempuri.org/IWebServiceMD/ActualizarRutinaResponse")]
+        System.Threading.Tasks.Task<string> ActualizarRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO pRutina);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerRutinas", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerRutinasResponse")]
+        MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO[] ObtenerRutinas(string filtro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerRutinas", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerRutinasResponse")]
+        System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO[]> ObtenerRutinasAsync(string filtro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EliminarRutina", ReplyAction="http://tempuri.org/IWebServiceMD/EliminarRutinaResponse")]
-        string EliminarRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina rutina);
+        string EliminarRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO rutina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EliminarRutina", ReplyAction="http://tempuri.org/IWebServiceMD/EliminarRutinaResponse")]
-        System.Threading.Tasks.Task<string> EliminarRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina rutina);
+        System.Threading.Tasks.Task<string> EliminarRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO rutina);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EditarRutina", ReplyAction="http://tempuri.org/IWebServiceMD/EditarRutinaResponse")]
-        string EditarRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina rutina);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarPersona", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarPersonaResponse")]
+        string AgregarPersona(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO persona);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EditarRutina", ReplyAction="http://tempuri.org/IWebServiceMD/EditarRutinaResponse")]
-        System.Threading.Tasks.Task<string> EditarRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina rutina);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarPersona", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarPersonaResponse")]
+        System.Threading.Tasks.Task<string> AgregarPersonaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO persona);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerRutina", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerRutinaResponse")]
-        MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina[] ObtenerRutina(string filtro);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EliminarPersona", ReplyAction="http://tempuri.org/IWebServiceMD/EliminarPersonaResponse")]
+        string EliminarPersona(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO persona);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerRutina", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerRutinaResponse")]
-        System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina[]> ObtenerRutinaAsync(string filtro);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EliminarPersona", ReplyAction="http://tempuri.org/IWebServiceMD/EliminarPersonaResponse")]
+        System.Threading.Tasks.Task<string> EliminarPersonaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO persona);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ActualizarPersona", ReplyAction="http://tempuri.org/IWebServiceMD/ActualizarPersonaResponse")]
+        string ActualizarPersona(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO persona);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ActualizarPersona", ReplyAction="http://tempuri.org/IWebServiceMD/ActualizarPersonaResponse")]
+        System.Threading.Tasks.Task<string> ActualizarPersonaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO persona);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerParticipantes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerParticipantesResponse")]
+        MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO[] ObtenerParticipantes(string filtro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerParticipantes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerParticipantesResponse")]
+        System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO[]> ObtenerParticipantesAsync(string filtro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarPlanRutinaResponse")]
-        string AgregarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan planRutina);
+        string AgregarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarPlanRutinaResponse")]
-        System.Threading.Tasks.Task<string> AgregarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan planRutina);
+        System.Threading.Tasks.Task<string> AgregarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EliminarPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/EliminarPlanRutinaResponse")]
-        string EliminarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan planRutina);
+        string EliminarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EliminarPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/EliminarPlanRutinaResponse")]
-        System.Threading.Tasks.Task<string> EliminarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan planRutina);
+        System.Threading.Tasks.Task<string> EliminarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EditarPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/EditarPlanRutinaResponse")]
-        string EditarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan planRutina);
+        string EditarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EditarPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/EditarPlanRutinaResponse")]
-        System.Threading.Tasks.Task<string> EditarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan planRutina);
+        System.Threading.Tasks.Task<string> EditarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerPlanRutinaResponse")]
-        MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan[] ObtenerPlanRutina(string filtro);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerPlanes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerPlanesResponse")]
+        MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO[] ObtenerPlanes(string filtro);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerPlanRutinaResponse")]
-        System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan[]> ObtenerPlanRutinaAsync(string filtro);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerPlanes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerPlanesResponse")]
+        System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO[]> ObtenerPlanesAsync(string filtro);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -845,100 +543,100 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
             return base.Channel.ObtenerDeportesAsync(filtro);
         }
         
-        public string AgregarPersona(MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona persona) {
-            return base.Channel.AgregarPersona(persona);
+        public string AgregarRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO pRutina) {
+            return base.Channel.AgregarRutina(pRutina);
         }
         
-        public System.Threading.Tasks.Task<string> AgregarPersonaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona persona) {
-            return base.Channel.AgregarPersonaAsync(persona);
+        public System.Threading.Tasks.Task<string> AgregarRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO pRutina) {
+            return base.Channel.AgregarRutinaAsync(pRutina);
         }
         
-        public string EliminarPersona(MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona persona) {
-            return base.Channel.EliminarPersona(persona);
+        public string ActualizarRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO pRutina) {
+            return base.Channel.ActualizarRutina(pRutina);
         }
         
-        public System.Threading.Tasks.Task<string> EliminarPersonaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona persona) {
-            return base.Channel.EliminarPersonaAsync(persona);
+        public System.Threading.Tasks.Task<string> ActualizarRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO pRutina) {
+            return base.Channel.ActualizarRutinaAsync(pRutina);
         }
         
-        public string EditarPersona(MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona persona) {
-            return base.Channel.EditarPersona(persona);
+        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO[] ObtenerRutinas(string filtro) {
+            return base.Channel.ObtenerRutinas(filtro);
         }
         
-        public System.Threading.Tasks.Task<string> EditarPersonaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona persona) {
-            return base.Channel.EditarPersonaAsync(persona);
+        public System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO[]> ObtenerRutinasAsync(string filtro) {
+            return base.Channel.ObtenerRutinasAsync(filtro);
         }
         
-        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona[] ObtenerPersona(string filtro) {
-            return base.Channel.ObtenerPersona(filtro);
-        }
-        
-        public System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.persona[]> ObtenerPersonaAsync(string filtro) {
-            return base.Channel.ObtenerPersonaAsync(filtro);
-        }
-        
-        public string AgregarRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina rutina) {
-            return base.Channel.AgregarRutina(rutina);
-        }
-        
-        public System.Threading.Tasks.Task<string> AgregarRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina rutina) {
-            return base.Channel.AgregarRutinaAsync(rutina);
-        }
-        
-        public string EliminarRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina rutina) {
+        public string EliminarRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO rutina) {
             return base.Channel.EliminarRutina(rutina);
         }
         
-        public System.Threading.Tasks.Task<string> EliminarRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina rutina) {
+        public System.Threading.Tasks.Task<string> EliminarRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.RutinaDTO rutina) {
             return base.Channel.EliminarRutinaAsync(rutina);
         }
         
-        public string EditarRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina rutina) {
-            return base.Channel.EditarRutina(rutina);
+        public string AgregarPersona(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO persona) {
+            return base.Channel.AgregarPersona(persona);
         }
         
-        public System.Threading.Tasks.Task<string> EditarRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina rutina) {
-            return base.Channel.EditarRutinaAsync(rutina);
+        public System.Threading.Tasks.Task<string> AgregarPersonaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO persona) {
+            return base.Channel.AgregarPersonaAsync(persona);
         }
         
-        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina[] ObtenerRutina(string filtro) {
-            return base.Channel.ObtenerRutina(filtro);
+        public string EliminarPersona(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO persona) {
+            return base.Channel.EliminarPersona(persona);
         }
         
-        public System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.rutina[]> ObtenerRutinaAsync(string filtro) {
-            return base.Channel.ObtenerRutinaAsync(filtro);
+        public System.Threading.Tasks.Task<string> EliminarPersonaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO persona) {
+            return base.Channel.EliminarPersonaAsync(persona);
         }
         
-        public string AgregarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan planRutina) {
+        public string ActualizarPersona(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO persona) {
+            return base.Channel.ActualizarPersona(persona);
+        }
+        
+        public System.Threading.Tasks.Task<string> ActualizarPersonaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO persona) {
+            return base.Channel.ActualizarPersonaAsync(persona);
+        }
+        
+        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO[] ObtenerParticipantes(string filtro) {
+            return base.Channel.ObtenerParticipantes(filtro);
+        }
+        
+        public System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO[]> ObtenerParticipantesAsync(string filtro) {
+            return base.Channel.ObtenerParticipantesAsync(filtro);
+        }
+        
+        public string AgregarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
             return base.Channel.AgregarPlanRutina(planRutina);
         }
         
-        public System.Threading.Tasks.Task<string> AgregarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan planRutina) {
+        public System.Threading.Tasks.Task<string> AgregarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
             return base.Channel.AgregarPlanRutinaAsync(planRutina);
         }
         
-        public string EliminarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan planRutina) {
+        public string EliminarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
             return base.Channel.EliminarPlanRutina(planRutina);
         }
         
-        public System.Threading.Tasks.Task<string> EliminarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan planRutina) {
+        public System.Threading.Tasks.Task<string> EliminarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
             return base.Channel.EliminarPlanRutinaAsync(planRutina);
         }
         
-        public string EditarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan planRutina) {
+        public string EditarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
             return base.Channel.EditarPlanRutina(planRutina);
         }
         
-        public System.Threading.Tasks.Task<string> EditarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan planRutina) {
+        public System.Threading.Tasks.Task<string> EditarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
             return base.Channel.EditarPlanRutinaAsync(planRutina);
         }
         
-        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan[] ObtenerPlanRutina(string filtro) {
-            return base.Channel.ObtenerPlanRutina(filtro);
+        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO[] ObtenerPlanes(string filtro) {
+            return base.Channel.ObtenerPlanes(filtro);
         }
         
-        public System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.plan[]> ObtenerPlanRutinaAsync(string filtro) {
-            return base.Channel.ObtenerPlanRutinaAsync(filtro);
+        public System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO[]> ObtenerPlanesAsync(string filtro) {
+            return base.Channel.ObtenerPlanesAsync(filtro);
         }
     }
 }

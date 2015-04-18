@@ -20,7 +20,6 @@ namespace MinisterioDeportes.Vistas
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            int userCode = 0;
             String userName = txtUsuario.Text.Trim();
             String password = txtContrasena.Text.Trim();
 
@@ -31,16 +30,12 @@ namespace MinisterioDeportes.Vistas
                 return;
             }
 
-            // Trata de convertir el texto ingresado a un entero
-            if(!int.TryParse(userName, out userCode)){
-                MessageBox.Show("El formato del nombre de usuario no coincide, únicamente debe contener números");
-                return;
-            }            
-            
             // Genera un usuario con los datos brindados en el login
-            PersonaDTO user = new PersonaDTO();
-            user.cedula = userCode;
-            user.password = password;
+            PersonaDTO user = new PersonaDTO()
+            {
+                cedula = userName,
+                password = password
+            };
 
             // Obtiene todos los datos del usuario ingresado (null si no existe)
             using (WebServiceMDClient cliente = new WebServiceMDClient())

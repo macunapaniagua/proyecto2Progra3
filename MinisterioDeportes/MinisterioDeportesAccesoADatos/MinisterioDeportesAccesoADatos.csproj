@@ -71,6 +71,9 @@
     <Compile Include="persona.cs">
       <DependentUpon>ModeloMinisterioDeportes.tt</DependentUpon>
     </Compile>
+    <Compile Include="persona_deporte.cs">
+      <DependentUpon>ModeloMinisterioDeportes.tt</DependentUpon>
+    </Compile>
     <Compile Include="plan.cs">
       <DependentUpon>ModeloMinisterioDeportes.tt</DependentUpon>
     </Compile>

@@ -16,14 +16,12 @@ namespace MinisterioDeportesAccesoADatos
     {
         public deporte()
         {
-            this.persona = new HashSet<persona>();
-            this.plan = new HashSet<plan>();
+            this.persona_deporte = new HashSet<persona_deporte>();
         }
     
-        public int ID { get; set; }
+        public int id { get; set; }
         public string descripcion { get; set; }
     
-        public virtual ICollection<persona> persona { get; set; }
-        public virtual ICollection<plan> plan { get; set; }
+        public virtual ICollection<persona_deporte> persona_deporte { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace MinisterioDeportesWCF
         [OperationContract]
         PersonaDTO ValidarLogin(PersonaDTO usuario);
 
+
         [OperationContract]
         String AgregarDeporte(DeporteDTO deporte);
         
@@ -27,45 +28,45 @@ namespace MinisterioDeportesWCF
 
         [OperationContract]
         List<DeporteDTO> ObtenerDeportes(String filtro = null);
+
+
+        [OperationContract]
+        String AgregarRutina(RutinaDTO pRutina);
         
+        [OperationContract]
+        String ActualizarRutina(RutinaDTO pRutina);
 
-
-
-
+        [OperationContract]
+        List<RutinaDTO> ObtenerRutinas(String filtro = null);
         
+        [OperationContract]
+        String EliminarRutina(RutinaDTO rutina);        
+
 
         [OperationContract]
-        String AgregarPersona(persona persona);
-        [OperationContract]
-        String EliminarPersona(persona persona);
-        [OperationContract]
-        String EditarPersona(persona persona);
-        [OperationContract]
-        //creo que deberia ser list y no void
-        List<persona> ObtenerPersona(String filtro);
+        String AgregarPersona(PersonaDTO persona);
 
         [OperationContract]
-        String AgregarRutina(rutina rutina);
-        [OperationContract]
-        String EliminarRutina(rutina rutina);
-        [OperationContract]
-        String EditarRutina(rutina rutina);
-        [OperationContract]
-        //creo que deberia ser list y no void
-        List<rutina> ObtenerRutina(String filtro);
-
-        [OperationContract]
-        String AgregarPlanRutina(plan planRutina);
-        [OperationContract]
-        String EliminarPlanRutina(plan planRutina);
-        [OperationContract]
-        String EditarPlanRutina(plan planRutina);
-        [OperationContract]
-        //creo que deberia ser list y no void
-        List<plan> ObtenerPlanRutina(String filtro);
-      
+        String EliminarPersona(PersonaDTO persona);
         
+        [OperationContract]
+        String ActualizarPersona(PersonaDTO persona);
+        
+        [OperationContract]
+        List<PersonaDTO> ObtenerParticipantes(String filtro = null);
+
+              
+
+        [OperationContract]
+        String AgregarPlanRutina(PlanDTO planRutina);
+        
+        [OperationContract]
+        String EliminarPlanRutina(PlanDTO planRutina);
+        
+        [OperationContract]
+        String EditarPlanRutina(PlanDTO planRutina);
+        
+        [OperationContract]
+        List<PlanDTO> ObtenerPlanes(String filtro = null);          
     }
-
-
 }

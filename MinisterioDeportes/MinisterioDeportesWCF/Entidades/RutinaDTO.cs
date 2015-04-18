@@ -10,22 +10,20 @@ namespace MinisterioDeportesWCF.Entidades
     [DataContract]
     public class RutinaDTO
     {
-
         public RutinaDTO(rutina rutina)
-            {
-                this.descripcion = rutina.descripcion;
-                this.nombre = rutina.nombre;
-                this.id = Convert.ToInt16(rutina.id);
+        {
+            this.id = Convert.ToInt16(rutina.id);
+            this.nombre = rutina.nombre;
+            this.detalles = rutina.detalles;         
+        }
 
-            }
+        [DataMember(Order = 0)]
+        public Int16 id { get; set; }
 
-            [DataMember]
-            public string descripcion { get; set; }
-            [DataMember]
-            public string nombre { get; set; }
-            [DataMember]
-            public Int16 id { get; set; }
+        [DataMember(Order = 1)]
+        public string nombre { get; set; }
 
-       
+        [DataMember(Order = 2)]
+        public string detalles { get; set; }
     }
 }
