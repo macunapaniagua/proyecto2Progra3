@@ -58,13 +58,13 @@ namespace MinisterioDeportesWCF
               
 
         [OperationContract]
-        String AgregarPlanRutina(PlanDTO planRutina);
+        String AgregarPlan(PlanDTO planRutina);
         
         [OperationContract]
-        String EliminarPlanRutina(PlanDTO planRutina);
+        String EliminarPlan(PlanDTO planRutina);
         
         [OperationContract]
-        String EditarPlanRutina(PlanDTO planRutina);
+        String EditarPlan(PlanDTO planRutina);
         
         [OperationContract]
         List<PlanDTO> ObtenerPlanes(String filtro = null);          

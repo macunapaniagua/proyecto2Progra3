@@ -451,23 +451,23 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerParticipantes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerParticipantesResponse")]
         System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.PersonaDTO[]> ObtenerParticipantesAsync(string filtro);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarPlanRutinaResponse")]
-        string AgregarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarPlan", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarPlanResponse")]
+        string AgregarPlan(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarPlanRutinaResponse")]
-        System.Threading.Tasks.Task<string> AgregarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/AgregarPlan", ReplyAction="http://tempuri.org/IWebServiceMD/AgregarPlanResponse")]
+        System.Threading.Tasks.Task<string> AgregarPlanAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EliminarPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/EliminarPlanRutinaResponse")]
-        string EliminarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EliminarPlan", ReplyAction="http://tempuri.org/IWebServiceMD/EliminarPlanResponse")]
+        string EliminarPlan(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EliminarPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/EliminarPlanRutinaResponse")]
-        System.Threading.Tasks.Task<string> EliminarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EliminarPlan", ReplyAction="http://tempuri.org/IWebServiceMD/EliminarPlanResponse")]
+        System.Threading.Tasks.Task<string> EliminarPlanAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EditarPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/EditarPlanRutinaResponse")]
-        string EditarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EditarPlan", ReplyAction="http://tempuri.org/IWebServiceMD/EditarPlanResponse")]
+        string EditarPlan(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EditarPlanRutina", ReplyAction="http://tempuri.org/IWebServiceMD/EditarPlanRutinaResponse")]
-        System.Threading.Tasks.Task<string> EditarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/EditarPlan", ReplyAction="http://tempuri.org/IWebServiceMD/EditarPlanResponse")]
+        System.Threading.Tasks.Task<string> EditarPlanAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerPlanes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerPlanesResponse")]
         MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO[] ObtenerPlanes(string filtro);
@@ -607,28 +607,28 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
             return base.Channel.ObtenerParticipantesAsync(filtro);
         }
         
-        public string AgregarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
-            return base.Channel.AgregarPlanRutina(planRutina);
+        public string AgregarPlan(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
+            return base.Channel.AgregarPlan(planRutina);
         }
         
-        public System.Threading.Tasks.Task<string> AgregarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
-            return base.Channel.AgregarPlanRutinaAsync(planRutina);
+        public System.Threading.Tasks.Task<string> AgregarPlanAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
+            return base.Channel.AgregarPlanAsync(planRutina);
         }
         
-        public string EliminarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
-            return base.Channel.EliminarPlanRutina(planRutina);
+        public string EliminarPlan(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
+            return base.Channel.EliminarPlan(planRutina);
         }
         
-        public System.Threading.Tasks.Task<string> EliminarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
-            return base.Channel.EliminarPlanRutinaAsync(planRutina);
+        public System.Threading.Tasks.Task<string> EliminarPlanAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
+            return base.Channel.EliminarPlanAsync(planRutina);
         }
         
-        public string EditarPlanRutina(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
-            return base.Channel.EditarPlanRutina(planRutina);
+        public string EditarPlan(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
+            return base.Channel.EditarPlan(planRutina);
         }
         
-        public System.Threading.Tasks.Task<string> EditarPlanRutinaAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
-            return base.Channel.EditarPlanRutinaAsync(planRutina);
+        public System.Threading.Tasks.Task<string> EditarPlanAsync(MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO planRutina) {
+            return base.Channel.EditarPlanAsync(planRutina);
         }
         
         public MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO[] ObtenerPlanes(string filtro) {

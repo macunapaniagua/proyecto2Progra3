@@ -19,8 +19,10 @@ namespace MinisterioDeportesWCF.Entidades
 
         [DataMember(Order = 0)]
         public Int16 id { get; set; }
+        
         [DataMember(Order = 1)]
         public string nombre { get; set; }
+        
         [DataMember(Order = 2)]
         public string detalles { get; set; }
     }

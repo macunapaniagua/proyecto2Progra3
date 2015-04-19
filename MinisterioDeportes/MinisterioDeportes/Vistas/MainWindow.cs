@@ -28,6 +28,8 @@ namespace MinisterioDeportes.Vistas
 
             cargarTodosDeportes();
             cargarTodasRutinas();
+            cargarTodosPlanes();
+            cargarTodosParticipantes();
         }
 
         /// <summary>
@@ -729,121 +731,197 @@ namespace MinisterioDeportes.Vistas
 
         #endregion
 
-
-
-
-
-
-
-
-
-
-
         #region Modulo Plan
 
+        /// <summary>
+        /// Limpia todos los campos del modulo plan
+        /// </summary>
         private void limpiarCamposPlan()
         {
             txtIdPlan.Clear();
             txtNombrePlan.Clear();
+            txtDetallesPlan.Clear();
+            gridPlanes.ClearSelection();
         }
 
+        /// <summary>
+        /// Obtiene todos los planes y las establece en la tabla
+        /// </summary>
+        private void cargarTodosPlanes()
+        {
+            using (WebServiceMDClient cliente = new WebServiceMDClient())
+            {
+                gridPlanes.DataSource = cliente.ObtenerPlanes("");
+            }
+        }
+
+        /// <summary>
+        /// Agrega un plan a la bd
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAgregarPlan_Click(object sender, EventArgs e)
         {
-            //////if (!String.IsNullOrWhiteSpace(txtNombrePlan.Text))
-            //////{
-            //////    plan plan = new plan();
-            //////    plan.descripcion = txtNombrePlan.Text;
-            //////    // Verifica si la insercion ha ocurrido exitosamente
-            //////    String resultadoInsercion = clienteWebService.AgregarPlanRutina(plan);
-            //////    if (resultadoInsercion != null)
-            //////    {
-            //////        MessageBox.Show(resultadoInsercion);
-            //////    }
-            //////    limpiarCamposPlan();
-            //////}
+            if (!String.IsNullOrWhiteSpace(txtNombrePlan.Text))
+            {
+                PlanDTO nuevoPlan = new PlanDTO()
+                {
+                    nombre = txtNombrePlan.Text,
+                    detalles = txtDetallesPlan.Text
+                };                
+
+                using (WebServiceMDClient clienteWebService = new WebServiceMDClient())
+                {
+                    // Verifica si la insercion ha ocurrido exitosamente
+                    String resultadoInsercion = clienteWebService.AgregarPlan(nuevoPlan);
+                    if (resultadoInsercion != null)
+                    {
+                        MessageBox.Show(resultadoInsercion);
+                    }
+                    else
+                    {
+                        cargarTodosPlanes();
+                    }
+                    limpiarCamposPlan();
+                }
+            }
+            else
+            {
+                MessageBox.Show("El campo con el nombre del nuevo plan es requerido");
+            }
         }
 
+        /// <summary>
+        /// Actualiza un plan con la informacion brindada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnActualizarPlan_Click(object sender, EventArgs e)
         {
-            //////String codigoPlan = txtIdPlan.Text;
-            //////if (String.IsNullOrWhiteSpace(codigoPlan))
-            //////{
-            //////    MessageBox.Show("Debe seleccionar la fila que desea editar");
-            //////    return;
-            //////}
-            //////else
-            //////{
-            //////    int cod;
-            //////    if (!Int32.TryParse(codigoPlan, out cod))
-            //////    {
-            //////        MessageBox.Show("Codigo del plan incorrecto");
-            //////        return;
-            //////    }
+            String codigoPlanTxt = txtIdPlan.Text;
+            if (String.IsNullOrEmpty(codigoPlanTxt))
+            {
+                MessageBox.Show("Debe seleccionar la fila que desea editar");
+                return;
+            }
+            else
+            {
+                if (!String.IsNullOrWhiteSpace(txtNombrePlan.Text))
+                {
+                    short codigoPlan;
+                    if (!Int16.TryParse(codigoPlanTxt, out codigoPlan))
+                    {
+                        MessageBox.Show("No se ha podido cargar el codigo del plan a actualizar. Intentelos mas tarde");
+                        return;
+                    }
 
-            //////    plan plan = new plan();
-            //////    plan.ID = cod;
-            //////    plan.descripcion = txtNombrePlan.Text;
+                    PlanDTO planEditado = new PlanDTO()
+                    {
+                        id = codigoPlan,
+                        nombre = txtNombrePlan.Text,
+                        detalles = txtDetallesPlan.Text
+                    };
 
-            //////    String resultadoActulizacion = clienteWebService.EditarPlanRutina(plan);
-            //////    if (resultadoActulizacion != null)
-            //////    {
-            //////        MessageBox.Show(resultadoActulizacion);
-            //////    }
-            //////    limpiarCamposPlan();
-            //////}
+                    using (WebServiceMDClient clienteWebService = new WebServiceMDClient())
+                    {
+                        String resultadoActulizacion = clienteWebService.EditarPlan(planEditado);
+                        if (resultadoActulizacion != null)
+                        {
+                            MessageBox.Show(resultadoActulizacion);
+                        }
+                        else
+                        {
+                            // Actualiza la informacion del campo modificado
+                            gridPlanes.CurrentRow.Cells[1].Value = planEditado.nombre;
+                            gridPlanes.CurrentRow.Cells[2].Value = planEditado.detalles;
+                        }
+                        limpiarCamposPlan();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El campo con el nombre del plan es requerido para actualizarla");
+                }
+            }
         }
 
+        /// <summary>
+        /// Elimina un plan seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEliminarPlan_Click(object sender, EventArgs e)
         {
-            //////String codigoPlanTxt = txtIdPlan.Text;
-            //////if (String.IsNullOrWhiteSpace(codigoPlanTxt))
-            //////{
-            //////    MessageBox.Show("Debe seleccionar la fila que desea eliminar");
-            //////    return;
-            //////}
-            //////else
-            //////{
-            //////    int cod;
-            //////    if (!Int32.TryParse(codigoPlanTxt, out cod))
-            //////    {
-            //////        MessageBox.Show("El codigo identificador del plan es incorrecto");
-            //////        return;
-            //////    }
+            String codigoPlanTxt = txtIdPlan.Text;
+            if (String.IsNullOrWhiteSpace(codigoPlanTxt))
+            {
+                MessageBox.Show("Debe seleccionar la fila que desea eliminar");
+                return;
+            }
+            else
+            {
+                short codigoPlan;
+                if (!Int16.TryParse(codigoPlanTxt, out codigoPlan))
+                {
+                    MessageBox.Show("No se ha podido eliminar el plan. Intentelo más tarde.");
+                    return;
+                }
 
-            //////    plan plan = new plan();
-            //////    plan.ID = cod;
-            //////    plan.descripcion = txtNombrePlan.Text;
-
-            //////    String resultadoEliminacion = clienteWebService.EliminarPlanRutina(plan);
-            //////    if (resultadoEliminacion != null)
-            //////    {
-            //////        MessageBox.Show(resultadoEliminacion);
-            //////    }
-            //////    limpiarCamposPlan();
-            //////}
+                PlanDTO planEliminado = new PlanDTO()
+                {
+                    id = codigoPlan
+                };
+                using (WebServiceMDClient clienteWebService = new WebServiceMDClient())
+                {
+                    String resultadoEliminacion = clienteWebService.EliminarPlan(planEliminado);
+                    if (resultadoEliminacion != null)
+                    {
+                        MessageBox.Show(resultadoEliminacion);
+                    }
+                    else
+                    {
+                        cargarTodosPlanes();
+                    }
+                    limpiarCamposPlan();
+                }
+            }
         }
 
+        /// <summary>
+        /// Busca un plan por nombre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBuscarPlan_Click(object sender, EventArgs e)
         {
-            //////String planBuscado = txtNombrePlan.Text;
-            //////if (String.IsNullOrWhiteSpace(planBuscado))
-            //////{
-            //////    MessageBox.Show("El nombre del plan que desea buscar es requerido");
-            //////    return;
-            //////}
-            //////else
-            //////{
-            //////    plan[] planes = clienteWebService.ObtenerPlanRutina(planBuscado.ToLower());
-            //////    gridTablaDeportes.DataSource = planes;
-            //////    limpiarCamposPlan();
-            //////}
+            String planBuscado = txtNombrePlan.Text;
+            if (String.IsNullOrEmpty(planBuscado))
+            {
+                cargarTodosPlanes();
+                limpiarCamposPlan();
+            }
+            else
+            {
+                using (WebServiceMDClient clienteWebService = new WebServiceMDClient())
+                {
+                    List<PlanDTO> planes = clienteWebService.ObtenerPlanes(planBuscado.ToLower()).ToList();
+                    gridPlanes.DataSource = planes;
+                    limpiarCamposPlan();
+                }
+            }
         }
 
-        private void gridPlanRutina_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// Carga toda la informacion del plan en los campos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gridPlanRutina_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow selectedRow = gridTablaDeportes.SelectedRows[0];
-            txtIdPlan.Text = selectedRow.Cells[0].ToString();
-            txtNombrePlan.Text = selectedRow.Cells[1].ToString();
+            DataGridViewRow selectedRow = gridPlanes.SelectedRows[0];
+            txtIdPlan.Text = selectedRow.Cells[0].Value.ToString();
+            txtNombrePlan.Text = selectedRow.Cells[1].Value.ToString();
+            txtDetallesPlan.Text = selectedRow.Cells[2].Value.ToString();
         }
 
         #endregion

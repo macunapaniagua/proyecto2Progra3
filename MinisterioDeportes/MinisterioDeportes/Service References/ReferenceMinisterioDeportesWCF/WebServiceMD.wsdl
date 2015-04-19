@@ -85,23 +85,23 @@
   <wsdl:message name="IWebServiceMD_ObtenerParticipantes_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerParticipantesResponse" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_AgregarPlanRutina_InputMessage">
-    <wsdl:part name="parameters" element="tns:AgregarPlanRutina" />
+  <wsdl:message name="IWebServiceMD_AgregarPlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarPlan" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_AgregarPlanRutina_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AgregarPlanRutinaResponse" />
+  <wsdl:message name="IWebServiceMD_AgregarPlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarPlanResponse" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EliminarPlanRutina_InputMessage">
-    <wsdl:part name="parameters" element="tns:EliminarPlanRutina" />
+  <wsdl:message name="IWebServiceMD_EliminarPlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPlan" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EliminarPlanRutina_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EliminarPlanRutinaResponse" />
+  <wsdl:message name="IWebServiceMD_EliminarPlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPlanResponse" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EditarPlanRutina_InputMessage">
-    <wsdl:part name="parameters" element="tns:EditarPlanRutina" />
+  <wsdl:message name="IWebServiceMD_EditarPlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditarPlan" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_EditarPlanRutina_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EditarPlanRutinaResponse" />
+  <wsdl:message name="IWebServiceMD_EditarPlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditarPlanResponse" />
   </wsdl:message>
   <wsdl:message name="IWebServiceMD_ObtenerPlanes_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerPlanes" />
@@ -162,17 +162,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerParticipantes" message="tns:IWebServiceMD_ObtenerParticipantes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerParticipantesResponse" message="tns:IWebServiceMD_ObtenerParticipantes_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AgregarPlanRutina">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarPlanRutina" message="tns:IWebServiceMD_AgregarPlanRutina_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarPlanRutinaResponse" message="tns:IWebServiceMD_AgregarPlanRutina_OutputMessage" />
+    <wsdl:operation name="AgregarPlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarPlan" message="tns:IWebServiceMD_AgregarPlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/AgregarPlanResponse" message="tns:IWebServiceMD_AgregarPlan_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="EliminarPlanRutina">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EliminarPlanRutina" message="tns:IWebServiceMD_EliminarPlanRutina_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EliminarPlanRutinaResponse" message="tns:IWebServiceMD_EliminarPlanRutina_OutputMessage" />
+    <wsdl:operation name="EliminarPlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EliminarPlan" message="tns:IWebServiceMD_EliminarPlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EliminarPlanResponse" message="tns:IWebServiceMD_EliminarPlan_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="EditarPlanRutina">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EditarPlanRutina" message="tns:IWebServiceMD_EditarPlanRutina_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EditarPlanRutinaResponse" message="tns:IWebServiceMD_EditarPlanRutina_OutputMessage" />
+    <wsdl:operation name="EditarPlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/EditarPlan" message="tns:IWebServiceMD_EditarPlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/EditarPlanResponse" message="tns:IWebServiceMD_EditarPlan_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ObtenerPlanes">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerPlanes" message="tns:IWebServiceMD_ObtenerPlanes_InputMessage" />
@@ -298,8 +298,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AgregarPlanRutina">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/AgregarPlanRutina" style="document" />
+    <wsdl:operation name="AgregarPlan">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/AgregarPlan" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -307,8 +307,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="EliminarPlanRutina">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/EliminarPlanRutina" style="document" />
+    <wsdl:operation name="EliminarPlan">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/EliminarPlan" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -316,8 +316,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="EditarPlanRutina">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/EditarPlanRutina" style="document" />
+    <wsdl:operation name="EditarPlan">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/EditarPlan" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

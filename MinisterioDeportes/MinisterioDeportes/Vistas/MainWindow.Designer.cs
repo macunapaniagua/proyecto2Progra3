@@ -68,7 +68,7 @@
             this.txtDetallesPlan = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.gridPlanRutina = new System.Windows.Forms.DataGridView();
+            this.gridPlanes = new System.Windows.Forms.DataGridView();
             this.btnBuscarPlan = new System.Windows.Forms.Button();
             this.btnEliminarPlan = new System.Windows.Forms.Button();
             this.btnActualizarPlan = new System.Windows.Forms.Button();
@@ -117,7 +117,7 @@
             this.tabParticipantes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridParticipantes)).BeginInit();
             this.tabPlanDeRutina.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPlanRutina)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPlanes)).BeginInit();
             this.tabRutina.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRutina)).BeginInit();
             this.tabAsociarUserDep.SuspendLayout();
@@ -488,7 +488,7 @@
             this.tabPlanDeRutina.Controls.Add(this.txtDetallesPlan);
             this.tabPlanDeRutina.Controls.Add(this.label15);
             this.tabPlanDeRutina.Controls.Add(this.label16);
-            this.tabPlanDeRutina.Controls.Add(this.gridPlanRutina);
+            this.tabPlanDeRutina.Controls.Add(this.gridPlanes);
             this.tabPlanDeRutina.Controls.Add(this.btnBuscarPlan);
             this.tabPlanDeRutina.Controls.Add(this.btnEliminarPlan);
             this.tabPlanDeRutina.Controls.Add(this.btnActualizarPlan);
@@ -554,14 +554,19 @@
             this.label16.TabIndex = 37;
             this.label16.Text = "Detalles:";
             // 
-            // gridPlanRutina
+            // gridPlanes
             // 
-            this.gridPlanRutina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridPlanRutina.Location = new System.Drawing.Point(7, 140);
-            this.gridPlanRutina.Name = "gridPlanRutina";
-            this.gridPlanRutina.Size = new System.Drawing.Size(864, 311);
-            this.gridPlanRutina.TabIndex = 5;
-            this.gridPlanRutina.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPlanRutina_CellContentClick);
+            this.gridPlanes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridPlanes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.gridPlanes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridPlanes.Location = new System.Drawing.Point(7, 140);
+            this.gridPlanes.MultiSelect = false;
+            this.gridPlanes.Name = "gridPlanes";
+            this.gridPlanes.ReadOnly = true;
+            this.gridPlanes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridPlanes.Size = new System.Drawing.Size(864, 311);
+            this.gridPlanes.TabIndex = 5;
+            this.gridPlanes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPlanRutina_CellClick);
             // 
             // btnBuscarPlan
             // 
@@ -1054,7 +1059,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridParticipantes)).EndInit();
             this.tabPlanDeRutina.ResumeLayout(false);
             this.tabPlanDeRutina.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPlanRutina)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPlanes)).EndInit();
             this.tabRutina.ResumeLayout(false);
             this.tabRutina.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRutina)).EndInit();
@@ -1084,7 +1089,7 @@
         private System.Windows.Forms.TabPage tabPlanDeRutina;
         private System.Windows.Forms.DataGridView gridParticipantes;
         private System.Windows.Forms.DataGridView gridRutina;
-        private System.Windows.Forms.DataGridView gridPlanRutina;
+        private System.Windows.Forms.DataGridView gridPlanes;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox chkEsAdmi;

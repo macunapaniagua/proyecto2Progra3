@@ -183,45 +183,45 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AgregarPlanRutina">
+  <xs:element name="AgregarPlan">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" minOccurs="0" name="planRutina" nillable="true" type="q15:PlanDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AgregarPlanRutinaResponse">
+  <xs:element name="AgregarPlanResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AgregarPlanRutinaResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AgregarPlanResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EliminarPlanRutina">
+  <xs:element name="EliminarPlan">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" minOccurs="0" name="planRutina" nillable="true" type="q16:PlanDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EliminarPlanRutinaResponse">
+  <xs:element name="EliminarPlanResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="EliminarPlanRutinaResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EliminarPlanResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EditarPlanRutina">
+  <xs:element name="EditarPlan">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" minOccurs="0" name="planRutina" nillable="true" type="q17:PlanDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EditarPlanRutinaResponse">
+  <xs:element name="EditarPlanResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="EditarPlanRutinaResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EditarPlanResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

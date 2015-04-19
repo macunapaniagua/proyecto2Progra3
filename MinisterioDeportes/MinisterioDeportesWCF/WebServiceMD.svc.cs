@@ -171,7 +171,6 @@ namespace MinisterioDeportesWCF
             try
             {
                 rutina nuevaRutina = new rutina();
-                nuevaRutina.id = pRutina.id;
                 nuevaRutina.nombre = pRutina.nombre;
                 nuevaRutina.detalles = pRutina.detalles;
 
@@ -420,92 +419,101 @@ namespace MinisterioDeportesWCF
         }
 
         #endregion
-
-
-
-
+        
         #region planRutina
 
-        public string AgregarPlanRutina(PlanDTO planRutina)
+        public string AgregarPlan(PlanDTO pPlan)
         {
-            throw new NotImplementedException();
+            String respuesta = null;
+            try
+            {
+                plan nuevoPlan = new plan(){
+                    nombre = pPlan.nombre,
+                    detalles = pPlan.detalles
+                };
+
+                MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
+                modeloMinisterio.plan.Add(nuevoPlan);
+                modeloMinisterio.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                respuesta = e.Message;
+            }
+            return respuesta;
         }
 
-        public string EliminarPlanRutina(PlanDTO planRutina)
+        public string EliminarPlan(PlanDTO pPlan)
         {
-            throw new NotImplementedException();
+            String respuesta = null;
+            try
+            {
+                MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
+                plan planEliminar = modeloMinisterio.plan.SingleOrDefault(x => x.id == pPlan.id);
+                if (planEliminar == null)
+                {
+                    respuesta = "No se ha encontrado el elemento que desea eliminar en la base de datos";
+                }
+                else
+                {
+                    modeloMinisterio.plan.Remove(planEliminar);
+                    modeloMinisterio.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                respuesta = e.Message;
+            }
+            return respuesta;
         }
 
-        public string EditarPlanRutina(PlanDTO planRutina)
+        public string EditarPlan(PlanDTO pPlan)
         {
-            throw new NotImplementedException();
+            String respuesta = null;
+            try
+            {
+                MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
+                plan planEditar = modeloMinisterio.plan.SingleOrDefault(x => x.id == pPlan.id);
+                if (planEditar == null)
+                {
+                    respuesta = "No se ha encontrado el elemento que desea editar en la base de datos";
+                }
+                else
+                {
+                    planEditar.nombre = pPlan.nombre;
+                    planEditar.detalles = pPlan.detalles;
+                    modeloMinisterio.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                respuesta = e.Message;
+            }
+            return respuesta;
         }
 
         public List<PlanDTO> ObtenerPlanes(String filtro = null)
         {
-            return new List<PlanDTO>();
+            MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
+            List<PlanDTO> listaPlanes = new List<PlanDTO>();
+            if (filtro == null || filtro == "")
+            {
+                List<plan> lista = modeloMinisterio.plan.Where(p => true).ToList();
+                foreach (plan planActual in lista)
+                {
+                    listaPlanes.Add(new PlanDTO(planActual));
+                }
+            }
+            else
+            {
+                List<plan> lista = modeloMinisterio.plan.Where(p => p.nombre.ToLower().Contains(filtro)).ToList();
+                foreach (plan planActual in lista)
+                {
+                    listaPlanes.Add(new PlanDTO(planActual));
+                }
+            }
+            return listaPlanes;
         }
-
-
-
-
-
-        //////public String AgregarPlanRutina(plan planRutina)
-        //////{
-        //////    RespuestaError respuesta = new RespuestaError();
-        //////    try
-        //////    {
-        //////        MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
-        //////        modeloMinisterio.plan.Add(planRutina);
-        //////        modeloMinisterio.SaveChanges();
-        //////        respuesta.MensajeError = null;
-        //////    }
-        //////    catch (Exception e)
-        //////    {
-        //////        respuesta.MensajeError = e.ToString();
-        //////        respuesta.HayError = false;
-        //////    }
-        //////    return respuesta.MensajeError;
-        //////}
-        //////public String EliminarPlanRutina(plan planRutina)
-        //////{
-        //////    RespuestaError respuesta = new RespuestaError();
-        //////    try
-        //////    {
-        //////        MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
-        //////        modeloMinisterio.plan.Remove(planRutina);
-        //////        modeloMinisterio.SaveChanges();
-        //////        respuesta.MensajeError = null;
-        //////    }
-        //////    catch (Exception e)
-        //////    {
-
-        //////        respuesta.MensajeError = e.Message;
-        //////    }
-        //////    return respuesta.MensajeError;
-        //////}
-        //////public String EditarPlanRutina(plan planRutina)
-        //////{
-        //////    return this.AgregarPlanRutina(planRutina);
-        //////}
-
-
-        ////////public List<plan> ObtenerPlanes(string filtro = null)
-        ////////{
-        ////////    MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesAccesoADatos.MinisterioDeportesEntityDataModel();
-        ////////    List<plan> lista;
-
-        ////////    if (filtro == null)
-        ////////    {
-        ////////        lista = modeloMinisterio.plan.Select(p => p).ToList();
-        ////////    }
-        ////////    else
-        ////////    {
-
-        ////////        lista = modeloMinisterio.plan.Where(p => p.nombre.ToLower().Contains(filtro)).ToList();
-        ////////    }
-        ////////    return lista;
-        ////////}
 
         #endregion
 
