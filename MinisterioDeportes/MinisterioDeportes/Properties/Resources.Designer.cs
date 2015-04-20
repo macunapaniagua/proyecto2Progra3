@@ -141,6 +141,16 @@ namespace MinisterioDeportes.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sports_background {
+            get {
+                object obj = ResourceManager.GetObject("sports_background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap transfer {
             get {
                 object obj = ResourceManager.GetObject("transfer", resourceCulture);

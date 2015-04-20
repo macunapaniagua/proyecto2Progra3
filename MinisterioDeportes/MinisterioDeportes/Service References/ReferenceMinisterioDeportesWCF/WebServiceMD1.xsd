@@ -239,4 +239,72 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ObtenerListaPlanes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListaPlanesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" minOccurs="0" name="ObtenerListaPlanesResult" nillable="true" type="q19:AsociacionesDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListaRutinasPlan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pIdDeporte" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListaRutinasPlanResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" minOccurs="0" name="ObtenerListaRutinasPlanResult" nillable="true" type="q20:AsociacionesDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListaDeportes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListaDeportesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" minOccurs="0" name="ObtenerListaDeportesResult" nillable="true" type="q21:AsociacionesDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarRutinaAPlan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pIdPlan" type="xs:int" />
+        <xs:element minOccurs="0" name="pIdRutina" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarRutinaAPlanResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="agregarRutinaAPlanResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="removerRutinaDePlan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pIdPlan" type="xs:int" />
+        <xs:element minOccurs="0" name="pIdRutina" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="removerRutinaDePlanResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="removerRutinaDePlanResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

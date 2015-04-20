@@ -419,7 +419,7 @@ namespace MinisterioDeportesWCF
         }
 
         #endregion
-        
+
         #region planRutina
 
         public string AgregarPlan(PlanDTO pPlan)
@@ -427,7 +427,8 @@ namespace MinisterioDeportesWCF
             String respuesta = null;
             try
             {
-                plan nuevoPlan = new plan(){
+                plan nuevoPlan = new plan()
+                {
                     nombre = pPlan.nombre,
                     detalles = pPlan.detalles
                 };
@@ -517,5 +518,169 @@ namespace MinisterioDeportesWCF
 
         #endregion
 
+        #region PlanRutina
+
+        /// <summary>
+        /// Obtiene la lista de los planes existentes (id y nombre unicamente)
+        /// </summary>
+        /// <returns></returns>
+        public AsociacionesDTO ObtenerListaPlanes()
+        {
+            MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();            
+            List<int> idPlanes = new List<int>();
+            List<String> nombrePlanes = new List<string>();
+            List<plan> planes = modeloMinisterio.plan.Where(p => true).ToList();
+            foreach (plan planActual in planes)
+            {
+                idPlanes.Add(planActual.id);
+                nombrePlanes.Add(planActual.nombre);
+            }
+            AsociacionesDTO resultadoBusqueda = new AsociacionesDTO(idPlanes, nombrePlanes);
+            return resultadoBusqueda;
+        }
+
+        /// <summary>
+        /// Obtiene todas las rutinas asociadas al plan indicado
+        /// </summary>
+        /// <param name="pIdPlan"></param>
+        /// <returns></returns>
+        public AsociacionesDTO ObtenerListaRutinasPlan(int pIdPlan)
+        {
+            List<int> idRutinasAsociadas = new List<int>();
+            List<int> idRutinasNoAsociadas = new List<int>();
+            List<String> nombreRutinasAsociadas = new List<string>();
+            List<String> nombreRutinasNoAsociadas = new List<string>();
+
+            MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
+            
+            // Obtiene todas las rutinas asociadas y no asociadas al plan con el id solicitado
+            List<rutina> rutinasAsociadas = modeloMinisterio.rutina.Where(r => r.plan.FirstOrDefault(p => p.id == pIdPlan) != null).ToList();
+            List<rutina> rutinasNoAsociadas = modeloMinisterio.rutina.Where(r => r.plan.FirstOrDefault(p => p.id == pIdPlan) == null).ToList();
+
+            foreach (rutina rutinaAsociada in rutinasAsociadas)
+            {
+                idRutinasAsociadas.Add(rutinaAsociada.id);
+                nombreRutinasAsociadas.Add(rutinaAsociada.nombre);
+            }
+
+            foreach (rutina rutinaNoAsociada in rutinasNoAsociadas)
+            {
+                idRutinasNoAsociadas.Add(rutinaNoAsociada.id);
+                nombreRutinasNoAsociadas.Add(rutinaNoAsociada.nombre);
+            }
+
+            AsociacionesDTO resultadoBusqueda = new AsociacionesDTO(idRutinasAsociadas, 
+                                                                    nombreRutinasAsociadas, 
+                                                                    idRutinasNoAsociadas, 
+                                                                    nombreRutinasNoAsociadas);
+            return resultadoBusqueda;
+        }
+
+        /// <summary>
+        /// Agrega una rutina a un plan
+        /// </summary>
+        /// <param name="pIdPlan"></param>
+        /// <param name="pIdRutina"></param>
+        /// <returns></returns>
+        public bool agregarRutinaAPlan(int pIdPlan, int pIdRutina)
+        {
+            try
+            {
+                MinisterioDeportesEntityDataModel model = new MinisterioDeportesEntityDataModel();
+                plan planSelected = model.plan.FirstOrDefault(p => p.id == pIdPlan);
+                if (planSelected == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    rutina rutinaSelected = model.rutina.FirstOrDefault(r => r.id == pIdRutina);
+                    if (rutinaSelected == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        planSelected.rutina.Add(rutinaSelected);
+                        model.SaveChanges();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Remueve una rutina de un plan
+        /// </summary>
+        /// <param name="pIdPlan"></param>
+        /// <param name="pIdRutina"></param>
+        /// <returns></returns>
+        public bool removerRutinaDePlan(int pIdPlan, int pIdRutina)
+        {
+            try
+            {
+                MinisterioDeportesEntityDataModel model = new MinisterioDeportesEntityDataModel();
+                plan planSelected = model.plan.FirstOrDefault(p => p.id == pIdPlan);
+                if (planSelected == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    rutina rutinaSelected = model.rutina.FirstOrDefault(r => r.id == pIdRutina);
+                    if (rutinaSelected == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        planSelected.rutina.Remove(rutinaSelected);
+                        model.SaveChanges();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        #endregion
+
+
+
+
+
+
+        public AsociacionesDTO ObtenerListaDeportes()
+        {
+            ////MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();            
+            ////List<short> idDeportes = new List<short>();
+            ////List<String> nombreDeportes = new List<string>();
+
+            ////List<deporte> deportes = modeloMinisterio.deporte.Where(p => true).ToList();
+            ////    foreach (deporte deporteActual in deportes)
+            ////    {
+            ////        idDeportes.Add(deporteActual.id);
+            ////        nombreDeportes.Add(deporteActual.descripcion);
+            ////    }
+            return null;
+        }
+
+
+
+
+
+
+
+
+
+
+        
     }
 }

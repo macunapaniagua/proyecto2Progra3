@@ -76,6 +76,7 @@
     <Compile Include="Entidades\DeporteDTO.cs" />
     <Compile Include="Entidades\PersonaDTO.cs" />
     <Compile Include="Entidades\PlanDTO.cs" />
+    <Compile Include="Entidades\AsociacionesDTO.cs" />
     <Compile Include="Entidades\RespuestaError.cs" />
     <Compile Include="Entidades\RutinaDTO.cs" />
     <Compile Include="WebServiceMD.svc.cs">

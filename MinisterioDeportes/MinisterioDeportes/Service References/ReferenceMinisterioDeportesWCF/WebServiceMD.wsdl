@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" />
+      <xsd:import schemaLocation="http://localhost:6352/WebServiceMD.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IWebServiceMD_ValidarLogin_InputMessage">
@@ -109,6 +110,36 @@
   <wsdl:message name="IWebServiceMD_ObtenerPlanes_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerPlanesResponse" />
   </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ObtenerListaPlanes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaPlanes" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ObtenerListaPlanes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaPlanesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ObtenerListaRutinasPlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaRutinasPlan" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ObtenerListaRutinasPlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaRutinasPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ObtenerListaDeportes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaDeportes" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ObtenerListaDeportes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaDeportesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_agregarRutinaAPlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:agregarRutinaAPlan" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_agregarRutinaAPlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:agregarRutinaAPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_removerRutinaDePlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:removerRutinaDePlan" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_removerRutinaDePlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:removerRutinaDePlanResponse" />
+  </wsdl:message>
   <wsdl:portType name="IWebServiceMD">
     <wsdl:operation name="ValidarLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ValidarLogin" message="tns:IWebServiceMD_ValidarLogin_InputMessage" />
@@ -177,6 +208,26 @@
     <wsdl:operation name="ObtenerPlanes">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerPlanes" message="tns:IWebServiceMD_ObtenerPlanes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerPlanesResponse" message="tns:IWebServiceMD_ObtenerPlanes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaPlanes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerListaPlanes" message="tns:IWebServiceMD_ObtenerListaPlanes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerListaPlanesResponse" message="tns:IWebServiceMD_ObtenerListaPlanes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaRutinasPlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerListaRutinasPlan" message="tns:IWebServiceMD_ObtenerListaRutinasPlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerListaRutinasPlanResponse" message="tns:IWebServiceMD_ObtenerListaRutinasPlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaDeportes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerListaDeportes" message="tns:IWebServiceMD_ObtenerListaDeportes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesResponse" message="tns:IWebServiceMD_ObtenerListaDeportes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarRutinaAPlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/agregarRutinaAPlan" message="tns:IWebServiceMD_agregarRutinaAPlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/agregarRutinaAPlanResponse" message="tns:IWebServiceMD_agregarRutinaAPlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="removerRutinaDePlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/removerRutinaDePlan" message="tns:IWebServiceMD_removerRutinaDePlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/removerRutinaDePlanResponse" message="tns:IWebServiceMD_removerRutinaDePlan_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWebServiceMD" type="tns:IWebServiceMD">
@@ -327,6 +378,51 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerPlanes">
       <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerPlanes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaPlanes">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerListaPlanes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaRutinasPlan">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerListaRutinasPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaDeportes">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerListaDeportes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarRutinaAPlan">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/agregarRutinaAPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removerRutinaDePlan">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/removerRutinaDePlan" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

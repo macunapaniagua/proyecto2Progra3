@@ -18,6 +18,15 @@ namespace MinisterioDeportes.Vistas
     {
         private PersonaDTO usuario;                            // Usuario Logueado
 
+        // Variables para plan-rutina
+        List<int> idPlanesRutina;
+        List<String> nombrePlanesRutina;
+        List<int> idRutinasAsociadas;
+        List<String> nombreRutinasAsociadas;
+        List<int> idRutinasNoAsociadas;
+        List<String> nombreRutinasNoAsociadas;
+
+
         // Metodo constructor
         public MainWindow(PersonaDTO pUsuario)
         {
@@ -30,6 +39,9 @@ namespace MinisterioDeportes.Vistas
             cargarTodasRutinas();
             cargarTodosPlanes();
             cargarTodosParticipantes();
+
+
+            cargarPlanesEnLista();
         }
 
         /// <summary>
@@ -405,7 +417,7 @@ namespace MinisterioDeportes.Vistas
             txtRutina.Text = selectedRow.Cells[1].Value.ToString();
             txtDetalleRutina.Text = selectedRow.Cells[2].Value.ToString();
         }
-                
+
         /// <summary>
         /// Evento para cargar el filtro
         /// </summary>
@@ -429,9 +441,9 @@ namespace MinisterioDeportes.Vistas
                 }
             }
         }
-        
+
         #endregion
-                
+
         #region Modulo Participante
 
         /// <summary>
@@ -474,8 +486,8 @@ namespace MinisterioDeportes.Vistas
                 if (rand.Next(2) == 1)
                 {
                     // Genera un random entre 97 y 122 que es el ascii para las letras minusculas
-                    char letra = (char) (rand.Next(26) + 97);
-                    newPassword += letra; 
+                    char letra = (char)(rand.Next(26) + 97);
+                    newPassword += letra;
                 }
                 else
                 {
@@ -505,7 +517,7 @@ namespace MinisterioDeportes.Vistas
                 return posPunto != -1 && posPunto == dominio.LastIndexOf('.') && posPunto != 0 && posPunto != (dominio.Length - 1);
             }
         }
- 
+
         /// <summary>
         /// Crea una persona con los datos existentes en los campos de texto
         /// </summary>
@@ -534,10 +546,13 @@ namespace MinisterioDeportes.Vistas
         {
             if (!isFieldRequiredEmpty())
             {
-                if(!String.IsNullOrEmpty(txtEmail.Text) && !esCorreoValido(txtEmail.Text.Trim())){
+                if (!String.IsNullOrEmpty(txtEmail.Text) && !esCorreoValido(txtEmail.Text.Trim()))
+                {
                     MessageBox.Show("El correo electrónico no tiene un formato válido");
                     return;
-                }else{
+                }
+                else
+                {
                     PersonaDTO nuevoParticipante = crearPersona();
                     using (WebServiceMDClient clienteWebService = new WebServiceMDClient())
                     {
@@ -556,9 +571,9 @@ namespace MinisterioDeportes.Vistas
                                 // Crea la informacion del mensaje a enviar
                                 String subject = "Credenciales Ministerio de Deporte";
                                 String mensaje = nuevoParticipante.nombre + ", gracias por registrarse en el Ministerio "
-                                    + "de Deportes. Los datos para ingresar son: Usuario = " + nuevoParticipante.cedula 
+                                    + "de Deportes. Los datos para ingresar son: Usuario = " + nuevoParticipante.cedula
                                     + " y contraseña = " + password + ". Esperamos tenerle pronto por acá";
-                                List<String> destinatarios = new List<string>{nuevoParticipante.email};
+                                List<String> destinatarios = new List<string> { nuevoParticipante.email };
 
                                 // Envia el correo
                                 Email administradorCorreos = new Email(Properties.Resources.adminEmail, Properties.Resources.adminPassword);
@@ -568,8 +583,8 @@ namespace MinisterioDeportes.Vistas
                             cargarTodosParticipantes();
                         }
                         limpiarCamposParticipantes();
-                    } 
-                }                             
+                    }
+                }
             }
             else
             {
@@ -606,7 +621,7 @@ namespace MinisterioDeportes.Vistas
                 {
                     PersonaDTO nuevoParticipante = crearPersona();
                     nuevoParticipante.password = txtPassword.Text;
-                    
+
                     using (WebServiceMDClient clienteWebService = new WebServiceMDClient())
                     {
                         // Verifica si la insercion ha ocurrido exitosamente
@@ -647,7 +662,7 @@ namespace MinisterioDeportes.Vistas
                 else
                 {
                     MessageBox.Show("Hay campos requeridos en blanco. Asegurese de completar: nombre, apellidos y cédula");
-                }                
+                }
             }
         }
 
@@ -661,7 +676,7 @@ namespace MinisterioDeportes.Vistas
             String participanteBuscado = txtNombreParticipante.Text;
             if (String.IsNullOrWhiteSpace(participanteBuscado))
             {
-                cargarTodosParticipantes();                
+                cargarTodosParticipantes();
             }
             else
             {
@@ -673,7 +688,7 @@ namespace MinisterioDeportes.Vistas
             }
             limpiarCamposParticipantes();
         }
-        
+
         /// <summary>
         /// Carga los datos de la fila seleccionada
         /// </summary>
@@ -707,7 +722,8 @@ namespace MinisterioDeportes.Vistas
             {
                 String idEliminar = txtIdParticipante.Text;
 
-                if(String.IsNullOrEmpty(idEliminar)){
+                if (String.IsNullOrEmpty(idEliminar))
+                {
                     MessageBox.Show("Debe existir el campo cedula del participante a borrar");
                     return;
                 }
@@ -768,7 +784,7 @@ namespace MinisterioDeportes.Vistas
                 {
                     nombre = txtNombrePlan.Text,
                     detalles = txtDetallesPlan.Text
-                };                
+                };
 
                 using (WebServiceMDClient clienteWebService = new WebServiceMDClient())
                 {
@@ -925,6 +941,139 @@ namespace MinisterioDeportes.Vistas
         }
 
         #endregion
+        
+        #region PlanesRutinas
+
+        /// <summary>
+        /// Carga todos los planes en la lista
+        /// </summary>
+        private void cargarPlanesEnLista()
+        {
+            using (WebServiceMDClient cliente = new WebServiceMDClient())
+            {
+                AsociacionesDTO planes = cliente.ObtenerListaPlanes();
+                idPlanesRutina = planes.ids.ToList();
+                nombrePlanesRutina = planes.nombres.ToList();
+                lbxPlanes.DataSource = nombrePlanesRutina;
+            }
+        }
+
+        /// <summary>
+        /// Carga las rutinas del plan seleccionado y las que no han sido seleccionadas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lbxPlanes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = lbxPlanes.SelectedIndex;
+            if (selectedIndex < 0) { return; }
+
+            int idSelected = idPlanesRutina.ElementAt(selectedIndex);
+
+            using (WebServiceMDClient cliente = new WebServiceMDClient())
+            {
+                AsociacionesDTO rutinas = cliente.ObtenerListaRutinasPlan(idSelected);
+                idRutinasAsociadas = rutinas.ids.ToList();
+                idRutinasNoAsociadas = rutinas.idsNoAsociados.ToList();
+                nombreRutinasAsociadas = rutinas.nombres.ToList();
+                nombreRutinasNoAsociadas = rutinas.nombresNoAsociados.ToList();
+
+                lbxRutinas.DataSource = nombreRutinasAsociadas;
+                lbxRutinas.ClearSelected();
+            }
+        }
+
+        /// <summary>
+        /// Asocia una rutina a un plan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAsociarPlanRutina_Click(object sender, EventArgs e)
+        {
+            if (lbxPlanes.SelectedIndex < 0)
+            {
+                MessageBox.Show("No ha seleccionado el plan al que desea agregar una nueva rutina");
+                return;
+            }
+
+            if (nombreRutinasNoAsociadas.Count > 0)
+            {
+                Label seleccion = new Label();
+                CustomComboDialog comboSeleccion = new CustomComboDialog(nombreRutinasNoAsociadas, seleccion);
+                if (comboSeleccion.ShowDialog() == DialogResult.OK)
+                {
+                    int selectedIndex = int.Parse(seleccion.Text);
+                    int idPlan = idPlanesRutina.ElementAt(lbxPlanes.SelectedIndex);
+                    int idRutina = idRutinasNoAsociadas.ElementAt(selectedIndex);
+
+                    using (WebServiceMDClient cliente = new WebServiceMDClient())
+                    {
+                        if (cliente.agregarRutinaAPlan(idPlan, idRutina))
+                        {
+                            nombreRutinasAsociadas.Add(nombreRutinasNoAsociadas.ElementAt(selectedIndex));
+                            idRutinasAsociadas.Add(idRutinasNoAsociadas.ElementAt(selectedIndex));
+                            nombreRutinasNoAsociadas.RemoveAt(selectedIndex);
+                            idRutinasNoAsociadas.RemoveAt(selectedIndex);
+                            lbxRutinas.DataSource = null;
+                            lbxRutinas.DataSource = nombreRutinasAsociadas;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ha ocurrido un error al asociar la rutina al plan. Intentelo mas tarde");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay mas rutinas para agregar al plan seleccionado");
+            }
+        }
+
+        /// <summary>
+        /// Desasocia una rutina de un plan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDesasociarPlanRutina_Click(object sender, EventArgs e)
+        {            
+            if (lbxPlanes.SelectedIndex < 0)
+            {
+                MessageBox.Show("No ha seleccionado el plan al que desea desasociar una rutina");
+                return;
+            }
+
+            int selectedIndex = lbxRutinas.SelectedIndex;
+            if (selectedIndex >= 0)
+            {
+                using (WebServiceMDClient cliente = new WebServiceMDClient())
+                {
+                    int idPlan = idPlanesRutina.ElementAt(lbxPlanes.SelectedIndex);
+                    int idRutina = idRutinasAsociadas.ElementAt(selectedIndex);
+
+                    if (cliente.removerRutinaDePlan(idPlan, idRutina))
+                    {
+                        nombreRutinasNoAsociadas.Add(nombreRutinasAsociadas.ElementAt(selectedIndex));
+                        idRutinasNoAsociadas.Add(idRutinasAsociadas.ElementAt(selectedIndex));
+                        nombreRutinasAsociadas.RemoveAt(selectedIndex);
+                        idRutinasAsociadas.RemoveAt(selectedIndex);
+                        lbxRutinas.DataSource = null;
+                        lbxRutinas.DataSource = nombreRutinasAsociadas;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error al asociar la rutina al plan. Intentelo mas tarde");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No ha seleccionado la rutina que desea desasociar de este plan");
+            }
+        }
+        
+        #endregion
+
 
 
 
@@ -944,11 +1093,17 @@ namespace MinisterioDeportes.Vistas
             }
         }
 
-        
 
-        
 
-        
+
+
+
+
+
+
+
+
+
 
 
 

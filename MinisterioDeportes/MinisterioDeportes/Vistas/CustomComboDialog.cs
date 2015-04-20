@@ -19,8 +19,6 @@ namespace MinisterioDeportes.Vistas
             InitializeComponent();
             // Establece la lista de opciones al combobox
             cmbOpciones.DataSource = pOpciones;
-            cmbOpciones.SelectedIndex = 0;
-
             Result = pSeleccion;
         }
 
@@ -41,7 +39,7 @@ namespace MinisterioDeportes.Vistas
         /// <param name="e"></param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            this.Result.Text = cmbOpciones.SelectedItem.ToString();
+            this.Result.Text = cmbOpciones.SelectedIndex.ToString();
             this.DialogResult = DialogResult.OK;
             this.Close();            
         }             

@@ -54,7 +54,6 @@ namespace MinisterioDeportesWCF
         
         [OperationContract]
         List<PersonaDTO> ObtenerParticipantes(String filtro = null);
-
               
 
         [OperationContract]
@@ -67,6 +66,22 @@ namespace MinisterioDeportesWCF
         String EditarPlan(PlanDTO planRutina);
         
         [OperationContract]
-        List<PlanDTO> ObtenerPlanes(String filtro = null);          
+        List<PlanDTO> ObtenerPlanes(String filtro = null);
+
+
+        [OperationContract]
+        AsociacionesDTO ObtenerListaPlanes();
+
+        [OperationContract]
+        AsociacionesDTO ObtenerListaRutinasPlan(int pIdDeporte);
+
+        [OperationContract]
+        AsociacionesDTO ObtenerListaDeportes();
+
+        [OperationContract]
+        Boolean agregarRutinaAPlan(int pIdPlan, int pIdRutina);
+
+        [OperationContract]
+        Boolean removerRutinaDePlan(int pIdPlan, int pIdRutina);
     }
 }

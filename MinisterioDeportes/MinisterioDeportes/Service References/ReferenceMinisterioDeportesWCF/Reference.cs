@@ -369,6 +369,99 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AsociacionesDTO", Namespace="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades")]
+    [System.SerializableAttribute()]
+    public partial class AsociacionesDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int[] idsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int[] idsNoAsociadosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] nombresField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] nombresNoAsociadosField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int[] ids {
+            get {
+                return this.idsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.idsField, value) != true)) {
+                    this.idsField = value;
+                    this.RaisePropertyChanged("ids");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int[] idsNoAsociados {
+            get {
+                return this.idsNoAsociadosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.idsNoAsociadosField, value) != true)) {
+                    this.idsNoAsociadosField = value;
+                    this.RaisePropertyChanged("idsNoAsociados");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] nombres {
+            get {
+                return this.nombresField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombresField, value) != true)) {
+                    this.nombresField = value;
+                    this.RaisePropertyChanged("nombres");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] nombresNoAsociados {
+            get {
+                return this.nombresNoAsociadosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombresNoAsociadosField, value) != true)) {
+                    this.nombresNoAsociadosField = value;
+                    this.RaisePropertyChanged("nombresNoAsociados");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReferenceMinisterioDeportesWCF.IWebServiceMD")]
     public interface IWebServiceMD {
@@ -474,6 +567,36 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerPlanes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerPlanesResponse")]
         System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO[]> ObtenerPlanesAsync(string filtro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerListaPlanes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerListaPlanesResponse")]
+        MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO ObtenerListaPlanes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerListaPlanes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerListaPlanesResponse")]
+        System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO> ObtenerListaPlanesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerListaRutinasPlan", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerListaRutinasPlanResponse")]
+        MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO ObtenerListaRutinasPlan(int pIdDeporte);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerListaRutinasPlan", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerListaRutinasPlanResponse")]
+        System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO> ObtenerListaRutinasPlanAsync(int pIdDeporte);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerListaDeportes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesResponse")]
+        MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO ObtenerListaDeportes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerListaDeportes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesResponse")]
+        System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO> ObtenerListaDeportesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/agregarRutinaAPlan", ReplyAction="http://tempuri.org/IWebServiceMD/agregarRutinaAPlanResponse")]
+        bool agregarRutinaAPlan(int pIdPlan, int pIdRutina);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/agregarRutinaAPlan", ReplyAction="http://tempuri.org/IWebServiceMD/agregarRutinaAPlanResponse")]
+        System.Threading.Tasks.Task<bool> agregarRutinaAPlanAsync(int pIdPlan, int pIdRutina);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/removerRutinaDePlan", ReplyAction="http://tempuri.org/IWebServiceMD/removerRutinaDePlanResponse")]
+        bool removerRutinaDePlan(int pIdPlan, int pIdRutina);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/removerRutinaDePlan", ReplyAction="http://tempuri.org/IWebServiceMD/removerRutinaDePlanResponse")]
+        System.Threading.Tasks.Task<bool> removerRutinaDePlanAsync(int pIdPlan, int pIdRutina);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -637,6 +760,46 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         
         public System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.PlanDTO[]> ObtenerPlanesAsync(string filtro) {
             return base.Channel.ObtenerPlanesAsync(filtro);
+        }
+        
+        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO ObtenerListaPlanes() {
+            return base.Channel.ObtenerListaPlanes();
+        }
+        
+        public System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO> ObtenerListaPlanesAsync() {
+            return base.Channel.ObtenerListaPlanesAsync();
+        }
+        
+        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO ObtenerListaRutinasPlan(int pIdDeporte) {
+            return base.Channel.ObtenerListaRutinasPlan(pIdDeporte);
+        }
+        
+        public System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO> ObtenerListaRutinasPlanAsync(int pIdDeporte) {
+            return base.Channel.ObtenerListaRutinasPlanAsync(pIdDeporte);
+        }
+        
+        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO ObtenerListaDeportes() {
+            return base.Channel.ObtenerListaDeportes();
+        }
+        
+        public System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO> ObtenerListaDeportesAsync() {
+            return base.Channel.ObtenerListaDeportesAsync();
+        }
+        
+        public bool agregarRutinaAPlan(int pIdPlan, int pIdRutina) {
+            return base.Channel.agregarRutinaAPlan(pIdPlan, pIdRutina);
+        }
+        
+        public System.Threading.Tasks.Task<bool> agregarRutinaAPlanAsync(int pIdPlan, int pIdRutina) {
+            return base.Channel.agregarRutinaAPlanAsync(pIdPlan, pIdRutina);
+        }
+        
+        public bool removerRutinaDePlan(int pIdPlan, int pIdRutina) {
+            return base.Channel.removerRutinaDePlan(pIdPlan, pIdRutina);
+        }
+        
+        public System.Threading.Tasks.Task<bool> removerRutinaDePlanAsync(int pIdPlan, int pIdRutina) {
+            return base.Channel.removerRutinaDePlanAsync(pIdPlan, pIdRutina);
         }
     }
 }

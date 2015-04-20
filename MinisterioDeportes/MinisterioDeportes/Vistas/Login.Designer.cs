@@ -57,7 +57,7 @@
             this.txtContrasena.PasswordChar = '*';
             this.txtContrasena.Size = new System.Drawing.Size(254, 26);
             this.txtContrasena.TabIndex = 9;
-            this.txtContrasena.Text = "12345";
+            this.txtContrasena.Text = "ls44web";
             // 
             // txtUsuario
             // 
@@ -67,7 +67,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(254, 26);
             this.txtUsuario.TabIndex = 8;
-            this.txtUsuario.Text = "203330333";
+            this.txtUsuario.Text = "206840674";
             // 
             // lblContrasena
             // 

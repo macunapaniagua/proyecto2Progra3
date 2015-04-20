@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="af17a3f181a0410887b8f171caf7936a" Name="Diagram1">
-        <EntityTypeShape EntityType="EntityModel.deporte" Width="1.5" PointX="5.875" PointY="1.875" />
-        <EntityTypeShape EntityType="EntityModel.persona" Width="1.5" PointX="1.125" PointY="4.25" />
-        <EntityTypeShape EntityType="EntityModel.persona_deporte" Width="1.5" PointX="3.375" PointY="2.5" />
-        <EntityTypeShape EntityType="EntityModel.plan" Width="1.5" PointX="5.5" PointY="4.875" />
-        <EntityTypeShape EntityType="EntityModel.rutina" Width="1.5" PointX="7.75" PointY="4" />
+        <EntityTypeShape EntityType="EntityModel.deporte" Width="1.5" PointX="6.375" PointY="1.75" />
+        <EntityTypeShape EntityType="EntityModel.persona" Width="1.5" PointX="1.375" PointY="1.875" />
+        <EntityTypeShape EntityType="EntityModel.persona_deporte" Width="1.5" PointX="3.875" PointY="1.75" />
+        <EntityTypeShape EntityType="EntityModel.plan" Width="1.5" PointX="3.75" PointY="4.625" />
+        <EntityTypeShape EntityType="EntityModel.rutina" Width="1.5" PointX="7" PointY="4.625" />
         <AssociationConnector Association="EntityModel.FK_persona_deporte_deporte" />
         <AssociationConnector Association="EntityModel.FK_persona_deporte_persona" />
         <AssociationConnector Association="EntityModel.FK_persona_deporte_plan" />

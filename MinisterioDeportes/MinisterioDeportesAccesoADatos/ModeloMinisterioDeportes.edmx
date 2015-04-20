@@ -52,10 +52,10 @@
         <EntityType Name="rutinas_planes">
           <Key>
             <PropertyRef Name="cod_rutina" />
-            <PropertyRef Name="cod_plan_rutina" />
+            <PropertyRef Name="cod_plan" />
           </Key>
           <Property Name="cod_rutina" Type="int" Nullable="false" />
-          <Property Name="cod_plan_rutina" Type="int" Nullable="false" />
+          <Property Name="cod_plan" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_persona_deporte_deporte">
           <End Role="deporte" Type="Self.deporte" Multiplicity="1" />
@@ -93,7 +93,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_rutinas_planes_plan1">
+        <Association Name="FK_rutinas_planes_plan">
           <End Role="plan" Type="Self.plan" Multiplicity="1" />
           <End Role="rutinas_planes" Type="Self.rutinas_planes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -101,7 +101,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="rutinas_planes">
-              <PropertyRef Name="cod_plan_rutina" />
+              <PropertyRef Name="cod_plan" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -136,7 +136,7 @@
             <End Role="plan" EntitySet="plan" />
             <End Role="persona_deporte" EntitySet="persona_deporte" />
           </AssociationSet>
-          <AssociationSet Name="FK_rutinas_planes_plan1" Association="Self.FK_rutinas_planes_plan1">
+          <AssociationSet Name="FK_rutinas_planes_plan" Association="Self.FK_rutinas_planes_plan">
             <End Role="plan" EntitySet="plan" />
             <End Role="rutinas_planes" EntitySet="rutinas_planes" />
           </AssociationSet>
@@ -323,7 +323,7 @@
               <ScalarProperty Name="id" ColumnName="cod_rutina" />
             </EndProperty>
             <EndProperty Name="plan">
-              <ScalarProperty Name="id" ColumnName="cod_plan_rutina" />
+              <ScalarProperty Name="id" ColumnName="cod_plan" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
