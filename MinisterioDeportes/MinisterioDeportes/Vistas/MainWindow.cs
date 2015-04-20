@@ -26,6 +26,12 @@ namespace MinisterioDeportes.Vistas
         List<int> idRutinasNoAsociadas;
         List<String> nombreRutinasNoAsociadas;
 
+        // Variables para asociar deportes al usuario
+        List<int> idDeportesAsociados;
+        List<String> nombreDeportesAsociados;
+        List<int> idDeportesNoAsociados;
+        List<String> nombreDeportesNoAsociados;
+
 
         // Metodo constructor
         public MainWindow(PersonaDTO pUsuario)
@@ -35,12 +41,15 @@ namespace MinisterioDeportes.Vistas
             // Remueve los tabs de administracion para el usuario
             //          if (!usuario.esAdmi) { removerTabAdministracion(); }
 
+            txtParticipante.Text = usuario.nombre + " " + usuario.apellido1 + " " + usuario.apellido2;
+
             cargarTodosDeportes();
             cargarTodasRutinas();
             cargarTodosPlanes();
             cargarTodosParticipantes();
 
 
+            cargarDeportesDeUsuarioEnLista();
             cargarPlanesEnLista();
         }
 
@@ -955,6 +964,7 @@ namespace MinisterioDeportes.Vistas
                 idPlanesRutina = planes.ids.ToList();
                 nombrePlanesRutina = planes.nombres.ToList();
                 lbxPlanes.DataSource = nombrePlanesRutina;
+                lbxRutinas.DataSource = null;
             }
         }
 
@@ -1074,46 +1084,113 @@ namespace MinisterioDeportes.Vistas
         
         #endregion
 
+        #region Deportes de Usuario
 
-
-
-
-
-
-        private void btnAsociarUserDeporte_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Carga todos los deportes en la lista
+        /// </summary>
+        private void cargarDeportesDeUsuarioEnLista()
         {
-            List<String> asd = new List<String>() { "1", "2", "3", "4", "5", "1", "2", "3", "4", "5", "1", "2", "3", "4", "5" };
-
-            Label seleccion = new Label();
-            CustomComboDialog comboSeleccion = new CustomComboDialog(asd, seleccion);
-
-            if (comboSeleccion.ShowDialog() == DialogResult.OK)
+            using (WebServiceMDClient cliente = new WebServiceMDClient())
             {
-                MessageBox.Show("Selecciona = " + seleccion.Text);
+                AsociacionesDTO deportes = cliente.ObtenerListaDeportesPorUsuario(usuario.cedula);                
+                idDeportesAsociados = deportes.ids.ToList();
+                idDeportesNoAsociados = deportes.idsNoAsociados.ToList();
+                nombreDeportesAsociados = deportes.nombres.ToList();
+                nombreDeportesNoAsociados = deportes.nombresNoAsociados.ToList();
+
+                lbxDeportes.DataSource = nombreDeportesAsociados;
+                lbxDeportes.ClearSelected();
             }
         }
 
+        /// <summary>
+        /// Agrega un deporte a la lista del usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAsociarUserDeporte_Click(object sender, EventArgs e)
+        {
+            if (nombreDeportesNoAsociados.Count > 0)
+            {
+                Label seleccion = new Label();
+                CustomComboDialog comboSeleccion = new CustomComboDialog(nombreDeportesNoAsociados, seleccion);
+                if (comboSeleccion.ShowDialog() == DialogResult.OK)
+                {
+                    int selectedIndex = int.Parse(seleccion.Text);
+
+                    String idUsuario = usuario.cedula;
+                    int idDeporte = idDeportesNoAsociados.ElementAt(selectedIndex);
+
+                    using (WebServiceMDClient cliente = new WebServiceMDClient())
+                    {
+                        if (cliente.agregarDeprteAUsuario(idUsuario, idDeporte))
+                        {
+                            nombreDeportesAsociados.Add(nombreDeportesNoAsociados.ElementAt(selectedIndex));
+                            idDeportesAsociados.Add(idDeportesNoAsociados.ElementAt(selectedIndex));
+                            nombreDeportesNoAsociados.RemoveAt(selectedIndex);
+                            idDeportesNoAsociados.RemoveAt(selectedIndex);
+                            lbxDeportes.DataSource = null;
+                            lbxDeportes.DataSource = nombreDeportesAsociados;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ha ocurrido un error al asociar el deporte. Intentelo mas tarde");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay mas deportes para agregar");
+            }
+
+        }
+
+        /// <summary>
+        /// Remueve un deporte de la lista del usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDesasociarUserDeporte_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = lbxDeportes.SelectedIndex;
+            if (selectedIndex < 0)
+            {
+                MessageBox.Show("No ha seleccionado el deporte al que desea desasociar");
+                return;
+            }
+
+            else
+            {
+                using (WebServiceMDClient cliente = new WebServiceMDClient())
+                {
+                    String idUsuario = usuario.cedula;
+                    int idDeporte = idDeportesAsociados.ElementAt(selectedIndex);
+
+                    if (cliente.removerDeporteDeUsuario(idUsuario, idDeporte))
+                    {
+                        nombreDeportesNoAsociados.Add(nombreDeportesAsociados.ElementAt(selectedIndex));
+                        idDeportesNoAsociados.Add(idDeportesAsociados.ElementAt(selectedIndex));
+                        nombreDeportesAsociados.RemoveAt(selectedIndex);
+                        idDeportesAsociados.RemoveAt(selectedIndex);
+                        lbxDeportes.DataSource = null;
+                        lbxDeportes.DataSource = nombreDeportesAsociados;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error al asociar la rutina al plan. Intentelo mas tarde");
+                    }
+                }
+            }
+        }
+
+        #endregion
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
     }
 
 }

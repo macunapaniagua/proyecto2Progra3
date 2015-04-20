@@ -122,12 +122,6 @@
   <wsdl:message name="IWebServiceMD_ObtenerListaRutinasPlan_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerListaRutinasPlanResponse" />
   </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ObtenerListaDeportes_InputMessage">
-    <wsdl:part name="parameters" element="tns:ObtenerListaDeportes" />
-  </wsdl:message>
-  <wsdl:message name="IWebServiceMD_ObtenerListaDeportes_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ObtenerListaDeportesResponse" />
-  </wsdl:message>
   <wsdl:message name="IWebServiceMD_agregarRutinaAPlan_InputMessage">
     <wsdl:part name="parameters" element="tns:agregarRutinaAPlan" />
   </wsdl:message>
@@ -139,6 +133,24 @@
   </wsdl:message>
   <wsdl:message name="IWebServiceMD_removerRutinaDePlan_OutputMessage">
     <wsdl:part name="parameters" element="tns:removerRutinaDePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ObtenerListaDeportesPorUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaDeportesPorUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ObtenerListaDeportesPorUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaDeportesPorUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_agregarDeprteAUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:agregarDeprteAUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_agregarDeprteAUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:agregarDeprteAUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_removerDeporteDeUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:removerDeporteDeUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_removerDeporteDeUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:removerDeporteDeUsuarioResponse" />
   </wsdl:message>
   <wsdl:portType name="IWebServiceMD">
     <wsdl:operation name="ValidarLogin">
@@ -217,10 +229,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerListaRutinasPlan" message="tns:IWebServiceMD_ObtenerListaRutinasPlan_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerListaRutinasPlanResponse" message="tns:IWebServiceMD_ObtenerListaRutinasPlan_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ObtenerListaDeportes">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerListaDeportes" message="tns:IWebServiceMD_ObtenerListaDeportes_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesResponse" message="tns:IWebServiceMD_ObtenerListaDeportes_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="agregarRutinaAPlan">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/agregarRutinaAPlan" message="tns:IWebServiceMD_agregarRutinaAPlan_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/agregarRutinaAPlanResponse" message="tns:IWebServiceMD_agregarRutinaAPlan_OutputMessage" />
@@ -228,6 +236,18 @@
     <wsdl:operation name="removerRutinaDePlan">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/removerRutinaDePlan" message="tns:IWebServiceMD_removerRutinaDePlan_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/removerRutinaDePlanResponse" message="tns:IWebServiceMD_removerRutinaDePlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaDeportesPorUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesPorUsuario" message="tns:IWebServiceMD_ObtenerListaDeportesPorUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesPorUsuarioResponse" message="tns:IWebServiceMD_ObtenerListaDeportesPorUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarDeprteAUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/agregarDeprteAUsuario" message="tns:IWebServiceMD_agregarDeprteAUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/agregarDeprteAUsuarioResponse" message="tns:IWebServiceMD_agregarDeprteAUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="removerDeporteDeUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/removerDeporteDeUsuario" message="tns:IWebServiceMD_removerDeporteDeUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/removerDeporteDeUsuarioResponse" message="tns:IWebServiceMD_removerDeporteDeUsuario_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWebServiceMD" type="tns:IWebServiceMD">
@@ -403,15 +423,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ObtenerListaDeportes">
-      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerListaDeportes" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="agregarRutinaAPlan">
       <soap:operation soapAction="http://tempuri.org/IWebServiceMD/agregarRutinaAPlan" style="document" />
       <wsdl:input>
@@ -423,6 +434,33 @@
     </wsdl:operation>
     <wsdl:operation name="removerRutinaDePlan">
       <soap:operation soapAction="http://tempuri.org/IWebServiceMD/removerRutinaDePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaDeportesPorUsuario">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesPorUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarDeprteAUsuario">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/agregarDeprteAUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removerDeporteDeUsuario">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/removerDeporteDeUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

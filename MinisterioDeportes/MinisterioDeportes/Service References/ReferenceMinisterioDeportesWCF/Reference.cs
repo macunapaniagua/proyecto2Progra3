@@ -580,12 +580,6 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerListaRutinasPlan", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerListaRutinasPlanResponse")]
         System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO> ObtenerListaRutinasPlanAsync(int pIdDeporte);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerListaDeportes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesResponse")]
-        MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO ObtenerListaDeportes();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerListaDeportes", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesResponse")]
-        System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO> ObtenerListaDeportesAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/agregarRutinaAPlan", ReplyAction="http://tempuri.org/IWebServiceMD/agregarRutinaAPlanResponse")]
         bool agregarRutinaAPlan(int pIdPlan, int pIdRutina);
         
@@ -597,6 +591,24 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/removerRutinaDePlan", ReplyAction="http://tempuri.org/IWebServiceMD/removerRutinaDePlanResponse")]
         System.Threading.Tasks.Task<bool> removerRutinaDePlanAsync(int pIdPlan, int pIdRutina);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesPorUsuario", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesPorUsuarioResponse")]
+        MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO ObtenerListaDeportesPorUsuario(string pIdUsuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesPorUsuario", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerListaDeportesPorUsuarioResponse")]
+        System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO> ObtenerListaDeportesPorUsuarioAsync(string pIdUsuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/agregarDeprteAUsuario", ReplyAction="http://tempuri.org/IWebServiceMD/agregarDeprteAUsuarioResponse")]
+        bool agregarDeprteAUsuario(string pIdUsuario, int pIdDeporte);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/agregarDeprteAUsuario", ReplyAction="http://tempuri.org/IWebServiceMD/agregarDeprteAUsuarioResponse")]
+        System.Threading.Tasks.Task<bool> agregarDeprteAUsuarioAsync(string pIdUsuario, int pIdDeporte);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/removerDeporteDeUsuario", ReplyAction="http://tempuri.org/IWebServiceMD/removerDeporteDeUsuarioResponse")]
+        bool removerDeporteDeUsuario(string pIdUsuario, int pIdDeporte);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/removerDeporteDeUsuario", ReplyAction="http://tempuri.org/IWebServiceMD/removerDeporteDeUsuarioResponse")]
+        System.Threading.Tasks.Task<bool> removerDeporteDeUsuarioAsync(string pIdUsuario, int pIdDeporte);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -778,14 +790,6 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
             return base.Channel.ObtenerListaRutinasPlanAsync(pIdDeporte);
         }
         
-        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO ObtenerListaDeportes() {
-            return base.Channel.ObtenerListaDeportes();
-        }
-        
-        public System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO> ObtenerListaDeportesAsync() {
-            return base.Channel.ObtenerListaDeportesAsync();
-        }
-        
         public bool agregarRutinaAPlan(int pIdPlan, int pIdRutina) {
             return base.Channel.agregarRutinaAPlan(pIdPlan, pIdRutina);
         }
@@ -800,6 +804,30 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         
         public System.Threading.Tasks.Task<bool> removerRutinaDePlanAsync(int pIdPlan, int pIdRutina) {
             return base.Channel.removerRutinaDePlanAsync(pIdPlan, pIdRutina);
+        }
+        
+        public MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO ObtenerListaDeportesPorUsuario(string pIdUsuario) {
+            return base.Channel.ObtenerListaDeportesPorUsuario(pIdUsuario);
+        }
+        
+        public System.Threading.Tasks.Task<MinisterioDeportes.ReferenceMinisterioDeportesWCF.AsociacionesDTO> ObtenerListaDeportesPorUsuarioAsync(string pIdUsuario) {
+            return base.Channel.ObtenerListaDeportesPorUsuarioAsync(pIdUsuario);
+        }
+        
+        public bool agregarDeprteAUsuario(string pIdUsuario, int pIdDeporte) {
+            return base.Channel.agregarDeprteAUsuario(pIdUsuario, pIdDeporte);
+        }
+        
+        public System.Threading.Tasks.Task<bool> agregarDeprteAUsuarioAsync(string pIdUsuario, int pIdDeporte) {
+            return base.Channel.agregarDeprteAUsuarioAsync(pIdUsuario, pIdDeporte);
+        }
+        
+        public bool removerDeporteDeUsuario(string pIdUsuario, int pIdDeporte) {
+            return base.Channel.removerDeporteDeUsuario(pIdUsuario, pIdDeporte);
+        }
+        
+        public System.Threading.Tasks.Task<bool> removerDeporteDeUsuarioAsync(string pIdUsuario, int pIdDeporte) {
+            return base.Channel.removerDeporteDeUsuarioAsync(pIdUsuario, pIdDeporte);
         }
     }
 }

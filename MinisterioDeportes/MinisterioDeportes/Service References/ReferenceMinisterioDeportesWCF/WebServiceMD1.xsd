@@ -265,18 +265,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ObtenerListaDeportes">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerListaDeportesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" minOccurs="0" name="ObtenerListaDeportesResult" nillable="true" type="q21:AsociacionesDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="agregarRutinaAPlan">
     <xs:complexType>
       <xs:sequence>
@@ -304,6 +292,50 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="removerRutinaDePlanResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListaDeportesPorUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pIdUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListaDeportesPorUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/MinisterioDeportesWCF.Entidades" minOccurs="0" name="ObtenerListaDeportesPorUsuarioResult" nillable="true" type="q21:AsociacionesDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarDeprteAUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pIdUsuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pIdDeporte" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarDeprteAUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="agregarDeprteAUsuarioResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="removerDeporteDeUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pIdUsuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pIdDeporte" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="removerDeporteDeUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="removerDeporteDeUsuarioResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

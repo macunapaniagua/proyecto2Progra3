@@ -73,15 +73,22 @@ namespace MinisterioDeportesWCF
         AsociacionesDTO ObtenerListaPlanes();
 
         [OperationContract]
-        AsociacionesDTO ObtenerListaRutinasPlan(int pIdDeporte);
-
-        [OperationContract]
-        AsociacionesDTO ObtenerListaDeportes();
+        AsociacionesDTO ObtenerListaRutinasPlan(int pIdDeporte);        
 
         [OperationContract]
         Boolean agregarRutinaAPlan(int pIdPlan, int pIdRutina);
 
         [OperationContract]
         Boolean removerRutinaDePlan(int pIdPlan, int pIdRutina);
+
+
+        [OperationContract]
+        AsociacionesDTO ObtenerListaDeportesPorUsuario(String pIdUsuario);
+
+        [OperationContract]
+        bool agregarDeprteAUsuario(String pIdUsuario, int pIdDeporte);
+
+        [OperationContract]
+        bool removerDeporteDeUsuario(String pIdUsuario, int pIdDeporte);
     }
 }

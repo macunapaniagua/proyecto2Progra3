@@ -579,8 +579,8 @@ namespace MinisterioDeportesWCF
         /// <summary>
         /// Agrega una rutina a un plan
         /// </summary>
-        /// <param name="pIdPlan"></param>
-        /// <param name="pIdRutina"></param>
+        /// <param name="pIdUsuario"></param>
+        /// <param name="pIdDeporte"></param>
         /// <returns></returns>
         public bool agregarRutinaAPlan(int pIdPlan, int pIdRutina)
         {
@@ -655,23 +655,117 @@ namespace MinisterioDeportesWCF
 
 
 
+        #region Deportes de Usuario
 
-
-        public AsociacionesDTO ObtenerListaDeportes()
+        /// <summary>
+        /// Obtiene la lista de los deportes asociados y no asociados para un determinado usuario
+        /// </summary>
+        /// <param name="pIdUsuario"></param>
+        /// <returns></returns>
+        public AsociacionesDTO ObtenerListaDeportesPorUsuario(String pIdUsuario)
         {
-            ////MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();            
-            ////List<short> idDeportes = new List<short>();
-            ////List<String> nombreDeportes = new List<string>();
+            List<int> idDeportesAsociados = new List<int>();
+            List<int> idDeportesNoAsociados = new List<int>();
+            List<String> nombreDeportesAsociados = new List<string>();
+            List<String> nombreDeportesNoAsociados = new List<string>();
 
-            ////List<deporte> deportes = modeloMinisterio.deporte.Where(p => true).ToList();
-            ////    foreach (deporte deporteActual in deportes)
-            ////    {
-            ////        idDeportes.Add(deporteActual.id);
-            ////        nombreDeportes.Add(deporteActual.descripcion);
-            ////    }
-            return null;
+            MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
+            // Obtiene todos los deportes asociadas y no asociadas al usuario con el id solicitado
+            List<deporte> deportesAsociados = modeloMinisterio.deporte.Where(d => d.persona_deporte.FirstOrDefault(pd => pd.persona.Equals(pIdUsuario)) != null).ToList();
+            List<deporte> deportesNoAsociados = modeloMinisterio.deporte.Where(d => d.persona_deporte.FirstOrDefault(pd => pd.persona.Equals(pIdUsuario)) == null).ToList();
+
+            foreach (deporte deporteAsociado in deportesAsociados)
+            {
+                idDeportesAsociados.Add(deporteAsociado.id);
+                nombreDeportesAsociados.Add(deporteAsociado.descripcion);
+            }
+
+            foreach (deporte deporteNoAsociado in deportesNoAsociados)
+            {
+                idDeportesNoAsociados.Add(deporteNoAsociado.id);
+                nombreDeportesNoAsociados.Add(deporteNoAsociado.descripcion);
+            }
+
+            AsociacionesDTO resultadoBusqueda = new AsociacionesDTO(idDeportesAsociados,
+                                                                    nombreDeportesAsociados,
+                                                                    idDeportesNoAsociados,
+                                                                    nombreDeportesNoAsociados);
+            return resultadoBusqueda;
         }
 
+        /// <summary>
+        /// Agrega un deporte a un usuario
+        /// </summary>
+        /// <param name="pIdPlan"></param>
+        /// <param name="pIdRutina"></param>
+        /// <returns></returns>
+        public bool agregarDeprteAUsuario(String pIdUsuario, int pIdDeporte)
+        {
+            try
+            {
+                MinisterioDeportesEntityDataModel model = new MinisterioDeportesEntityDataModel();
+                persona personaSeleccionada = model.persona.FirstOrDefault(p => p.cedula.Equals(pIdUsuario));
+                if (personaSeleccionada == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    deporte deporteSeleccionado = model.deporte.FirstOrDefault(d => d.id == pIdDeporte);
+                    if (deporteSeleccionado == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        persona_deporte nuevaRelacion = new persona_deporte(){
+                            deporte = pIdDeporte,
+                            persona = pIdUsuario,
+                            id_plan = null                            
+                        };
+
+                        personaSeleccionada.persona_deporte.Add(nuevaRelacion);
+                        model.SaveChanges();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Remueve un deportes de un un usuario
+        /// </summary>
+        /// <param name="pIdUsuario"></param>
+        /// <param name="pIdDeporte"></param>
+        /// <returns></returns>
+        public bool removerDeporteDeUsuario(String pIdUsuario, int pIdDeporte)
+        {
+            try
+            {
+                MinisterioDeportesEntityDataModel model = new MinisterioDeportesEntityDataModel();
+                persona_deporte personaDeporteSeleccionado = model.persona_deporte.FirstOrDefault(pd => pd.persona.Equals(pIdUsuario) && pIdDeporte == pd.deporte);
+                if (personaDeporteSeleccionado == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    model.persona_deporte.Remove(personaDeporteSeleccionado);
+                    model.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        #endregion
 
 
 
@@ -680,7 +774,5 @@ namespace MinisterioDeportesWCF
 
 
 
-
-        
     }
 }

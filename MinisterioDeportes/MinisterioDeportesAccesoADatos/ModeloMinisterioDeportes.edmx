@@ -31,7 +31,7 @@
           </Key>
           <Property Name="persona" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="deporte" Type="int" Nullable="false" />
-          <Property Name="id_plan" Type="int" Nullable="false" />
+          <Property Name="id_plan" Type="int" />
         </EntityType>
         <EntityType Name="plan">
           <Key>
@@ -82,7 +82,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_persona_deporte_plan">
-          <End Role="plan" Type="Self.plan" Multiplicity="1" />
+          <End Role="plan" Type="Self.plan" Multiplicity="0..1" />
           <End Role="persona_deporte" Type="Self.persona_deporte" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="plan">
@@ -200,7 +200,7 @@
           </Key>
           <Property Name="persona" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="deporte" Type="Int32" Nullable="false" />
-          <Property Name="id_plan" Type="Int32" Nullable="false" />
+          <Property Name="id_plan" Type="Int32" />
           <NavigationProperty Name="deporte1" Relationship="EntityModel.FK_persona_deporte_deporte" FromRole="persona_deporte" ToRole="deporte" />
           <NavigationProperty Name="persona1" Relationship="EntityModel.FK_persona_deporte_persona" FromRole="persona_deporte" ToRole="persona" />
           <NavigationProperty Name="plan" Relationship="EntityModel.FK_persona_deporte_plan" FromRole="persona_deporte" ToRole="plan" />
@@ -249,7 +249,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_persona_deporte_plan">
-          <End Type="EntityModel.plan" Role="plan" Multiplicity="1" />
+          <End Type="EntityModel.plan" Role="plan" Multiplicity="0..1" />
           <End Type="EntityModel.persona_deporte" Role="persona_deporte" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="plan">

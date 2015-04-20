@@ -16,7 +16,7 @@ namespace MinisterioDeportesAccesoADatos
     {
         public string persona { get; set; }
         public int deporte { get; set; }
-        public int id_plan { get; set; }
+        public Nullable<int> id_plan { get; set; }
     
         public virtual deporte deporte1 { get; set; }
         public virtual persona persona1 { get; set; }

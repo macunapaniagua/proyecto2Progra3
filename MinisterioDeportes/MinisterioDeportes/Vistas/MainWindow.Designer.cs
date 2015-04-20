@@ -95,12 +95,10 @@
             this.lbxPlanes = new System.Windows.Forms.ListBox();
             this.tabAsociarUserDep = new System.Windows.Forms.TabPage();
             this.label14 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDesasociarUserDeporte = new System.Windows.Forms.Button();
             this.btnAsociarUserDeporte = new System.Windows.Forms.Button();
-            this.txtParticipanteFilter = new System.Windows.Forms.TextBox();
+            this.txtParticipante = new System.Windows.Forms.TextBox();
             this.lbxDeportes = new System.Windows.Forms.ListBox();
-            this.lbxParticipantes = new System.Windows.Forms.ListBox();
             this.tabAsociarPlanDep = new System.Windows.Forms.TabPage();
             this.label17 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -123,7 +121,6 @@
             this.tabAsociarRutinaPlan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabAsociarUserDep.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabAsociarPlanDep.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabEstadísticas.SuspendLayout();
@@ -856,12 +853,10 @@
             // tabAsociarUserDep
             // 
             this.tabAsociarUserDep.Controls.Add(this.label14);
-            this.tabAsociarUserDep.Controls.Add(this.pictureBox1);
             this.tabAsociarUserDep.Controls.Add(this.btnDesasociarUserDeporte);
             this.tabAsociarUserDep.Controls.Add(this.btnAsociarUserDeporte);
-            this.tabAsociarUserDep.Controls.Add(this.txtParticipanteFilter);
+            this.tabAsociarUserDep.Controls.Add(this.txtParticipante);
             this.tabAsociarUserDep.Controls.Add(this.lbxDeportes);
-            this.tabAsociarUserDep.Controls.Add(this.lbxParticipantes);
             this.tabAsociarUserDep.Location = new System.Drawing.Point(4, 22);
             this.tabAsociarUserDep.Name = "tabAsociarUserDep";
             this.tabAsociarUserDep.Padding = new System.Windows.Forms.Padding(3);
@@ -873,21 +868,12 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(112, 59);
+            this.label14.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(82, 62);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(63, 13);
+            this.label14.Size = new System.Drawing.Size(62, 18);
             this.label14.TabIndex = 7;
-            this.label14.Text = "Participante";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::MinisterioDeportes.Properties.Resources.transfer;
-            this.pictureBox1.Location = new System.Drawing.Point(380, 210);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.label14.Text = "Deportes de:";
             // 
             // btnDesasociarUserDeporte
             // 
@@ -895,11 +881,12 @@
             this.btnDesasociarUserDeporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnDesasociarUserDeporte.FlatAppearance.BorderSize = 0;
             this.btnDesasociarUserDeporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDesasociarUserDeporte.Location = new System.Drawing.Point(751, 133);
+            this.btnDesasociarUserDeporte.Location = new System.Drawing.Point(785, 152);
             this.btnDesasociarUserDeporte.Name = "btnDesasociarUserDeporte";
             this.btnDesasociarUserDeporte.Size = new System.Drawing.Size(40, 40);
             this.btnDesasociarUserDeporte.TabIndex = 5;
             this.btnDesasociarUserDeporte.UseVisualStyleBackColor = true;
+            this.btnDesasociarUserDeporte.Click += new System.EventHandler(this.btnDesasociarUserDeporte_Click);
             // 
             // btnAsociarUserDeporte
             // 
@@ -907,35 +894,33 @@
             this.btnAsociarUserDeporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAsociarUserDeporte.FlatAppearance.BorderSize = 0;
             this.btnAsociarUserDeporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAsociarUserDeporte.Location = new System.Drawing.Point(751, 97);
+            this.btnAsociarUserDeporte.Location = new System.Drawing.Point(785, 107);
             this.btnAsociarUserDeporte.Name = "btnAsociarUserDeporte";
             this.btnAsociarUserDeporte.Size = new System.Drawing.Size(40, 30);
             this.btnAsociarUserDeporte.TabIndex = 4;
             this.btnAsociarUserDeporte.UseVisualStyleBackColor = true;
             this.btnAsociarUserDeporte.Click += new System.EventHandler(this.btnAsociarUserDeporte_Click);
             // 
-            // txtParticipanteFilter
+            // txtParticipante
             // 
-            this.txtParticipanteFilter.Location = new System.Drawing.Point(181, 56);
-            this.txtParticipanteFilter.Name = "txtParticipanteFilter";
-            this.txtParticipanteFilter.Size = new System.Drawing.Size(184, 20);
-            this.txtParticipanteFilter.TabIndex = 2;
+            this.txtParticipante.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtParticipante.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtParticipante.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtParticipante.Location = new System.Drawing.Point(151, 62);
+            this.txtParticipante.Name = "txtParticipante";
+            this.txtParticipante.ReadOnly = true;
+            this.txtParticipante.Size = new System.Drawing.Size(467, 18);
+            this.txtParticipante.TabIndex = 2;
             // 
             // lbxDeportes
             // 
+            this.lbxDeportes.Font = new System.Drawing.Font("Bell MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbxDeportes.FormattingEnabled = true;
-            this.lbxDeportes.Location = new System.Drawing.Point(495, 97);
+            this.lbxDeportes.ItemHeight = 19;
+            this.lbxDeportes.Location = new System.Drawing.Point(83, 97);
             this.lbxDeportes.Name = "lbxDeportes";
-            this.lbxDeportes.Size = new System.Drawing.Size(250, 303);
+            this.lbxDeportes.Size = new System.Drawing.Size(684, 289);
             this.lbxDeportes.TabIndex = 1;
-            // 
-            // lbxParticipantes
-            // 
-            this.lbxParticipantes.FormattingEnabled = true;
-            this.lbxParticipantes.Location = new System.Drawing.Point(115, 97);
-            this.lbxParticipantes.Name = "lbxParticipantes";
-            this.lbxParticipantes.Size = new System.Drawing.Size(250, 303);
-            this.lbxParticipantes.TabIndex = 0;
             // 
             // tabAsociarPlanDep
             // 
@@ -1074,7 +1059,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabAsociarUserDep.ResumeLayout(false);
             this.tabAsociarUserDep.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabAsociarPlanDep.ResumeLayout(false);
             this.tabAsociarPlanDep.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -1147,11 +1131,9 @@
         private System.Windows.Forms.TabPage tabAsociarPlanDep;
         private System.Windows.Forms.Button btnDesasociarUserDeporte;
         private System.Windows.Forms.Button btnAsociarUserDeporte;
-        private System.Windows.Forms.TextBox txtParticipanteFilter;
+        private System.Windows.Forms.TextBox txtParticipante;
         private System.Windows.Forms.ListBox lbxDeportes;
-        private System.Windows.Forms.ListBox lbxParticipantes;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnDesasociarPlanRutina;
