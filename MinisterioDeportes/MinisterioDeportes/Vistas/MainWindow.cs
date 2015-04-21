@@ -59,12 +59,12 @@ namespace MinisterioDeportes.Vistas
             cargarDeportesDeUsuarioEnLista();
             cargarPlanesEnLista();
 
-            cbxDeporteAsociado.DataSource = nombreDeportesAsociados;
+            this.cbxDeporteAsociado.DataSource = nombreDeportesAsociados;
             this.cargarPlanesDeportesEnLista();
             
-            lbxPlanDep.DataSource = nombrePlanAsociado;
+            this.lbxPlanDep.DataSource = nombrePlanAsociado;
 
-            
+            this.CargarEstadisticas();
             
         }
 
@@ -91,6 +91,23 @@ namespace MinisterioDeportes.Vistas
             Owner.Show();
         }
 
+        private void CargarEstadisticas()
+        {
+            using (WebServiceMDClient cliente = new WebServiceMDClient())
+            {
+                List<DeporteDTO> listaDeportes = cliente.ObtenerDeportes(null).ToList();
+                List<int> cantidadPersonas = new List<int>();
+                foreach (DeporteDTO deporte in listaDeportes)
+                {
+                    cantidadPersonas.Add(cliente.ObtenerCantidadPersonasPorDeporte(deporte.Id));
+                }
+                for (int i = 0; i < listaDeportes.Count; i++)
+                {
+                    this.chtEstadisticas.Series["Deportes"].Points.AddXY(listaDeportes.ElementAt(i).Descripcion, cantidadPersonas.ElementAt(i));
+                }
+            }
+
+        }
 
         #region Modulo Deporte
 
@@ -1202,7 +1219,7 @@ namespace MinisterioDeportes.Vistas
 
         #endregion
 
-        //************************************************************************************************************************************************************
+        #region AsociarDesasociar Plan Deporte
 
         private void btnAsociarPlanDeporte_Click(object sender, EventArgs e)
         {
@@ -1245,7 +1262,6 @@ namespace MinisterioDeportes.Vistas
             }
             
         }
-
         
          private void cargarPlanesDeportesEnLista()
         {
@@ -1261,8 +1277,6 @@ namespace MinisterioDeportes.Vistas
                 //lbxDeportes.ClearSelected();
             }
         }
-     
-        //*************************************************************************************************************************************************************
 
          private void btnDesasociarPlanDeporte_Click(object sender, EventArgs e)
          {
@@ -1306,8 +1320,10 @@ namespace MinisterioDeportes.Vistas
              lbxPlanDep.DataSource = null;
              lbxPlanDep.DataSource = nombrePlanAsociado;
          }
+        #endregion
 
 
+        
     }
 
 }

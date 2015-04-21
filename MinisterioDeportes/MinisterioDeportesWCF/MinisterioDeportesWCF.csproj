@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\DeporteDTO.cs" />
+    <Compile Include="Entidades\Estadisticas.cs" />
     <Compile Include="Entidades\PersonaDTO.cs" />
     <Compile Include="Entidades\PlanDTO.cs" />
     <Compile Include="Entidades\AsociacionesDTO.cs" />

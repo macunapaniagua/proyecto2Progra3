@@ -652,8 +652,6 @@ namespace MinisterioDeportesWCF
 
         #endregion
 
-
-
         #region Deportes de Usuario
 
         /// <summary>
@@ -766,6 +764,7 @@ namespace MinisterioDeportesWCF
 
         #endregion
 
+        #region plan de deporte
         public AsociacionesDTO ObtenerListaPlanesPorDeporte(int id)
         {
             List<int> idPlanAsociado = new List<int>();
@@ -841,5 +840,19 @@ namespace MinisterioDeportesWCF
                 return false;
             }
         }
+        #endregion
+
+        #region estadisticas
+
+        public int ObtenerCantidadPersonasPorDeporte(int id_deporte)
+        {
+            MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
+            List<persona> cantidadPersonas = modeloMinisterio.persona.Where(d => d.persona_deporte.FirstOrDefault(pd => pd.deporte.Equals(id_deporte)) != null).ToList();
+
+            return cantidadPersonas.Count;
+
+        }
+
+        #endregion
     }
 }

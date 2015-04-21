@@ -1006,11 +1006,10 @@
             this.chtEstadisticas.Name = "chtEstadisticas";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "Deportes";
             this.chtEstadisticas.Series.Add(series1);
             this.chtEstadisticas.Size = new System.Drawing.Size(614, 396);
             this.chtEstadisticas.TabIndex = 0;
-            this.chtEstadisticas.Text = "chart1";
             // 
             // MainWindow
             // 

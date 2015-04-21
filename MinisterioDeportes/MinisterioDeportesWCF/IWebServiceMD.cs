@@ -100,5 +100,7 @@ namespace MinisterioDeportesWCF
         [OperationContract]
         Boolean RemovePlanADeporteUsuario(string id_usuario, int id_deporte);
 
+        [OperationContract]
+        int ObtenerCantidadPersonasPorDeporte(int id_deporte);
     }
 }

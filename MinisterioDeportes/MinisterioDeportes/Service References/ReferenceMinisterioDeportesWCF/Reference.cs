@@ -627,6 +627,12 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/RemovePlanADeporteUsuario", ReplyAction="http://tempuri.org/IWebServiceMD/RemovePlanADeporteUsuarioResponse")]
         System.Threading.Tasks.Task<bool> RemovePlanADeporteUsuarioAsync(string id_usuario, int id_deporte);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerCantidadPersonasPorDeporte", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerCantidadPersonasPorDeporteResponse")]
+        int ObtenerCantidadPersonasPorDeporte(int id_deporte);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerCantidadPersonasPorDeporte", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerCantidadPersonasPorDeporteResponse")]
+        System.Threading.Tasks.Task<int> ObtenerCantidadPersonasPorDeporteAsync(int id_deporte);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -870,6 +876,14 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         
         public System.Threading.Tasks.Task<bool> RemovePlanADeporteUsuarioAsync(string id_usuario, int id_deporte) {
             return base.Channel.RemovePlanADeporteUsuarioAsync(id_usuario, id_deporte);
+        }
+        
+        public int ObtenerCantidadPersonasPorDeporte(int id_deporte) {
+            return base.Channel.ObtenerCantidadPersonasPorDeporte(id_deporte);
+        }
+        
+        public System.Threading.Tasks.Task<int> ObtenerCantidadPersonasPorDeporteAsync(int id_deporte) {
+            return base.Channel.ObtenerCantidadPersonasPorDeporteAsync(id_deporte);
         }
     }
 }

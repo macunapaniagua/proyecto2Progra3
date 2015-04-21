@@ -170,6 +170,12 @@
   <wsdl:message name="IWebServiceMD_RemovePlanADeporteUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemovePlanADeporteUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ObtenerCantidadPersonasPorDeporte_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCantidadPersonasPorDeporte" />
+  </wsdl:message>
+  <wsdl:message name="IWebServiceMD_ObtenerCantidadPersonasPorDeporte_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCantidadPersonasPorDeporteResponse" />
+  </wsdl:message>
   <wsdl:portType name="IWebServiceMD">
     <wsdl:operation name="ValidarLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ValidarLogin" message="tns:IWebServiceMD_ValidarLogin_InputMessage" />
@@ -278,6 +284,10 @@
     <wsdl:operation name="RemovePlanADeporteUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/RemovePlanADeporteUsuario" message="tns:IWebServiceMD_RemovePlanADeporteUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/RemovePlanADeporteUsuarioResponse" message="tns:IWebServiceMD_RemovePlanADeporteUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCantidadPersonasPorDeporte">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerCantidadPersonasPorDeporte" message="tns:IWebServiceMD_ObtenerCantidadPersonasPorDeporte_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebServiceMD/ObtenerCantidadPersonasPorDeporteResponse" message="tns:IWebServiceMD_ObtenerCantidadPersonasPorDeporte_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWebServiceMD" type="tns:IWebServiceMD">
@@ -518,6 +528,15 @@
     </wsdl:operation>
     <wsdl:operation name="RemovePlanADeporteUsuario">
       <soap:operation soapAction="http://tempuri.org/IWebServiceMD/RemovePlanADeporteUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCantidadPersonasPorDeporte">
+      <soap:operation soapAction="http://tempuri.org/IWebServiceMD/ObtenerCantidadPersonasPorDeporte" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
