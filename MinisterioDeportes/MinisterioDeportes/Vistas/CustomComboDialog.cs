@@ -42,6 +42,6 @@ namespace MinisterioDeportes.Vistas
             this.Result.Text = cmbOpciones.SelectedIndex.ToString();
             this.DialogResult = DialogResult.OK;
             this.Close();            
-        }             
+        }          
     }
 }

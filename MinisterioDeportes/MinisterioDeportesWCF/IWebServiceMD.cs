@@ -90,5 +90,15 @@ namespace MinisterioDeportesWCF
 
         [OperationContract]
         bool removerDeporteDeUsuario(String pIdUsuario, int pIdDeporte);
+
+        [OperationContract]
+        AsociacionesDTO ObtenerListaPlanesPorDeporte(int id);
+
+        [OperationContract]
+        Boolean AgregarPlanADeporteUsuario(string id_usuario, int id_deporte, int id_plan);
+
+        [OperationContract]
+        Boolean RemovePlanADeporteUsuario(string id_usuario, int id_deporte);
+
     }
 }

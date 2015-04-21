@@ -100,13 +100,11 @@
             this.txtParticipante = new System.Windows.Forms.TextBox();
             this.lbxDeportes = new System.Windows.Forms.ListBox();
             this.tabAsociarPlanDep = new System.Windows.Forms.TabPage();
+            this.cbxDeporteAsociado = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnDesasociarPlanDeporte = new System.Windows.Forms.Button();
             this.btnAsociarPlanDeporte = new System.Windows.Forms.Button();
-            this.txtDeportesFilter = new System.Windows.Forms.TextBox();
-            this.lbxPlanDp = new System.Windows.Forms.ListBox();
-            this.lbxDeportesPl = new System.Windows.Forms.ListBox();
+            this.lbxPlanDep = new System.Windows.Forms.ListBox();
             this.tabEstadísticas = new System.Windows.Forms.TabPage();
             this.chtEstadisticas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tbcDashboard.SuspendLayout();
@@ -122,7 +120,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabAsociarUserDep.SuspendLayout();
             this.tabAsociarPlanDep.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabEstadísticas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chtEstadisticas)).BeginInit();
             this.SuspendLayout();
@@ -924,19 +921,26 @@
             // 
             // tabAsociarPlanDep
             // 
+            this.tabAsociarPlanDep.Controls.Add(this.cbxDeporteAsociado);
             this.tabAsociarPlanDep.Controls.Add(this.label17);
-            this.tabAsociarPlanDep.Controls.Add(this.pictureBox3);
             this.tabAsociarPlanDep.Controls.Add(this.btnDesasociarPlanDeporte);
             this.tabAsociarPlanDep.Controls.Add(this.btnAsociarPlanDeporte);
-            this.tabAsociarPlanDep.Controls.Add(this.txtDeportesFilter);
-            this.tabAsociarPlanDep.Controls.Add(this.lbxPlanDp);
-            this.tabAsociarPlanDep.Controls.Add(this.lbxDeportesPl);
+            this.tabAsociarPlanDep.Controls.Add(this.lbxPlanDep);
             this.tabAsociarPlanDep.Location = new System.Drawing.Point(4, 22);
             this.tabAsociarPlanDep.Name = "tabAsociarPlanDep";
             this.tabAsociarPlanDep.Size = new System.Drawing.Size(878, 467);
             this.tabAsociarPlanDep.TabIndex = 7;
             this.tabAsociarPlanDep.Text = "Asociar Plan-Deporte";
             this.tabAsociarPlanDep.UseVisualStyleBackColor = true;
+            // 
+            // cbxDeporteAsociado
+            // 
+            this.cbxDeporteAsociado.FormattingEnabled = true;
+            this.cbxDeporteAsociado.Location = new System.Drawing.Point(164, 59);
+            this.cbxDeporteAsociado.Name = "cbxDeporteAsociado";
+            this.cbxDeporteAsociado.Size = new System.Drawing.Size(201, 21);
+            this.cbxDeporteAsociado.TabIndex = 15;
+            this.cbxDeporteAsociado.SelectedIndexChanged += new System.EventHandler(this.cbxDeporteAsociado_SelectedIndexChanged);
             // 
             // label17
             // 
@@ -946,16 +950,6 @@
             this.label17.Size = new System.Drawing.Size(45, 13);
             this.label17.TabIndex = 14;
             this.label17.Text = "Deporte";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::MinisterioDeportes.Properties.Resources.transfer;
-            this.pictureBox3.Location = new System.Drawing.Point(380, 210);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 13;
-            this.pictureBox3.TabStop = false;
             // 
             // btnDesasociarPlanDeporte
             // 
@@ -968,6 +962,7 @@
             this.btnDesasociarPlanDeporte.Size = new System.Drawing.Size(40, 40);
             this.btnDesasociarPlanDeporte.TabIndex = 12;
             this.btnDesasociarPlanDeporte.UseVisualStyleBackColor = true;
+            this.btnDesasociarPlanDeporte.Click += new System.EventHandler(this.btnDesasociarPlanDeporte_Click);
             // 
             // btnAsociarPlanDeporte
             // 
@@ -980,29 +975,15 @@
             this.btnAsociarPlanDeporte.Size = new System.Drawing.Size(40, 30);
             this.btnAsociarPlanDeporte.TabIndex = 11;
             this.btnAsociarPlanDeporte.UseVisualStyleBackColor = true;
+            this.btnAsociarPlanDeporte.Click += new System.EventHandler(this.btnAsociarPlanDeporte_Click);
             // 
-            // txtDeportesFilter
+            // lbxPlanDep
             // 
-            this.txtDeportesFilter.Location = new System.Drawing.Point(163, 56);
-            this.txtDeportesFilter.Name = "txtDeportesFilter";
-            this.txtDeportesFilter.Size = new System.Drawing.Size(202, 20);
-            this.txtDeportesFilter.TabIndex = 10;
-            // 
-            // lbxPlanDp
-            // 
-            this.lbxPlanDp.FormattingEnabled = true;
-            this.lbxPlanDp.Location = new System.Drawing.Point(495, 97);
-            this.lbxPlanDp.Name = "lbxPlanDp";
-            this.lbxPlanDp.Size = new System.Drawing.Size(250, 303);
-            this.lbxPlanDp.TabIndex = 9;
-            // 
-            // lbxDeportesPl
-            // 
-            this.lbxDeportesPl.FormattingEnabled = true;
-            this.lbxDeportesPl.Location = new System.Drawing.Point(115, 97);
-            this.lbxDeportesPl.Name = "lbxDeportesPl";
-            this.lbxDeportesPl.Size = new System.Drawing.Size(250, 303);
-            this.lbxDeportesPl.TabIndex = 8;
+            this.lbxPlanDep.FormattingEnabled = true;
+            this.lbxPlanDep.Location = new System.Drawing.Point(115, 97);
+            this.lbxPlanDep.Name = "lbxPlanDep";
+            this.lbxPlanDep.Size = new System.Drawing.Size(618, 303);
+            this.lbxPlanDep.TabIndex = 8;
             // 
             // tabEstadísticas
             // 
@@ -1061,7 +1042,6 @@
             this.tabAsociarUserDep.PerformLayout();
             this.tabAsociarPlanDep.ResumeLayout(false);
             this.tabAsociarPlanDep.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.tabEstadísticas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chtEstadisticas)).EndInit();
             this.ResumeLayout(false);
@@ -1141,12 +1121,10 @@
         private System.Windows.Forms.ListBox lbxRutinas;
         private System.Windows.Forms.ListBox lbxPlanes;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnDesasociarPlanDeporte;
         private System.Windows.Forms.Button btnAsociarPlanDeporte;
-        private System.Windows.Forms.TextBox txtDeportesFilter;
-        private System.Windows.Forms.ListBox lbxPlanDp;
-        private System.Windows.Forms.ListBox lbxDeportesPl;
+        private System.Windows.Forms.ListBox lbxPlanDep;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox cbxDeporteAsociado;
     }
 }

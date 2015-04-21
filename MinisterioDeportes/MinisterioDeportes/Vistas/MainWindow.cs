@@ -16,7 +16,7 @@ namespace MinisterioDeportes.Vistas
 {
     public partial class MainWindow : Form
     {
-        private PersonaDTO usuario;                            // Usuario Logueado
+        private PersonaDTO usuario;// Usuario Logueado
 
         // Variables para plan-rutina
         List<int> idPlanesRutina;
@@ -31,6 +31,12 @@ namespace MinisterioDeportes.Vistas
         List<String> nombreDeportesAsociados;
         List<int> idDeportesNoAsociados;
         List<String> nombreDeportesNoAsociados;
+
+        //Variables para asociar deporte plan
+        List<int> idPlanAsociado;
+        List<String> nombrePlanAsociado;
+        List<int> idPlanesNoAsociados;
+        List<String> nombrePlanesNoAsociados;
 
 
         // Metodo constructor
@@ -49,8 +55,17 @@ namespace MinisterioDeportes.Vistas
             cargarTodosParticipantes();
 
 
+            
             cargarDeportesDeUsuarioEnLista();
             cargarPlanesEnLista();
+
+            cbxDeporteAsociado.DataSource = nombreDeportesAsociados;
+            this.cargarPlanesDeportesEnLista();
+            
+            lbxPlanDep.DataSource = nombrePlanAsociado;
+
+            
+            
         }
 
         /// <summary>
@@ -1127,7 +1142,7 @@ namespace MinisterioDeportes.Vistas
                         if (cliente.agregarDeprteAUsuario(idUsuario, idDeporte))
                         {
                             nombreDeportesAsociados.Add(nombreDeportesNoAsociados.ElementAt(selectedIndex));
-                            idDeportesAsociados.Add(idDeportesNoAsociados.ElementAt(selectedIndex));
+                            idDeportesAsociados.Add(idDeportesAsociados.ElementAt(selectedIndex));
                             nombreDeportesNoAsociados.RemoveAt(selectedIndex);
                             idDeportesNoAsociados.RemoveAt(selectedIndex);
                             lbxDeportes.DataSource = null;
@@ -1187,10 +1202,112 @@ namespace MinisterioDeportes.Vistas
 
         #endregion
 
+        //************************************************************************************************************************************************************
 
+        private void btnAsociarPlanDeporte_Click(object sender, EventArgs e)
+        {
+           
+                if (nombrePlanAsociado.Count == 0)
+                {
+                Label seleccion = new Label();
+                CustomComboDialog comboSeleccion = new CustomComboDialog(nombrePlanesNoAsociados, seleccion);
+                if (comboSeleccion.ShowDialog() == DialogResult.OK)
+                {
+                   
+                    String idUsuario = usuario.cedula;
+                    int idDeporte = idDeportesAsociados.ElementAt(cbxDeporteAsociado.SelectedIndex);
 
+                    int selectedIndex = int.Parse(seleccion.Text);
+                    int plan = idPlanesNoAsociados.ElementAt(selectedIndex);
+
+                    using (WebServiceMDClient cliente = new WebServiceMDClient())
+                    {
+                        if (cliente.AgregarPlanADeporteUsuario(idUsuario, idDeporte,plan))
+                        {
+                            nombrePlanAsociado.Add(nombrePlanesNoAsociados.ElementAt(selectedIndex));
+                            idPlanAsociado.Add(idPlanesNoAsociados.ElementAt(selectedIndex));
+                            nombrePlanesNoAsociados.RemoveAt(selectedIndex);
+                            idPlanesNoAsociados.RemoveAt(selectedIndex);
+                            
+                            lbxPlanDep.DataSource = null;
+                            lbxPlanDep.DataSource = nombrePlanAsociado;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ha ocurrido un error al asociar el Plan. Intentelo mas tarde");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ya existe un plan asociado");
+            }
+            
+        }
 
         
+         private void cargarPlanesDeportesEnLista()
+        {
+            using (WebServiceMDClient cliente = new WebServiceMDClient())
+            {
+                AsociacionesDTO planes = cliente.ObtenerListaPlanesPorDeporte((cbxDeporteAsociado.SelectedIndex)+1);//CAMBIAR A VALUE
+                idPlanAsociado = planes.ids.ToList();
+                idPlanesNoAsociados = planes.idsNoAsociados.ToList();
+                nombrePlanAsociado = planes.nombres.ToList();
+                nombrePlanesNoAsociados = planes.nombresNoAsociados.ToList();
+
+                lbxPlanDep.DataSource = nombrePlanAsociado;
+                //lbxDeportes.ClearSelected();
+            }
+        }
+     
+        //*************************************************************************************************************************************************************
+
+         private void btnDesasociarPlanDeporte_Click(object sender, EventArgs e)
+         {
+             int selectedIndex = lbxPlanDep.SelectedIndex;
+             if (selectedIndex < 0)
+             {
+                 MessageBox.Show("No ha seleccionado el deporte al que desea desasociar");
+                 return;
+             }
+             else
+             {
+                 using (WebServiceMDClient cliente = new WebServiceMDClient())
+                 {
+                     String idUsuario = usuario.cedula;
+                     int idDeporte = idDeportesAsociados.ElementAt(cbxDeporteAsociado.SelectedIndex);
+
+                     if (cliente.RemovePlanADeporteUsuario(idUsuario,idDeporte))
+                     {
+                         nombrePlanesNoAsociados.Add(nombrePlanAsociado.ElementAt(selectedIndex));
+                         idPlanesNoAsociados.Add(idPlanAsociado.ElementAt(selectedIndex));
+
+                         nombrePlanAsociado.RemoveAt(selectedIndex);
+                         idPlanAsociado.RemoveAt(selectedIndex);
+
+                         lbxPlanDep.DataSource = null;
+                         lbxPlanDep.DataSource = nombrePlanAsociado;
+                     }
+                     else
+                     {
+                         MessageBox.Show("Ha ocurrido un error al asociar la rutina al plan. Intentelo mas tarde");
+                     }
+
+                 }
+             }
+
+         }
+
+         private void cbxDeporteAsociado_SelectedIndexChanged(object sender, EventArgs e)
+         {
+             this.cargarPlanesDeportesEnLista();
+             lbxPlanDep.DataSource = null;
+             lbxPlanDep.DataSource = nombrePlanAsociado;
+         }
+
+
     }
 
 }

@@ -654,7 +654,6 @@ namespace MinisterioDeportesWCF
 
 
 
-
         #region Deportes de Usuario
 
         /// <summary>
@@ -767,12 +766,80 @@ namespace MinisterioDeportesWCF
 
         #endregion
 
+        public AsociacionesDTO ObtenerListaPlanesPorDeporte(int id)
+        {
+            List<int> idPlanAsociado = new List<int>();
+            List<int> idPlanesNoAsociados = new List<int>();
+            List<String> nombrePlanAsociado = new List<string>();
+            List<String> nombrePlanesNoAsociados = new List<string>();
+            
 
+            MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
+            List<plan> PlanAsociado  = modeloMinisterio.plan.Where(d => d.persona_deporte.FirstOrDefault(pd => pd.deporte.Equals(id)) != null).ToList();
+            List<plan> PlanesNoAsocidos = modeloMinisterio.plan.Where(d => d.persona_deporte.FirstOrDefault(pd => pd.deporte.Equals(id)) == null).ToList();
+            foreach (plan plan in PlanAsociado)
+            {
+                idPlanAsociado.Add(plan.id);
+                nombrePlanAsociado.Add(plan.nombre);
+            }
 
+            foreach (plan plan in PlanesNoAsocidos)
+            {
+                idPlanesNoAsociados.Add(plan.id);
+                nombrePlanesNoAsociados.Add(plan.nombre);
+            }
 
+            return new AsociacionesDTO(idPlanAsociado, nombrePlanAsociado, idPlanesNoAsociados, nombrePlanesNoAsociados);
+        }
+        public bool AgregarPlanADeporteUsuario(string id_usuario, int id_deporte, int id_plan)
+        {
+            
+            try
+            {
+                MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
+                persona_deporte personaDeporteEditar = modeloMinisterio.persona_deporte.SingleOrDefault(x => x.deporte == id_deporte && x.persona== id_usuario);
+                if (personaDeporteEditar == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    personaDeporteEditar.persona = id_usuario;
+                    personaDeporteEditar.deporte = id_deporte;
+                    personaDeporteEditar.id_plan = id_plan;
+                    modeloMinisterio.SaveChanges();
 
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
 
+        public bool RemovePlanADeporteUsuario(string id_usuario, int id_deporte)
+        {
+            try
+            {
+                MinisterioDeportesEntityDataModel model = new MinisterioDeportesEntityDataModel();
+                persona_deporte personaDeporteSeleccionado = model.persona_deporte.FirstOrDefault(pd => pd.persona.Equals(id_usuario) && pd.deporte.Equals(id_deporte));
+                if (personaDeporteSeleccionado == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    personaDeporteSeleccionado.id_plan = null;
+                    model.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
 
-
+                return false;
+            }
+        }
     }
 }
