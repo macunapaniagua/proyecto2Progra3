@@ -107,6 +107,10 @@
             this.lbxPlanDep = new System.Windows.Forms.ListBox();
             this.tabEstadísticas = new System.Windows.Forms.TabPage();
             this.chtEstadisticas = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backUpDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restoreDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbcDashboard.SuspendLayout();
             this.tabDeportes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTablaDeportes)).BeginInit();
@@ -122,6 +126,7 @@
             this.tabAsociarPlanDep.SuspendLayout();
             this.tabEstadísticas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chtEstadisticas)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbcDashboard
@@ -134,11 +139,12 @@
             this.tbcDashboard.Controls.Add(this.tabAsociarUserDep);
             this.tbcDashboard.Controls.Add(this.tabAsociarPlanDep);
             this.tbcDashboard.Controls.Add(this.tabEstadísticas);
-            this.tbcDashboard.Location = new System.Drawing.Point(12, 12);
+            this.tbcDashboard.Location = new System.Drawing.Point(12, 21);
             this.tbcDashboard.Name = "tbcDashboard";
             this.tbcDashboard.SelectedIndex = 0;
             this.tbcDashboard.Size = new System.Drawing.Size(886, 493);
             this.tbcDashboard.TabIndex = 0;
+            this.tbcDashboard.SelectedIndexChanged += new System.EventHandler(this.tbcDashboard_SelectedIndexChanged);
             // 
             // tabDeportes
             // 
@@ -1011,12 +1017,47 @@
             this.chtEstadisticas.Size = new System.Drawing.Size(614, 396);
             this.chtEstadisticas.TabIndex = 0;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.menuStrip1.Size = new System.Drawing.Size(910, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // archivoToolStripMenuItem
+            // 
+            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backUpDBToolStripMenuItem,
+            this.restoreDBToolStripMenuItem});
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.archivoToolStripMenuItem.Text = "BackUp";
+            // 
+            // backUpDBToolStripMenuItem
+            // 
+            this.backUpDBToolStripMenuItem.Name = "backUpDBToolStripMenuItem";
+            this.backUpDBToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.backUpDBToolStripMenuItem.Text = "BackUp DB  ";
+            // 
+            // restoreDBToolStripMenuItem
+            // 
+            this.restoreDBToolStripMenuItem.Name = "restoreDBToolStripMenuItem";
+            this.restoreDBToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.restoreDBToolStripMenuItem.Text = "Restore DB";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 517);
             this.Controls.Add(this.tbcDashboard);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindow";
@@ -1043,7 +1084,10 @@
             this.tabAsociarPlanDep.PerformLayout();
             this.tabEstadísticas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chtEstadisticas)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1125,5 +1169,9 @@
         private System.Windows.Forms.ListBox lbxPlanDep;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cbxDeporteAsociado;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backUpDBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restoreDBToolStripMenuItem;
     }
 }

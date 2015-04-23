@@ -102,5 +102,6 @@ namespace MinisterioDeportesWCF
 
         [OperationContract]
         int ObtenerCantidadPersonasPorDeporte(int id_deporte);
+
     }
 }

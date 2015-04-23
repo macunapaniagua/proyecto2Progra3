@@ -633,6 +633,12 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/ObtenerCantidadPersonasPorDeporte", ReplyAction="http://tempuri.org/IWebServiceMD/ObtenerCantidadPersonasPorDeporteResponse")]
         System.Threading.Tasks.Task<int> ObtenerCantidadPersonasPorDeporteAsync(int id_deporte);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/BackupDataBase", ReplyAction="http://tempuri.org/IWebServiceMD/BackupDataBaseResponse")]
+        bool BackupDataBase(string filename);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebServiceMD/BackupDataBase", ReplyAction="http://tempuri.org/IWebServiceMD/BackupDataBaseResponse")]
+        System.Threading.Tasks.Task<bool> BackupDataBaseAsync(string filename);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -884,6 +890,14 @@ namespace MinisterioDeportes.ReferenceMinisterioDeportesWCF {
         
         public System.Threading.Tasks.Task<int> ObtenerCantidadPersonasPorDeporteAsync(int id_deporte) {
             return base.Channel.ObtenerCantidadPersonasPorDeporteAsync(id_deporte);
+        }
+        
+        public bool BackupDataBase(string filename) {
+            return base.Channel.BackupDataBase(filename);
+        }
+        
+        public System.Threading.Tasks.Task<bool> BackupDataBaseAsync(string filename) {
+            return base.Channel.BackupDataBaseAsync(filename);
         }
     }
 }

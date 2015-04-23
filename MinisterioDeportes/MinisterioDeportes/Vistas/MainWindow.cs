@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using MinisterioDeportes.ReferenceMinisterioDeportesWCF;
 using MovieWorld.Util;
+using System.Data.SqlClient;
 
 
 namespace MinisterioDeportes.Vistas
@@ -45,27 +46,9 @@ namespace MinisterioDeportes.Vistas
             InitializeComponent();
             usuario = pUsuario;
             // Remueve los tabs de administracion para el usuario
-            //          if (!usuario.esAdmi) { removerTabAdministracion(); }
-
+            if (!usuario.isAdmin) { removerTabAdministracion(); }
             txtParticipante.Text = usuario.nombre + " " + usuario.apellido1 + " " + usuario.apellido2;
-
-            cargarTodosDeportes();
-            cargarTodasRutinas();
-            cargarTodosPlanes();
-            cargarTodosParticipantes();
-
-
-            
-            cargarDeportesDeUsuarioEnLista();
-            cargarPlanesEnLista();
-
-            this.cbxDeporteAsociado.DataSource = nombreDeportesAsociados;
-            this.cargarPlanesDeportesEnLista();
-            
-            this.lbxPlanDep.DataSource = nombrePlanAsociado;
-
-            this.CargarEstadisticas();
-            
+            cargarTodosDeportes();       
         }
 
         /// <summary>
@@ -81,6 +64,44 @@ namespace MinisterioDeportes.Vistas
             tbcDashboard.TabPages.Remove(tabRutina);
         }
 
+        private void tbcDashboard_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tbcDashboard.SelectedTab == tbcDashboard.TabPages["tabDeportes"])
+            {
+                cargarTodosDeportes();
+            }
+            else if (tbcDashboard.SelectedTab == tbcDashboard.TabPages["tabParticipantes"])
+            {
+                cargarTodosParticipantes();
+            }
+            else if (tbcDashboard.SelectedTab == tbcDashboard.TabPages["tabPlanDeRutina"])
+            {
+                cargarTodosPlanes();
+            }
+            else if (tbcDashboard.SelectedTab == tbcDashboard.TabPages["tabRutina"])
+            {
+                cargarTodasRutinas();
+            }
+            else if (tbcDashboard.SelectedTab == tbcDashboard.TabPages["tabAsociarRutinaPlan"])
+            {
+                cargarPlanesEnLista();
+            }
+            else if (tbcDashboard.SelectedTab == tbcDashboard.TabPages["tabAsociarUserDep"])
+            {
+                cargarDeportesDeUsuarioEnLista();
+            }
+            else if (tbcDashboard.SelectedTab == tbcDashboard.TabPages["tabAsociarPlanDep"])
+            {
+                cargarDeportesDeUsuarioEnLista();
+                this.cbxDeporteAsociado.DataSource = nombreDeportesAsociados;
+                lbxPlanDep.DataSource = nombrePlanAsociado;
+            }
+            else if (tbcDashboard.SelectedTab == tbcDashboard.TabPages["tabEstadísticas"])
+            {
+                this.CargarEstadisticas();
+            }
+
+        }
         /// <summary>
         /// Abre la ventana de login cuando se presiona en la "X"
         /// </summary>
@@ -93,6 +114,10 @@ namespace MinisterioDeportes.Vistas
 
         private void CargarEstadisticas()
         {
+            foreach (var series in chtEstadisticas.Series)
+            {
+                series.Points.Clear();
+            }
             using (WebServiceMDClient cliente = new WebServiceMDClient())
             {
                 List<DeporteDTO> listaDeportes = cliente.ObtenerDeportes(null).ToList();
@@ -1321,9 +1346,7 @@ namespace MinisterioDeportes.Vistas
              lbxPlanDep.DataSource = nombrePlanAsociado;
          }
         #endregion
-
-
-        
+       
     }
 
 }

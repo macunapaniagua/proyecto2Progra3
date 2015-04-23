@@ -2,6 +2,7 @@
 using MinisterioDeportesWCF.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -854,5 +855,6 @@ namespace MinisterioDeportesWCF
         }
 
         #endregion
+
     }
 }
