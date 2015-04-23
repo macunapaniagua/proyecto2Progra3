@@ -103,5 +103,7 @@ namespace MinisterioDeportesWCF
         [OperationContract]
         int ObtenerCantidadPersonasPorDeporte(int id_deporte);
 
+       /* [OperationContract]
+        bool BackupDataBase(string filename);*/
     }
 }

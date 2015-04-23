@@ -856,5 +856,14 @@ namespace MinisterioDeportesWCF
 
         #endregion
 
+        /*
+        public bool BackupDataBase(string filename)
+        {
+            MinisterioDeportesEntityDataModel modeloMinisterio = new MinisterioDeportesEntityDataModel();
+            modeloMinisterio.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, @"BACKUP DATABASE [db9ce858d6b9cb47658934a46901350226] TO  DISK = '\\D:\Users\octa8_000\Documents\ISW\BackUp' WITH FORMAT, MEDIANAME = 'Backup'");
+            return true;
+        }
+        */
+
     }
 }

@@ -65,6 +65,6 @@ namespace MinisterioDeportes.Vistas
             txtUsuario.Clear();
         }
 
-       
+        
     }
 }
